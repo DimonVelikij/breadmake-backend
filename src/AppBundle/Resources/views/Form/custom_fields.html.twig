@@ -1,0 +1,55 @@
+{% block image_crop_widget %}
+    {% spaceless %}
+        {{ block('form_widget') }}
+        {% if multiple %}
+            {% if images | length %}
+                <b>Загруженные изображения ({{ images | length }}шт)</b>
+                <div class="row">
+                    {% for image in images %}
+                        <div class="col-md-3">
+                            <div>
+                                <img src="{{ asset(image.assetCropPath) }}" width="100%" alt="">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a href="{{ path('admin_app_' ~ entity ~ '_remove_image_crop', {id: object.id, imageId: image.id}) }}" class="btn btn-danger" style="display: block; text-align: center; margin: 5px 0;">
+                                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                            Удалить
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <b>Изображения не загружены</b>
+            {% endif %}
+        {% else %}
+            {% if image %}
+                <img id="image-crop-original" src="{{ asset(image.assetPath) }}" alt="">
+                <br>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <b>Превью</b>
+                        <div id="image-crop-preview" style="background-image: url({{ asset(image.assetPath) }});"></div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <b>Обрезанное изображение "{{ image_crop_width }}px x {{ image_crop_height }}px"</b>
+                        <br>
+                        <img id="image-crop" src="{{ asset(image.assetCropPath) }}" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ path('admin_app_' ~ entity ~ '_remove_image_crop', {id: object.id}) }}" class="btn btn-danger" style="margin: 5px 0;">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                            Удалить изображение
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <b>Изображение не загружено</b>
+            {% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

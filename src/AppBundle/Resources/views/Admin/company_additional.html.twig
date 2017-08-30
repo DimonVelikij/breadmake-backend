@@ -1,0 +1,32 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% set additionalData = object.data %}
+    {% if additionalData | length %}
+        <p><b>Дополнительные данные</b></p>
+        {% if additionalData.working_days is defined %}
+            <tr>
+                <th>Время работы</th>
+                <td>{{ additionalData.working_days ?? 'Не указано' }}</td>
+            </tr>
+        {% endif %}
+        {% if additionalData.weekend is defined %}
+            <tr>
+                <th>Выходные</th>
+                <td>{{ additionalData.weekend ?? 'Не указано' }}</td>
+            </tr>
+        {% endif %}
+        {% if additionalData.delivery is defined %}
+            <tr>
+                <th>Доставка</th>
+                <td>{{ additionalData.delivery ? additionalData.delivery | raw : 'Не указано' }}</td>
+            </tr>
+        {% endif %}
+        {% if additionalData.payment is defined %}
+            <tr>
+                <th>Оплата</th>
+                <td>{{ additionalData.payment ? additionalData.payment | raw : 'Не указано' }}</td>
+            </tr>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+
+    {% set object = object.status %}
+
+    {% set col = {
+        title: object.title,
+        alias: object.alias,
+        status: object.title
+    } %}
+    {% set colors = {
+        success: 'green',
+        errors: 'red',
+        wait: 'orange',
+        process: 'blue'
+    } %}
+    <span style="color: {{ colors[object.alias] }}">{{ col[field_description.fieldName] }}</span>
+{% endblock %}

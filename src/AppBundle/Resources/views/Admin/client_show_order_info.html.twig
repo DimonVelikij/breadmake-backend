@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if not object.orders | length %}
+        <span>Нет заказов</span>
+    {% else %}
+        {% for order in object.orders %}
+            {% include 'AppBundle:Admin:order_info_item.html.twig' with {'order': order} %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% set colors = {
+    success: 'green',
+    errors: 'red',
+    wait: 'orange',
+    process: 'blue'
+} %}
+<div style="border-top: 2px solid black; border-bottom: 2px solid black; margin-bottom: 10px; padding: 5px;">
+    <h4>Заказ <b>№{{ order.id }}</b></h4>
+    <p>Дата создания: <b>{{ order.createdAt.format('Y.m.d H:i') }}</b></p>
+    <p>Статус: <b><span style="color: {{ colors[order.status.alias] }};">{{ order.status.title }}</span></b></p>
+    <p>Предпочитаемая дата получения заказа: <b>{{ order.preferenceDate.format('Y-m-d H:i') }}</b></p>
+    <p>Доствка: <b>{{ order.isDelivery ? 'нужна' : 'не нужна' }}</b></p>
+    {% if order.isDelivery %}
+        <p>Адрес доставки: <b>{{ order.address }}</b></p>
+    {% endif %}
+    <p>Список продуктов</p>
+    <table border="2px solid black">
+        <tr>
+            <th>Продукт</th>
+            <th>Цена, руб</th>
+            <th>Количество</th>
+            <th>Стоимость, руб</th>
+        </tr>
+        {% set countProduct = 0 %}
+        {% set totalPrice = 0 %}
+        {% for productOrder in order.productsOrders %}
+            <tr>
+                <td>{{ productOrder.product.title }}</td>
+                <td>{{ productOrder.product.price | number_format(2, '.') }}</td>
+                <td>{{ productOrder.count }}</td>
+                <td>{{ (productOrder.product.price * productOrder.count) | number_format(2, '.') }}</td>
+            </tr>
+            {% set countProduct = countProduct + productOrder.count %}
+            {% set totalPrice = totalPrice + (productOrder.product.price * productOrder.count) %}
+        {% endfor %}
+    </table>
+    <p>Итого: продуктов <b>{{ countProduct }}</b> на сумму <b>{{ totalPrice | number_format(2, '.') }}руб</b></p>
+</div>
