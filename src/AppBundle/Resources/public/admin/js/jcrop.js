@@ -48,7 +48,5 @@ $(function() {
 
             imageCropField.val(JSON.stringify(imageCropParams));
         }
-
-        $('.jcrop-holder > div').first().css({zIndex: 1});
     } catch (e) {}
 });
