@@ -44,7 +44,7 @@ class Slide
     private $public;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $image;
