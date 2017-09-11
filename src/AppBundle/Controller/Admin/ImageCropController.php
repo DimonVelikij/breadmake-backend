@@ -52,6 +52,8 @@ class ImageCropController extends CRUDController
             $uploadCropFile->clearImageDir($id, $entityName, $image);
         }
 
+        $this->getDoctrine()->getManager()->flush();
+
         $this->addFlash('sonata_flash_success', 'Изображение успешно удалено');
 
         return new RedirectResponse($this->admin->generateUrl('edit', ['id' => $id]));

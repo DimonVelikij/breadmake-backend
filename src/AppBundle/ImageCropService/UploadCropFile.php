@@ -122,7 +122,6 @@ class UploadCropFile
         }
 
         $this->em->persist($image);
-        $this->em->flush();
 
         return $image;
     }
@@ -287,7 +286,6 @@ class UploadCropFile
                 unlink($cropImage);
             }
             $this->em->remove($image);
-            $this->em->flush();
         }
 
         if (is_dir($imageDir) && !glob($imageDir.'/*')) {
