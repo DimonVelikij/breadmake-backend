@@ -106,7 +106,8 @@ class MenuAdmin extends AbstractAdmin
     private function getConfigType(string $pathName)
     {
         $configTypes = [
-            'admin_app_news_list'  =>  MenuHomepageConfigsTypes::class
+            'homepage'  =>  MenuHomepageConfigsTypes::class,
+            //доделать настройки для остальных роутов
         ];
 
         return $configTypes[$pathName];
