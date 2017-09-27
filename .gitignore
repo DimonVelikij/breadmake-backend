@@ -17,3 +17,9 @@
 /web/bundles/
 .idea/
 /web/media/
+/node_modules
+/src/AppBundle/Resources/public/css/
+/src/AppBundle/Resources/public/vendor/
+/web/assetic/
+/web/css/
+/web/js/

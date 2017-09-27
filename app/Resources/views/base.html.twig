@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
     <head>
         <meta charset="UTF-8" />
+        <meta name="description" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            {% stylesheets
+                'bundles/app/css/libs.min.css'
+                'bundles/app/css/main.css'
+                filter='cssrewrite'
+            %}
+                <link rel="stylesheet" href="{{ asset(asset_url, 'css') }}">
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            {% javascripts
+                '@libsjs'
+                '@commonjs'
+            %}
+                <script type="text/javascript" src="{{ asset(asset_url, 'js') }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        {% block outerJavascript %}
+            <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.map,package.controls,package.route,package.geoObjects&lang=ru-RU&ns=breadMap" type="text/javascript"></script>
+            <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+            <!-- Google Analytics counter --><!-- /Google Analytics counter -->
+        {% endblock %}
     </body>
 </html>

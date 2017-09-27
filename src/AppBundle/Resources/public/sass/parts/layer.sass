@@ -1,0 +1,74 @@
+@import "../base-variables"
+
+.background
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(117, 75, 30, .5)
+  z-index: 100
+.layer
+  overflow-x: hidden
+  overflow-y: auto
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 200
+.layer-dialog
+  width: 600px
+  height: auto
+  background-color: $white
+  margin: 30px auto
+  border-radius: $border-radius
+  @media only screen and (max-width: $layer)
+    width: auto
+    margin: 30px 15px
+.layer-close
+  position: relative
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  background-color: $brown-dark
+  float: right
+  margin: 10px -5px 10px 10px
+  &-icon
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-top: -7px
+    margin-left: -5px
+    display: block
+    color: $orange
+  &:hover
+    cursor: pointer
+    background-color: $orange
+    &>.layer-close-icon
+      color: $brown-dark
+.layer-caption
+  margin: -15px 0 20px 0
+.layer-content
+  padding-bottom: 20px
+
+.layer-map
+  display: block
+  width: 99%
+  height: 430px
+  border: 3px solid $brown-dark
+  @media only screen and (max-width: $medium - 1)
+    height: 500px
+  @media only screen and (max-width: $small - 1)
+    height: 300px
+
+.balloon-title
+  height: 50px
+  color: $brown-dark
+  font: 16px "RobotoSlabRegular", sans-serif
+  font-weight: bold
+  background: url("../img/logo.png") no-repeat
+  background-size: 35px auto
+  padding-left: 35px
+  text-align: center
+  margin-bottom: 20px

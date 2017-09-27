@@ -1,0 +1,92 @@
+@import "../base-variables"
+@import "../base-form"
+
+.logo
+  text-decoration: none
+  &-img
+    float: left
+  &-title
+    font: 45px "CocaColaRegular", sans-serif
+    line-height: 40px
+    padding-top: 5px
+    color: $brown-dark
+    @media only screen and (max-width: $medium - 1)
+      padding-top: 50px
+      text-align: center
+      font-size: 45px
+    @media only screen and (max-width: $small)
+      padding-top: 15px
+      font-size: 40px
+    @media only screen and (max-width: $extra-small)
+      padding-top: 15px
+      font-size: 35px
+    @media only screen and (max-width: $custom)
+      letter-spacing: -2px
+
+.search
+  margin-top: 40px
+  @media only screen and (max-width: $medium - 1)
+    margin-top: 15px
+
+.field-text_search
+  width: 80%
+  border-radius: $border-radius 0 0 $border-radius
+  @media only screen and (max-width: $medium)
+    width: 85%
+
+.button_search
+  margin-left: -5px
+  width: 15%
+  border-radius: 0 $border-radius $border-radius 0
+  box-shadow: 2px 2px 3px 0 $box-shadow-color
+
+.header-cart
+  margin-top: 25px
+  &__insert
+    position: absolute
+    top: -2px
+    left: -52px
+    width: 50px
+    height: 50px
+    background-color: $orange
+    border-radius: $border-radius 0 0 $border-radius
+    box-shadow: 2px 2px 3px 0 $box-shadow-color
+    color: $brown-dark
+    font-size: 36px
+    padding-left: 6px
+    display: none
+    &:hover
+      cursor: pointer
+    @media only screen and (max-width: $small - 1)
+      display: block
+  &__count-product
+    @media only screen and (max-width: $small - 1)
+      display: none
+    @media only screen and (min-width: $medium)
+      display: none
+  &__icon
+    @media only screen and (max-width: $small)
+      display: none
+  &__info
+    margin-top: 20px
+    @media only screen and (min-width: $small) and (max-width: $medium - 1)
+      display: none
+  @media only screen and (max-width: $small - 1)
+    position: fixed
+    width: 230px
+    border-top: 2px solid $brown-dark
+    border-left: 2px solid $brown-dark
+    background-color: $white
+    border-radius: 0 0 0 $border-radius
+    box-shadow: 2px 2px 3px 0 $box-shadow-color
+    padding: 10px
+    top: 40px
+    right: -230px
+    z-index: 30
+
+.text-cart
+  font-size: 20px
+  text-decoration: underline
+  &:hover
+    color: $orange
+    text-decoration: none

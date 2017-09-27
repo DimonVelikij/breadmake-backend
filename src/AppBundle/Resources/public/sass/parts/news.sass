@@ -1,0 +1,65 @@
+@import "../base-variables"
+
+.overlay
+  position: absolute
+  width: 100%
+  height: 100%
+  background-color: rgba(29, 14, 17, .5)
+  z-index: 10
+  border-radius: $border-radius
+  display: none
+  &__arrow
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-top: -71px
+    margin-left: -43px
+    text-align: center
+    font-size: 100px
+
+.new-item
+  position: relative
+  display: block
+  height: 100%
+  border-radius: $border-radius
+  box-shadow: 0 0 5px 0 $box-shadow-color
+  margin-bottom: 20px
+  &:hover
+    cursor: pointer
+    box-shadow: 0 0 25px 0 $box-shadow-color
+  &:hover>.overlay
+    display: block
+  &__img-block
+    padding: 15px 30px
+    text-align: center
+  &__img
+    width: 100%
+  &__title,
+  &__count-photo
+    color: $brown-dark
+  &__title
+    padding: 15px
+    font: 26px "RobotoSlabBold", sans-serif
+    height: 130px
+  &__count-photo,
+  &__date
+    font: 20px "RobotoSlabBold", sans-serif
+  &__count-photo
+    padding: 0 0 15px 15px
+  &__date
+    color: $gray-dark
+    text-align: right
+    padding: 0 15px 15px 0
+
+.new
+  &__img
+    width: 100%
+    border-radius: $border-radius
+    margin-bottom: 30px
+    &:hover
+      box-shadow: 0 0 25px 0 $box-shadow-color
+.new-text
+  text-align: justify
+  color: $brown-light
+.new-gallery
+  margin-top: 15px

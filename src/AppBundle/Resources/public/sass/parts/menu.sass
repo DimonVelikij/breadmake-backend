@@ -1,0 +1,49 @@
+@import "../base-variables"
+.menu
+  margin: 20px 0 0 0
+  background-color: $brown-dark
+  border-radius: $border-radius
+  z-index: 20
+  @media only screen and (max-width: $menu)
+    display: none
+    width: 100%
+    position: absolute
+    top: 50px
+    background-color: $orange
+  &__item
+    display: block
+    height: 50px
+    float: left
+    font: 24px "RobotoSlabBold", sans-serif
+    margin: 0 10px
+    line-height: 45px
+    color: $white
+    &_active,
+    &:hover
+      color: $orange
+    @media only screen and (max-width: $menu)
+      float: none
+      color: $brown-dark
+      &:hover,
+      &_active
+        background-color: $brown-dark
+        margin: 0
+        padding: 0 10px
+        border-radius: $border-radius
+        color: $white
+        text-decoration: none
+
+.menu-adaptive
+  display: none
+  height: 50px
+  margin: 20px 0
+  background-color: $brown-dark
+  border-radius: $border-radius
+  color: $white
+  font-size: 24px
+  padding: 7px 10px
+  &_bars:hover
+    color: $orange
+    cursor: pointer
+  @media only screen and (max-width: $menu)
+    display: block

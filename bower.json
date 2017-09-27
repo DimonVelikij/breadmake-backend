@@ -1,0 +1,23 @@
+{
+  "name": "byngovskoe-po.ru",
+  "description": "Быньговское потребительское общество",
+  "main": "index.js",
+  "authors": [
+    "DimonVelikij"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/DimonVelikij/byngovskoe_po",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/AppBundle/Resources/public/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "fancybox": "FancyBox3#^3.1.20",
+    "jquery.easing": "jquery-easing-original#^1.4.1"
+  }
+}

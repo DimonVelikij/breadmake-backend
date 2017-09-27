@@ -1,0 +1,26 @@
+@import "../base-variables"
+
+.about-info,
+.about-map
+  margin: 20px 0
+
+.about-info
+  &__phone
+    margin-top: 10px
+
+.about-address,
+.about-info-work-time,
+.about-payment,
+.about-delivery,
+.about-feedback-form
+  margin-top: 10px
+
+.about-map
+  display: block
+  width: 99%
+  height: 430px
+  border: 3px solid $brown-dark
+  @media only screen and (max-width: $medium - 1)
+    height: 500px
+  @media only screen and (max-width: $small - 1)
+    height: 300px

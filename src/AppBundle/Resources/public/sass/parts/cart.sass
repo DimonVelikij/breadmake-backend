@@ -1,0 +1,61 @@
+@import "../base-variables"
+.cart-table-caption
+  margin-bottom: 10px
+  border-bottom: 2px solid $brown-dark
+  @media only screen and (max-width: $medium - 1)
+    display: none
+.cart-table-caption-row
+  margin-bottom: 20px
+  &__text
+    font-size: 18px
+    &_center
+      text-align: center
+
+.cart-table-rows
+  border-bottom: 2px solid $brown-dark
+
+.cart-table-row
+  margin-bottom: 10px
+  @media only screen and (max-width: $medium - 1)
+    border-top: 2px solid $brown-dark
+
+.table-cell
+  display: table
+  height: 100px
+  &__content
+    display: table-cell
+    vertical-align: middle
+    &_center
+      text-align: center
+  &__title
+    font-size: 18px
+  &__plus-button,
+  &__minus-button
+    @media only screen and (max-width: $medium - 1)
+      display: none
+  &__price
+    font-size: 24px
+  &__del-button
+    font-size: 24px
+    &:hover
+      cursor: pointer
+      color: $orange
+    &-adaptive
+      text-align: right
+      padding: 5px 5px 0 0
+  &__adaptive
+    @media only screen and (min-width: $medium)
+      display: none
+
+.cart-img
+  width: 100px
+  height: 100px
+  margin-right: 10px
+
+.cart-table-total
+  margin: 10px 0 20px 0
+  font-size: 20px
+  text-align: right
+
+.form-cart
+  margin: 0 0 20px 0

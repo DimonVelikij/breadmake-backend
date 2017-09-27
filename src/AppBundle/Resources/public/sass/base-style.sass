@@ -1,0 +1,83 @@
+@import "base-variables"
+*
+  margin: 0
+  padding: 0
+  outline: none
+
+html
+  height: 100%
+
+body
+  height: 100%
+  background-color: $white
+  font-family: "RobotoRegular", sans-serif
+  //overflow: hidden
+
+ol,
+ul
+  list-style: none
+
+h1
+  font: 36px "RobotoSlabBold", sans-serif
+  color: $brown-dark
+  margin: 15px 0
+h2
+  font: 30px "RobotoSlabBold", sans-serif
+  color: $brown-dark
+
+h3
+  font: 20px "RobotoSlabBold", sans-serif
+  color: $brown-dark
+
+a
+  color: $white
+  text-decoration: underline
+  &:hover
+    color: $orange
+    cursor: pointer
+    text-decoration: none
+
+a i
+  display: inline !important
+
+.text
+  color: $brown-dark
+  font: 16px "RobotoSlabRegular", sans-serif
+  font-weight: bold
+  &_orange
+    color: $orange
+  &_white
+    color: $white
+  &_center
+    text-align: center
+
+.hint
+  position: absolute
+  display: none
+  background-color: $white
+  border-radius: $border-radius
+  box-shadow: 0 0 5px 0 $box-shadow-color
+  &::after,
+  &::before
+    content: ''
+    position: absolute
+    background: $white
+    width: 20px
+    height: 20px
+    box-shadow: 0 0 7px #000
+    z-index: -1
+    transform: rotate(45deg)
+  &::before
+    z-index: 1
+    box-shadow: none
+
+.brown-dark
+  color: $brown-dark
+.orange
+  color: $orange
+.brown-light
+  color: $brown-light
+.excel
+  color: green
+.pdf
+  color: red

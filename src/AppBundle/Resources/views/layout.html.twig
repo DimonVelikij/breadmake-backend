@@ -1,0 +1,212 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {% block header %}
+        <header>
+            <div class="header-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="row">
+                        <span class="auth-button">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <span class="cart-button">
+                            <a href="#"><i class="fa fa-shopping-cart"> (10)</i></a>
+                            <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> (10)</i></a>-->
+                        </span>
+                            <div class="user-links">
+                                <ul>
+                                    <li><a class="user-link user-link_active" href="#"><i class="fa fa-sign-in"></i> Вход</a></li>
+                                    <li><a class="user-link" href="#"><i class="fa fa-user-plus"></i> Регистрация</a></li>
+                                    <!--<li><a class="user-link user-link_left" href="#"><i class="fa fa-sign-out"></i> Выход</a></li>-->
+                                    <!--<li><a class="user-link user-link_left" href="#"><i class="fa fa-address-card"></i> Кабинет</a></li>-->
+                                </ul>
+                            </div>
+                            <div class="header-phone">
+                                <a href="tel:89222271420"><i class="fa fa-phone-square"></i> 8-922-227-14-20</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="col-md-5 col-sm-12">
+                        <div class="row">
+                            <a href="#" class="logo">
+                                <img class="logo-img" src="{{ asset('bundles/app/images/logo.png') }}" alt="">
+                                <p class="logo-title">Быньговское потребительское общество</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-9 col-xs-12">
+                        <div class="row">
+                            <div class="search">
+                                <input type="text" class="field-text field-text_search" placeholder="поиск...">
+                                <button class="button button_search"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3">
+                        <div class="row">
+                            <div id="header-cart" class="header-cart">
+                                <div id="header-cart-insert" class="header-cart__insert">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="cart-caption">
+                                    <p class="text_center">
+                                        <a class="text text-cart" href="#"><i class="fa fa-shopping-cart"></i> Корзина</a>
+                                        <span class="text text_orange header-cart__count-product"> (10)</span>
+                                    </p>
+                                </div>
+                                <div class="header-cart__info">
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <div class="row"><p class="text">Товаров</p></div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5 col-xs-5">
+                                        <div class="row"><p class="text text_orange">(10)</p></div>
+                                    </div>
+                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                        <div class="row"><p class="text">На сумму</p></div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5 col-xs-5">
+                                        <div class="row"><p class="text text_orange">10000 <i class="fa fa-rouble"></i></p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+
+    {% block menu %}
+        <nav>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="menu-adaptive">
+                            <span class="menu-adaptive_bars"><i class="fa fa-bars"></i></span>
+                        </div>
+                        <div class="menu clearfix">
+                            <ul>
+                                <li><a class="menu__item menu__item_active" href="#">Главная</a></li>
+                                <li><a class="menu__item" href="#">Продукция</a></li>
+                                <li><a class="menu__item" href="#">Прайс-лист</a></li>
+                                <li><a class="menu__item" href="#">Декларации</a></li>
+                                <li><a class="menu__item" href="#">Новости</a></li>
+                                <li><a class="menu__item" href="#">О компании</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+        <footer class="footer">
+            <div class="container">
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="footer-col">
+                            <p class="text_center">
+                                <a href="#" class="text text_orange footer-text-caption">Продукция</a>
+                            </p>
+                            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+                                <ul>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="#">Хлебные</a></li>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="">Батоны</a></li>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="">Пряники</a></li>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="">Сухари</a></li>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="">Пироги</a></li>
+                                    <li class="footer-menu-item"><a class="text text_white text-footer" href="">Кондитерские</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-8 col-xs-12">
+                    <div class="row">
+                        <div class="footer-col">
+                            <p class="text_center">
+                                <a href="#" class="text text_orange footer-text-caption">О компании</a>
+                            </p>
+                            <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <p class="text text_white text-footer">пн-пт</p>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <p class="text text_orange text-footer">08:00-17:00</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <p class="text text_white text-footer">сб-вс</p>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <p class="text text_orange text-footer">выходной</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <p class="text text_white text-footer">телефон</p>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <p class="text text_orange text-footer">8-800-2000-600</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text text_white text-footer">email</p>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p class="text text_orange text_center text-footer">dimonvelikii1992@mail.ru</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <a href="#" class="text text_white text_center text-footer"><i class="fa fa-credit-card"></i> Оплата</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <a href="#" class="text text_white text_center text-footer"><i class="fa fa-truck"></i> Доставка</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <a href="#" class="text text_white text_center text-footer"><i class="fa fa-map-marker"></i> на карте</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="footer-col">
+                        <form action="#" method="post">
+                            <div class="row">
+                                <input name="" type="text" class="field-text field-bottom-10" placeholder="ФИО">
+                            </div>
+                            <div class="row">
+                                <input name="" type="text" class="field-text field-bottom-10" placeholder="телефон">
+                            </div>
+                            <div class="row">
+                                <textarea name="" class="field-text-area field-bottom-10" placeholder="вопрос, предложение, жалоба..."></textarea>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="button button-footer">Отправить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+{% endblock %}
