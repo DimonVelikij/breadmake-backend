@@ -38,6 +38,7 @@ gulp.task('scripts', function () {
             'src/AppBundle/Resources/public/vendor/jquery/dist/jquery.min.js',
             'src/AppBundle/Resources/public/vendor/jquery.easing/jquery.easing.min.js',
             'src/AppBundle/Resources/public/vendor/fancybox/dist/jquery.fancybox.min.js',
+            'src/AppBundle/Resources/public/vendor/angular/angular.min.js',
             'src/AppBundle/Resources/public/custom_vendor/owl-carousel/owl.carousel.min.js'
         ])
         .pipe(concat('libs.min.js'))

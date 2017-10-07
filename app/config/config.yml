@@ -184,3 +184,6 @@ assetic:
         commonjs:
             inputs:
                 - 'bundles/app/js/jquery/common.js'
+        angular:
+            inputs:
+                - 'bundles/app/js/angular/test.js'
