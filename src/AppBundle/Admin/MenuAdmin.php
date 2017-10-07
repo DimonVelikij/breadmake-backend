@@ -86,16 +86,33 @@ class MenuAdmin extends AbstractAdmin
                         'disabled'  =>  true
                     ])
                 ->end()
-            ->end()
-            ->tab('Дополнительные настройки')
-                ->with('')
-                    ->add('configs', $this->getConfigType($object->getPath()), [
-                        'label'     =>  false,
-                        'required'  =>  false
-                    ])
-                ->end()
-            ->end()
-        ;
+            ->end();
+        
+        if ($this->isConfigType($object->getPath())) {
+            $formMapper
+                ->tab('Дополнительные настройки')
+                    ->with('')
+                        ->add('configs', $this->getConfigType($object->getPath()), [
+                            'label' => false,
+                            'required' => false
+                        ])
+                    ->end()
+                ->end();
+        }
+    }
+
+    /**
+     * имеет ли текущий раздел доп настройки
+     * @param string $pathName
+     * @return bool
+     */
+    private function isConfigType(string $pathName)
+    {
+        $configTypes = [
+            'homepage'
+        ];
+
+        return in_array($pathName, $configTypes);
     }
 
     /**

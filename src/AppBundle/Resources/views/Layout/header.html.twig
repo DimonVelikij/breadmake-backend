@@ -1,0 +1,77 @@
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                        <span class="auth-button">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <span class="cart-button">
+                            <a href="#"><i class="fa fa-shopping-cart"> (10)</i></a>
+                            <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> (10)</i></a>-->
+                        </span>
+                    <div class="user-links">
+                        <ul>
+                            <li><a class="user-link user-link_active" href="{{ path('cabinet-login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
+                            <li><a class="user-link" href="{{ path('cabinet-registration') }}"><i class="fa fa-user-plus"></i> Регистрация</a></li>
+                            {#<li><a class="user-link user-link_left" href="{{ path('cabinet-logout') }}"><i class="fa fa-sign-out"></i> Выход</a></li>#}
+                            {#<li><a class="user-link user-link_left" href="{{ path('cabinet') }}"><i class="fa fa-address-card"></i> Кабинет</a></li>#}
+                        </ul>
+                    </div>
+                    <div class="header-phone">
+                        <a href="tel:{{ company.phone }}"><i class="fa fa-phone-square"></i> {{ company.phone }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="col-md-5 col-sm-12">
+                <div class="row">
+                    <a href="{{ path('homepage') }}" class="logo">
+                        <img class="logo-img" src="{{ asset('bundles/app/images/logo.png') }}" alt="">
+                        <p class="logo-title">{{ company.title }}</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-9 col-xs-12">
+                <div class="row">
+                    <div class="search">
+                        <input type="text" class="field-text field-text_search" placeholder="поиск...">
+                        <button class="button button_search"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <div class="row">
+                    <div id="header-cart" class="header-cart">
+                        <div id="header-cart-insert" class="header-cart__insert">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <div class="cart-caption">
+                            <p class="text_center">
+                                <a class="text text-cart" href="#"><i class="fa fa-shopping-cart"></i> Корзина</a>
+                                <span class="text text_orange header-cart__count-product"> (10)</span>
+                            </p>
+                        </div>
+                        <div class="header-cart__info">
+                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                <div class="row"><p class="text">Товаров</p></div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                                <div class="row"><p class="text text_orange">(10)</p></div>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-7">
+                                <div class="row"><p class="text">На сумму</p></div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                                <div class="row"><p class="text text_orange">10000 <i class="fa fa-rouble"></i></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

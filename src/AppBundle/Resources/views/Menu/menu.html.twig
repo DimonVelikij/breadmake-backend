@@ -1,0 +1,5 @@
+<ul>
+    {% for menuItem in item.children %}
+        <li><a class="menu__item {% if menuItem.isCurrent %}menu__item_active{% endif %}" href="{{ menuItem.uri }}">{{ menuItem.name }}</a></li>
+    {% endfor %}
+</ul>

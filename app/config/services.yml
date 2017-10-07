@@ -54,3 +54,21 @@ services:
             - '@doctrine.orm.entity_manager'
 
     AppBundle\ImageCropService\UploadCropFile: '@app.upload_crop_file'
+
+    app.menu_builder:
+        class: AppBundle\Menu\Builder
+        public: true
+        autowire: false
+        arguments:
+            - '@knp_menu.factory'
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@app.menu_builder", makeMenu]
+        public: true
+        autowire: false
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+        tags:
+            - { name: knp_menu.menu, alias: main }

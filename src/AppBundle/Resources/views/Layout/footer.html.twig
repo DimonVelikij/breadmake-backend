@@ -1,0 +1,109 @@
+<footer class="footer">
+    <div class="container">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="row">
+                <div class="footer-col">
+                    <p class="text_center">
+                        <a href="{{ path('product') }}" class="text text_orange footer-text-caption">Продукция</a>
+                    </p>
+                    <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-0">
+                        <ul>
+                            {% for product_category in product_categories %}
+                                {# нужно сгенерить роут на фильтр по категории #}
+                                <li class="footer-menu-item"><a class="text text_white text-footer" href="#">{{ product_category.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-8 col-xs-12">
+            <div class="row">
+                <div class="footer-col">
+                    <p class="text_center">
+                        <a href="{{ path('about') }}" class="text text_orange footer-text-caption">О компании</a>
+                    </p>
+                    <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-0">
+                        {% if company.data.working_days is defined and company.data.working_days %}
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="text text_white text-footer">пн-пт</p>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <p class="text text_orange text-footer">{{ company.data.working_days }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if company.data.weekend is defined and company.data.weekend %}
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="text text_white text-footer">{{ company.data.weekend }}</p>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <p class="text text_orange text-footer">выходной</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if company.phone %}
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <p class="text text_white text-footer">телефон</p>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <a href="tel:{{ company.phone }}" class="text text_orange text-footer">{{ company.phone }}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if company.email %}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text text_white text-footer">email</p>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p class="text text_orange text_center text-footer">{{ company.email }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if company.data.payment is defined and company.data.payment %}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ path('about') }}" class="text text_white text_center text-footer"><i class="fa fa-credit-card"></i> Оплата</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if company.data.delivery is defined and company.data.delivery %}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <a href="{{ path('about') }}" class="text text_white text_center text-footer"><i class="fa fa-truck"></i> Доставка</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <a href="#" class="text text_white text_center text-footer"><i class="fa fa-map-marker"></i> на карте</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="footer-col">
+                <form action="#" method="post">
+                    <div class="row">
+                        <input name="" type="text" class="field-text field-bottom-10" placeholder="ФИО">
+                    </div>
+                    <div class="row">
+                        <input name="" type="text" class="field-text field-bottom-10" placeholder="телефон">
+                    </div>
+                    <div class="row">
+                        <textarea name="" class="field-text-area field-bottom-10" placeholder="вопрос, предложение, жалоба..."></textarea>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="button button-footer">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
