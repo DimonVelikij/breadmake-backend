@@ -39,3 +39,7 @@ monolog:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+#assetic
+assetic:
+    use_controller: '%kernel.debug%'

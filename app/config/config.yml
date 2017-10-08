@@ -184,6 +184,11 @@ assetic:
         commonjs:
             inputs:
                 - 'bundles/app/js/jquery/common.js'
-        angular:
+        core_module:
             inputs:
-                - 'bundles/app/js/angular/test.js'
+                - 'bundles/app/js/angular/core/core.module.js'
+                - 'bundles/app/js/angular/core/controllers/*.js'
+        appjs:
+            inputs:
+                - '@core_module'
+                - 'bundles/app/js/angular/app.js'

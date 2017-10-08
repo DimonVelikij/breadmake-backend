@@ -22,13 +22,13 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body ng-app="front" ng-controller="CommonCtrl">
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts
                 '@libsjs'
                 '@commonjs'
-                '@angular'
+                '@appjs'
             %}
                 <script type="text/javascript" src="{{ asset(asset_url, 'js') }}"></script>
             {% endjavascripts %}
