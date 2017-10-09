@@ -1,7 +1,7 @@
 api:
     resource: "@BreadApiBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    type:     rest
+    prefix:   /api
 
 content:
     resource: "@BreadContentBundle/Controller/"

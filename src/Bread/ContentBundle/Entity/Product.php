@@ -5,12 +5,15 @@ namespace Bread\ContentBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Product
  * @package Bread\ContentBundle\Entity
  * @ORM\Table(name="products")
  * @ORM\Entity
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class Product
 {
@@ -20,6 +23,9 @@ class Product
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Id")
      */
     private $id;
 
@@ -27,6 +33,9 @@ class Product
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Title")
      */
     private $title;
 

@@ -33,6 +33,11 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             //assetic
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            //fos rest
+            new FOS\RestBundle\FOSRestBundle(),
+            //jms serializer
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            //my bundles
             new Bread\ContentBundle\BreadContentBundle(),
             new Bread\ApiBundle\BreadApiBundle()
         ];
