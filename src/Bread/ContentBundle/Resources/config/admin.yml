@@ -1,0 +1,68 @@
+services:
+    app.admin.product:
+        class: Bread\ContentBundle\Admin\ProductAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Product, BreadContentBundle:Admin/ImageCrop]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.products, label: Продукция }
+
+    app.admin.category:
+        class: Bread\ContentBundle\Admin\CategoryAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Category, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.products, label: Категории продукции }
+
+    app.admin.flour:
+        class: Bread\ContentBundle\Admin\FlourAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Flour, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.products, label: Сорта муки }
+
+    app.admin.unit:
+        class: Bread\ContentBundle\Admin\UnitAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Unit, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.products, label: Единицы измерения }
+
+    app.admin.client:
+        class: Bread\ContentBundle\Admin\ClientAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Client, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.requests, label: Список клиентов }
+
+    app.admin.order:
+        class: Bread\ContentBundle\Admin\OrderAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Order, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.requests, label: Заявки }
+
+    app.admin.menu:
+        class: Bread\ContentBundle\Admin\MenuAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Menu, 'PixSortableBehaviorBundle:SortableAdmin']
+        calls:
+            - [ setPositionService, ["@pix_sortable_behavior.position.orm"]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.content, label: Меню }
+
+    app.admin.company:
+        class: Bread\ContentBundle\Admin\CompanyAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Company, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.content, label: Компания }
+
+    app.admin.declaration:
+        class: Bread\ContentBundle\Admin\DeclarationAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Declaration, BreadContentBundle:Admin/ImageCrop]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.content, label: Декларации }
+
+    app.admin.slide:
+        class: Bread\ContentBundle\Admin\SlideAdmin
+        arguments: [~, Bread\ContentBundle\Entity\Slide, BreadContentBundle:Admin/ImageCrop]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.content, label: Слайды }
+
+    app.admin.news:
+        class: Bread\ContentBundle\Admin\NewsAdmin
+        arguments: [~, Bread\ContentBundle\Entity\News, BreadContentBundle:Admin/ImageCrop]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: cms.content, label: Новости }

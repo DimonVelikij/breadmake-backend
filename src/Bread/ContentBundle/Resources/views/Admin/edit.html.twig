@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:edit.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/breadcontent/admin/css/jquery.Jcrop.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/breadcontent/admin/js/jquery.Jcrop.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/breadcontent/admin/js/jcrop.js') }}" type="text/javascript"></script>
+{% endblock %}

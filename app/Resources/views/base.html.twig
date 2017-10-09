@@ -13,8 +13,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets
-                'bundles/app/css/libs.min.css'
-                'bundles/app/css/main.css'
+                'bundles/breadcontent/css/libs.min.css'
+                'bundles/breadcontent/css/main.css'
                 filter='cssrewrite'
             %}
                 <link rel="stylesheet" href="{{ asset(asset_url, 'css') }}">

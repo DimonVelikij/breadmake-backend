@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% include 'BreadContentBundle:Admin:order_info_item.html.twig' with {'order': object} %}
+{% endblock %}

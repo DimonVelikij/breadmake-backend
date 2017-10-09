@@ -1,0 +1,36 @@
+services:
+
+    bread_content.image_crop:
+        class: Bread\ContentBundle\ImageCropService\ImageCrop
+        public: true
+        autowire: false
+        arguments:
+            - '%bread_content.save_dir%'
+            - '%bread_content.asset_dir%'
+            - '%bread_content.entities%'
+
+    bread_content.upload_crop_file:
+        class: Bread\ContentBundle\ImageCropService\UploadCropFile
+        public: true
+        autowire: false
+        arguments:
+            - '@bread_content.image_crop'
+            - '@doctrine.orm.entity_manager'
+
+    bread_content.menu_builder:
+        class: Bread\ContentBundle\Menu\Builder
+        public: true
+        autowire: false
+        arguments:
+            - '@knp_menu.factory'
+
+    bread_content.main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@bread_content.menu_builder", makeMenu]
+        public: true
+        autowire: false
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+        tags:
+            - { name: knp_menu.menu, alias: main }

@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {% block header %}
+        {{ render(controller('BreadContentBundle:Layout:header')) }}
+    {% endblock %}
+
+    {% block menu %}
+        <nav>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="menu-adaptive">
+                            <span class="menu-adaptive_bars"><i class="fa fa-bars"></i></span>
+                        </div>
+                        <div class="menu clearfix">
+                            {{ knp_menu_render('main', {
+                                template: '@BreadContent/Menu/menu.html.twig'
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block footer %}
+        {{ render(controller('BreadContentBundle:Layout:footer')) }}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,8 @@
+services:
+
+    bread_content.type.image_crop:
+        class: Bread\ContentBundle\Form\Type\ImageCropType
+        arguments:
+            - '@bread_content.image_crop'
+        tags:
+            - { name: form.type, alias: 'image_crop' }
