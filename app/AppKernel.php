@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             //assetic
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Bread\ContentBundle\BreadContentBundle(),
+            new Bread\ApiBundle\BreadApiBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
