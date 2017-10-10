@@ -26,6 +26,7 @@ class Product
      *
      * @JMS\Expose
      * @JMS\SerializedName("Id")
+     * @JMS\Groups({"api"})
      */
     private $id;
 
@@ -36,6 +37,7 @@ class Product
      *
      * @JMS\Expose
      * @JMS\SerializedName("Title")
+     * @JMS\Groups({"api"})
      */
     private $title;
 

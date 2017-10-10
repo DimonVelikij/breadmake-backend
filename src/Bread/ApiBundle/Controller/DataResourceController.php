@@ -15,6 +15,7 @@ class DataResourceController extends FOSRestController
 {
     /**
      * @Rest\Get("/products")
+     * @Rest\View(serializerGroups={"api"})
      */
     public function productsAction()
     {
