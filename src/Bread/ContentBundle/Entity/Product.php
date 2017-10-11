@@ -25,6 +25,7 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      *
      * @JMS\Expose
+     * @JMS\Type("integer")
      * @JMS\SerializedName("Id")
      * @JMS\Groups({"api"})
      */
@@ -36,6 +37,7 @@ class Product
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      *
      * @JMS\Expose
+     * @JMS\Type("string")
      * @JMS\SerializedName("Title")
      * @JMS\Groups({"api"})
      */
@@ -45,6 +47,11 @@ class Product
      * @var string $description
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * 
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Description")
+     * @JMS\Groups({"api"})
      */
     private $description;
 
@@ -52,6 +59,11 @@ class Product
      * @var float $weight
      *
      * @ORM\Column(name="weigth", type="decimal", precision=5, scale=3, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("float")
+     * @JMS\SerializedName("Weight")
+     * @JMS\Groups({"api"})
      */
     private $weight;
 
@@ -59,6 +71,11 @@ class Product
      * @var float $price
      *
      * @ORM\Column(name="price", type="decimal", precision=5, scale=2, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("float")
+     * @JMS\SerializedName("Price")
+     * @JMS\Groups({"api"})
      */
     private $price;
 
@@ -66,6 +83,11 @@ class Product
      * @var boolean $isNew
      *
      * @ORM\Column(name="is_new", type="boolean", nullable=false, options={"default": false})
+     *
+     * @JMS\Expose
+     * @JMS\Type("boolean")
+     * @JMS\SerializedName("IsNew")
+     * @JMS\Groups({"api"})
      */
     private $isNew;
 
@@ -80,6 +102,11 @@ class Product
      * @var boolean $isPopulation
      *
      * @ORM\Column(name="is_population", type="boolean", nullable=false, options={"default": false})
+     *
+     * @JMS\Expose
+     * @JMS\Type("boolean")
+     * @JMS\SerializedName("IsPopulation")
+     * @JMS\Groups({"api"})
      */
     private $isPopulation;
 
