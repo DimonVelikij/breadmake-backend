@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('front', [
-        'app.core'
+        'content.core'
     ]);
 
 })(angular);
