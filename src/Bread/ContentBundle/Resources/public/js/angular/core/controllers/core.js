@@ -10,7 +10,7 @@
     ];
     
     function CoreController($scope) {
-        
+        console.log('core');
     }
 
 })(angular);
