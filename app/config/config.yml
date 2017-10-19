@@ -190,10 +190,12 @@ assetic:
             inputs:
                 - 'bundles/breadcontent/js/angular/core/core.module.js'
                 - 'bundles/breadcontent/js/angular/core/controllers/*.js'
+                - 'bundles/breadcontent/js/angular/core/services/*.js'
         homepage_module:
             inputs:
                 - 'bundles/breadcontent/js/angular/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/angular/homepage/controllers/*.js'
+                - 'bundles/breadcontent/js/angular/homepage/services/*.js'
         appjs:
             inputs:
                 - '@homepage_module'

@@ -19,6 +19,8 @@
     "font-awesome": "^4.7.0",
     "fancybox": "FancyBox3#^3.1.20",
     "jquery.easing": "jquery-easing-original#^1.4.1",
-    "angular": "1.6.6"
+    "angular": "1.6.6",
+    "angular-resource": "^1.6.6",
+    "lodash": "^4.17.4"
   }
 }

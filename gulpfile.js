@@ -39,6 +39,8 @@ gulp.task('scripts', function () {
             'src/Bread/ContentBundle/Resources/public/vendor/jquery.easing/jquery.easing.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/fancybox/dist/jquery.fancybox.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/angular/angular.min.js',
+            'src/Bread/ContentBundle/Resources/public/vendor/angular-resource/angular-resource.min.js',
+            'src/Bread/ContentBundle/Resources/public/vendor/lodash/dist/lodash.min.js',
             'src/Bread/ContentBundle/Resources/public/custom_vendor/owl-carousel/owl.carousel.min.js'
         ])
         .pipe(concat('libs.min.js'))

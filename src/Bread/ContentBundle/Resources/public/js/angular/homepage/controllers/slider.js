@@ -10,7 +10,7 @@
     ];
 
     function SliderController($scope) {
-        console.log('slider');
+
     }
 
 })(angular);

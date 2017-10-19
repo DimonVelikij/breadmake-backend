@@ -6,11 +6,15 @@
         .controller('PopulationProductsCtrl', PopulationProductsController);
 
     PopulationProductsController.$inject = [
-        '$scope'
+        '$scope',
+        'PopulationProduct'
     ];
 
-    function PopulationProductsController($scope) {
-        console.log('population products');
+    function PopulationProductsController(
+        $scope,
+        PopulationProduct
+    ) {
+
     }
 
 })(angular);

@@ -1,6 +1,8 @@
 (function (angular) {
     "use strict";
 
-    angular.module('content.core', []);
+    angular.module('content.core', [
+        'ngResource'
+    ]);
 
 })(angular);

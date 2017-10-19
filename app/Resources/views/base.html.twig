@@ -33,6 +33,11 @@
                 <script type="text/javascript" src="{{ asset(asset_url, 'js') }}"></script>
             {% endjavascripts %}
         {% endblock %}
+        {% block jsData %}
+            <script type="text/ng-init" name="Routes">{{ {
+                    Products: path('api-products')
+                } | json_encode | raw }}</script>
+        {% endblock %}
         {% block outerJavascript %}
             <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.map,package.controls,package.route,package.geoObjects&lang=ru-RU&ns=breadMap" type="text/javascript"></script>
             <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
