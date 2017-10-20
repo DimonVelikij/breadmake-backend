@@ -7,14 +7,22 @@
 
     PopulationProductsController.$inject = [
         '$scope',
-        'PopulationProduct'
+        'PopulationProductResource',
+        '_'
     ];
 
     function PopulationProductsController(
         $scope,
-        PopulationProduct
+        PopulationProductResource,
+        _
     ) {
-
+        PopulationProductResource.query().then(function (products) {
+            _.forEach(products, function (product) {
+                console.log(product.getUnit().getTitle());
+            });
+        }, function (error) {
+            console.log(error);
+        });
     }
 
 })(angular);

@@ -3,12 +3,15 @@
 namespace Bread\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Category
  * @package Bread\ContentBundle\Entity
  * @ORM\Table(name="categories")
  * @ORM\Entity
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class Category
 {
@@ -18,6 +21,11 @@ class Category
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("Id")
+     * @JMS\Groups({"api"})
      */
     private $id;
 
@@ -25,6 +33,11 @@ class Category
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Title")
+     * @JMS\Groups({"api"})
      */
     private $title;
 

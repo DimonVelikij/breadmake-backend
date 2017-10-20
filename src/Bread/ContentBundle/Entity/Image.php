@@ -4,12 +4,15 @@ namespace Bread\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Photo
  * @package Bread\ContentBundle\Entity
  * @ORM\Table(name="images")
  * @ORM\Entity
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class Image
 {
@@ -40,6 +43,11 @@ class Image
      * @var string $path
      *
      * @ORM\Column(name="path", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Path")
+     * @JMS\Groups({"api"})
      */
     private $path;
 
@@ -47,6 +55,11 @@ class Image
      * @var string $cropPath
      *
      * @ORM\Column(name="crop_path", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("CropPath")
+     * @JMS\Groups({"api"})
      */
     private $cropPath;
 

@@ -7,18 +7,19 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
- * @Rest\Prefix("products")
- * @Rest\NamePrefix("api-")
+ * @Rest\Prefix("population-products")
+ * @Rest\NamePrefix("api-population-products-")
+ *
  * Class DataResourceController
  * @package Bread\ApiBundle\Controller
  */
-class ProductsController extends FOSRestController
+class PopulationProductsController extends FOSRestController
 {
     /**
      * @Rest\Get("")
      * @Rest\View(serializerGroups={"api"})
      */
-    public function productsAction()
+    public function listAction()
     {
         /** @var EntityRepository $productRepo */
         $productRepo = $this->getDoctrine()->getRepository('BreadContentBundle:Product');

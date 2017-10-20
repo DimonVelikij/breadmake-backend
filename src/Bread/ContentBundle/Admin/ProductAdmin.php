@@ -159,11 +159,11 @@ class ProductAdmin extends AbstractAdmin
                 'required'  =>  true
             ])
             ->add('weight', null, [
-                'label'     =>  'Вес',
+                'label'     =>  'Вес, кг',
                 'required'  =>  true
             ])
             ->add('price', null, [
-                'label'     =>  'Цена',
+                'label'     =>  'Цена, руб',
                 'required'  =>  true
             ])
             ->add('category', 'entity', [

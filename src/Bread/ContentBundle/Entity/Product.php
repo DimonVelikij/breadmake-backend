@@ -115,6 +115,10 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Bread\ContentBundle\Entity\Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Category")
+     * @JMS\Groups({"api"})
      */
     private $category;
 
@@ -139,6 +143,10 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Bread\ContentBundle\Entity\Flour")
      * @ORM\JoinColumn(name="flour_id", referencedColumnName="id", nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Flour")
+     * @JMS\Groups({"api"})
      */
     private $flour;
 
@@ -147,6 +155,10 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Bread\ContentBundle\Entity\Unit")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id", nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Unit")
+     * @JMS\Groups({"api"})
      */
     private $unit;
 
@@ -160,6 +172,10 @@ class Product
     /**
      * @ORM\OneToOne(targetEntity="Bread\ContentBundle\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Image")
+     * @JMS\Groups({"api"})
      */
     private $image;
 

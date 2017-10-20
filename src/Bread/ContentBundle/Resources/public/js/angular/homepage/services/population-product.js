@@ -3,21 +3,30 @@
 
     angular
         .module('content.homepage')
-        .service('PopulationProduct', PopulationProductService);
+        .service('PopulationProductResource', PopulationProductResourceService);
 
-    PopulationProductService.$inject = [
-        'EntityResource'
+    PopulationProductResourceService.$inject = [
+        'EntityResource',
+        'Initializer',
+        'Product',
+        '_'
     ];
-    
-    function PopulationProductService(
-        EntityResource
+
+    function PopulationProductResourceService(
+        EntityResource,
+        Initializer,
+        Product,
+        _
     ) {
-        function PopulationProduct() {}
+        function PopulationProductResource() {}
 
         var resource = new EntityResource();
 
         resource
-            .setResourceUrl('test');
+            .setResourceUrl(Initializer.Routes.Products)
+            .setBuilder(function (data) {
+                return _.map(data, Product.build);
+            });
 
         return resource;
     }
