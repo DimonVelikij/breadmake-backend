@@ -193,6 +193,7 @@ assetic:
                 - 'bundles/breadcontent/js/angular/core/controllers/*.js'
                 - 'bundles/breadcontent/js/angular/core/services/*.js'
                 - 'bundles/breadcontent/js/angular/core/models/*.js'
+                - 'bundles/breadcontent/js/angular/core/directives/*.js'
         homepage_module:
             inputs:
                 - 'bundles/breadcontent/js/angular/homepage/homepage.module.js'
