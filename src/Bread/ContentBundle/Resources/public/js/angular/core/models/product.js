@@ -9,14 +9,16 @@
         'Entity',
         'Category',
         'Flour',
-        'Unit'
+        'Unit',
+        'Image'
     ];
 
     function ProductFactory(
         Entity,
         Category,
         Flour,
-        Unit
+        Unit,
+        Image
     ) {
         Entity.extend(Product);
 
@@ -28,15 +30,10 @@
             this.Weight = data.Weight;
             this.IsNew = data.IsNew;
             this.IsPopulation = data.IsPopulation;
-            if (data.Category) {
-                this.Category = Category.build.call(this, data.Category);
-            }
-            if (data.Flour) {
-                this.Flour = Flour.build.call(this, data.Flour);
-            }
-            if (data.Unit) {
-                this.Unit = Unit.build.call(this, data.Unit);
-            }
+            this.Category = data.Category ? Category.build(data.Category) : null;
+            this.Flour = data.Flour ? Flour.build(data.Flour) : null;
+            this.Unit = data.Unit ? Unit.build(data.Unit) : null;
+            this.Image = data.Image ? Image.build(data.Image) : null;
         }
 
         Product.prototype.getId = function () {
@@ -77,6 +74,10 @@
 
         Product.prototype.getUnit = function () {
             return this.Unit;
+        };
+
+        Product.prototype.getImage = function () {
+            return this.Image;
         };
 
         Product.build = function (data) {

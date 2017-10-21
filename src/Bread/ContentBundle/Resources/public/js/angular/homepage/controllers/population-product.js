@@ -18,7 +18,7 @@
     ) {
         PopulationProductResource.query().then(function (products) {
             _.forEach(products, function (product) {
-                console.log(product.getUnit().getTitle());
+                console.log(product.getImage().getPath());
             });
         }, function (error) {
             console.log(error);

@@ -189,6 +189,7 @@ assetic:
         core_module:
             inputs:
                 - 'bundles/breadcontent/js/angular/core/core.module.js'
+                - 'bundles/breadcontent/js/angular/core/core.config.js'
                 - 'bundles/breadcontent/js/angular/core/controllers/*.js'
                 - 'bundles/breadcontent/js/angular/core/services/*.js'
                 - 'bundles/breadcontent/js/angular/core/models/*.js'

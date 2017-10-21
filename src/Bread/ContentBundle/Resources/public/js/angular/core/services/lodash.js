@@ -5,6 +5,6 @@
         .module('content.core')
         .factory('_', ['$window', function ($window) {
             return $window._;
-        }])
+        }]);
 
 })(angular);
