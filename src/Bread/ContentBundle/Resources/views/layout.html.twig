@@ -33,3 +33,15 @@
         {{ render(controller('BreadContentBundle:Layout:footer')) }}
     {% endblock %}
 {% endblock %}
+
+{#общие js данные#}
+{% block jsData %}
+    <script type="text/ng-init" name="Routes">{{ {
+            PopulationProducts: path('api-population-products-list')
+        } | json_encode | raw }}</script>
+{% endblock %}
+
+{#шаблоны для angular#}
+{% block ngTemplates %}
+    {% include '@BreadContent/AngularTemplates/product-directive.html.twig' %}
+{% endblock %}

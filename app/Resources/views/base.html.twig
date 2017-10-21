@@ -24,6 +24,8 @@
     </head>
     <body ng-app="front" ng-controller="CoreCtrl">
         {% block body %}{% endblock %}
+        {% block jsData %}{% endblock %}
+        {% block ngTemplates %}{% endblock %}
         {% block javascripts %}
             {% javascripts
                 '@libsjs'
@@ -32,11 +34,6 @@
             %}
                 <script type="text/javascript" src="{{ asset(asset_url, 'js') }}"></script>
             {% endjavascripts %}
-        {% endblock %}
-        {% block jsData %}
-            <script type="text/ng-init" name="Routes">{{ {
-                    PopulationProducts: path('api-population-products-list')
-                } | json_encode | raw }}</script>
         {% endblock %}
         {% block outerJavascript %}
             <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.map,package.controls,package.route,package.geoObjects&lang=ru-RU&ns=breadMap" type="text/javascript"></script>

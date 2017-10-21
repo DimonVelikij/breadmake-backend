@@ -10,7 +10,7 @@
     function ProductDirective () {
         return {
             restrict: 'E',
-            templateUrl: 'css/product.html'
+            templateUrl: 'product-directive.html'
         };
     }
 
