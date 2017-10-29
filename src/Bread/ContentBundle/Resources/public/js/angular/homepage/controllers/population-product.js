@@ -3,25 +3,21 @@
 
     angular
         .module('content.homepage')
-        .controller('PopulationProductsCtrl', PopulationProductsController);
+        .controller('PopulationProductCtrl', PopulationProductController);
 
-    PopulationProductsController.$inject = [
+    PopulationProductController.$inject = [
         '$scope',
-        'PopulationProductResource',
-        '_'
+        'PopulationProductResource'
     ];
 
-    function PopulationProductsController(
+    function PopulationProductController(
         $scope,
-        PopulationProductResource,
-        _
+        PopulationProductResource
     ) {
         PopulationProductResource.query().then(function (products) {
-            _.forEach(products, function (product) {
-                console.log(product.getImage().getPath());
-            });
-        }, function (error) {
-            console.log(error);
+            $scope.products = products;
+        }, function () {
+            $scope.populationProductsLoadError = true;
         });
     }
 

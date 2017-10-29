@@ -22,6 +22,11 @@ class Image
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("Id")
+     * @JMS\Groups({"api"})s
      */
     private $id;
 
@@ -43,11 +48,6 @@ class Image
      * @var string $path
      *
      * @ORM\Column(name="path", type="string", length=255, nullable=false)
-     *
-     * @JMS\Expose
-     * @JMS\Type("string")
-     * @JMS\SerializedName("Path")
-     * @JMS\Groups({"api"})
      */
     private $path;
 
@@ -55,11 +55,6 @@ class Image
      * @var string $cropPath
      *
      * @ORM\Column(name="crop_path", type="string", length=255, nullable=false)
-     *
-     * @JMS\Expose
-     * @JMS\Type("string")
-     * @JMS\SerializedName("CropPath")
-     * @JMS\Groups({"api"})
      */
     private $cropPath;
 
@@ -67,6 +62,12 @@ class Image
      * @var string $assetPath
      *
      * @ORM\Column(name="asset_path", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Path")
+     * @JMS\Groups({"api"})
+     * @JMS\Accessor(getter="getApiImagePath")
      */
     private $assetPath;
 
@@ -74,6 +75,12 @@ class Image
      * @var string $assetCropPath
      *
      * @ORM\Column(name="asset_crop_path", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("CropPath")
+     * @JMS\Groups({"api"})
+     * @JMS\Accessor(getter="getApiImageCropPath")
      */
     private $assetCropPath;
 
@@ -292,5 +299,21 @@ class Image
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiImagePath()
+    {
+        return '/' . $this->assetPath;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiImageCropPath()
+    {
+        return '/' . $this->assetCropPath;
     }
 }

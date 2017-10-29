@@ -2,7 +2,8 @@
     "use strict";
 
     angular.module('content.core', [
-        'ngResource'
+        'ngResource',
+        'ngSanitize'
     ]);
 
 })(angular);

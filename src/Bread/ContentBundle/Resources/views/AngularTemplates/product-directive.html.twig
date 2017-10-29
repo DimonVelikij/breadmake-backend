@@ -2,4 +2,79 @@
 
 {% block templateId %}product-directive.html{% endblock %}
 
-{% block templateContent %}product directive{% endblock %}
+{% block templateContent %}
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="product">
+            <a ng-href="[[ product.getImage().getPath() ]]" data-fancybox data-caption="[[ product.getTitle() ]]">
+                <img class="product__img" ng-src="[[ product.getImage().getCropPath() ]]" alt="[[ product.getTitle() ]]">
+            </a>
+            <p class="product__title">[[ product.getTitle() ]]</p>
+            <div class="product__info">
+                <div class="product__info_row">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <span class="product__label">категория</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 product__text_right">
+                            <span class="product__text">[[ product.getCategory().getTitle() ]]</span><!--проверяем, если длина строки больше 10, ставим col-md-12, иначе col-md-6-->
+                        </div>
+                    </div>
+                </div>
+                <div class="product__info_row">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="product__label">сорт муки</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 product__text_right">
+                            <span class="product__text">[[ product.getFlour().getTitle() ]]</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__info_row">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <span class="product__label">вес</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 product__text_right">
+                            <span class="product__text">[[ product.getWeight() | weight ]] кг</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__info_row" ng-if="product.getDescription()">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <span class="product__description">описание
+                                <i class="fa fa-tag product__description-icon"></i>
+                                <div class="hint hint-description">
+                                    <p class="hint-description__text"ng-bind-html="product.getDescription()"></p>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__price">
+                    <span class="product__text">цена за [[ product.getUnit().getTitle() ]] </span><br>
+                    <span class="product__label product__label_large">[[ product.getPrice() | price ]]<i class="fa fa-rouble brown-dark"></i></span>
+                </div>
+                <div class="product-cart-button">
+                    <i class="fa fa-shopping-cart product-cart-button-label"></i>
+                    <div class="hint hint-cart">
+                        <div class="col-md-12">
+                            <div class="hint-cart__change-count">
+                                <p class="text hint-cart__caption">Количество, [[ product.getUnit().getTitle() ]]</p>
+                                <button class="button hint-cart__button">+</button>
+                                <input type="text" class="field-text hint-cart__text">
+                                <button class="button hint-cart__button">-</button>
+                            </div>
+                            <button class="button">Добавить</button>
+                            <!--<button disabled class="button button-cart-hint">Обновить</button>--><!--при добавлении товара показывать 2 кнопки ч-з ng-if, если не изменено количество дизеблить кнопку обновить-->
+                            <!--<button class="button button-cart-hint">Убрать</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img ng-if="product.getIsNew()" class="product__new-label" src="{{ asset('bundles/breadcontent/images/new_label.png') }}" alt="">
+            <img ng-if="!product.getIsNew() && product.getIsPopulation()" class="product__population-label" src="{{ asset('bundles/breadcontent/images/population_label.png') }}" alt="">
+        </div>
+    </div>
+{% endblock %}

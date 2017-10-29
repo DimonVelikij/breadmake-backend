@@ -7,13 +7,13 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
- * @Rest\Prefix("population-products")
- * @Rest\NamePrefix("api-population-products-")
+ * @Rest\Prefix("population-product")
+ * @Rest\NamePrefix("api-population-product-")
  *
- * Class DataResourceController
+ * Class PopulationProductController
  * @package Bread\ApiBundle\Controller
  */
-class PopulationProductsController extends FOSRestController
+class PopulationProductController extends FOSRestController
 {
     /**
      * @Rest\Get("")

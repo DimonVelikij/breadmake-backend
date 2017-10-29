@@ -3,29 +3,29 @@
 
     angular
         .module('content.homepage')
-        .service('PopulationProductResource', PopulationProductResourceService);
+        .service('SlideResource', SlideResourceService);
 
-    PopulationProductResourceService.$inject = [
+    SlideResourceService.$inject = [
         'EntityResource',
         'Initializer',
-        'Product',
+        'Slide',
         '_'
     ];
 
-    function PopulationProductResourceService(
+    function SlideResourceService(
         EntityResource,
         Initializer,
-        Product,
+        Slide,
         _
     ) {
-        function PopulationProductResource() {}
+        function SlideResource() {}
 
         var resource = new EntityResource();
 
         resource
-            .setResourceUrl(Initializer.Routes.PopulationProducts)
+            .setResourceUrl(Initializer.Routes.Slide)
             .setBuilder(function (data) {
-                return _.map(data, Product.build);
+                return _.map(data, Slide.build);
             });
 
         return resource;

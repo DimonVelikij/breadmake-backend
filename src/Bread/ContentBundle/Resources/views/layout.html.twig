@@ -37,7 +37,8 @@
 {#общие js данные#}
 {% block jsData %}
     <script type="text/ng-init" name="Routes">{{ {
-            PopulationProducts: path('api-population-products-list')
+            PopulationProduct: path('api-population-product-list'),
+            Slide: path('api-slide-list')
         } | json_encode | raw }}</script>
 {% endblock %}
 

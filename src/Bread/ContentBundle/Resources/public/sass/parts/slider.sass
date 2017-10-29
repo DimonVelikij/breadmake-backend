@@ -1,26 +1,13 @@
 @import "../base-variables"
 
-.next_button,
-.prev_button
-  color: $orange
-  font-size: 46px
-  position: absolute
-  top: 40%
-  z-index: 10
-  cursor: pointer
-  background-color: rgba(29, 14, 17, .5)
-  padding: 0 25px
-  border-radius: 50%
-
-.next_button
-  right: 20px
-
-.prev_button
-  left: 20px
-
 .slide-item
-  position: relative
+  &_grab
+    cursor: grab
+  &_grabbing
+    cursor: grabbing
+  &__img
+    max-width: 100%
 
-.slide-container
+.owl-carousel
   margin-top: 15px
   border-top-left-radius: 10px

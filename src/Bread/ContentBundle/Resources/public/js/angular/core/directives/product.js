@@ -10,7 +10,10 @@
     function ProductDirective () {
         return {
             restrict: 'E',
-            templateUrl: 'product-directive.html'
+            templateUrl: 'product-directive.html',
+            scope: {
+                product: '=source'
+            }
         };
     }
 

@@ -40,8 +40,9 @@ gulp.task('scripts', function () {
             'src/Bread/ContentBundle/Resources/public/vendor/fancybox/dist/jquery.fancybox.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/angular/angular.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/angular-resource/angular-resource.min.js',
+            'src/Bread/ContentBundle/Resources/public/vendor/angular-sanitize/angular-sanitize.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/lodash/dist/lodash.min.js',
-            'src/Bread/ContentBundle/Resources/public/custom_vendor/owl-carousel/owl.carousel.min.js'
+            'src/Bread/ContentBundle/Resources/public/vendor/owl.carousel/dist/owl.carousel.min.js'
         ])
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
@@ -89,6 +90,7 @@ gulp.task('build', ['css-libs', 'img', 'scripts'], function () {
         'src/Bread/ContentBundle/Resources/public/css/parts',
         'src/Bread/ContentBundle/Resources/public/css/**/*.css',
         '!src/Bread/ContentBundle/Resources/public/css/main.css',
-        '!src/Bread/ContentBundle/Resources/public/css/libs.min.css'
+        '!src/Bread/ContentBundle/Resources/public/css/libs.min.css',
+        '!src/Bread/ContentBundle/Resources/public/css/bootstrap-grid-3.3.1.min.css'
     ]);
 });

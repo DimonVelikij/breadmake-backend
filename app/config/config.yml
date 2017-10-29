@@ -96,13 +96,13 @@ bread_content:
     asset_dir: "media/images"
     entities:
         product:
-            min_width: 1500
-            min_height: 1000
+            min_width: 500
+            min_height: 600
             max_width: 5000
             max_height: 4000
             crop_size:
-                width: 1000
-                height: 1000
+                width: 250
+                height: 250
             mime_types: ['jpeg', 'png']
         declaration:
             min_width: 1500
@@ -114,12 +114,12 @@ bread_content:
                 height: 600
             mime_types: ['jpeg', 'png']
         slide:
-            min_width: 1500
-            min_height: 1000
+            min_width: 1200
+            min_height: 400
             max_width: 5000
             max_height: 4000
             crop_size:
-                width: 1000
+                width: 1200
                 height: 400
             mime_types: ['jpeg', 'png']
         news:
@@ -194,6 +194,7 @@ assetic:
                 - 'bundles/breadcontent/js/angular/core/services/*.js'
                 - 'bundles/breadcontent/js/angular/core/models/*.js'
                 - 'bundles/breadcontent/js/angular/core/directives/*.js'
+                - 'bundles/breadcontent/js/angular/core/filters/*.js'
         homepage_module:
             inputs:
                 - 'bundles/breadcontent/js/angular/homepage/homepage.module.js'
