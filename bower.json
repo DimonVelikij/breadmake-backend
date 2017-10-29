@@ -22,8 +22,6 @@
     "angular": "1.6.6",
     "angular-resource": "^1.6.6",
     "lodash": "^4.17.4",
-    "bower": "*",
-    "install": "^1.0.4",
     "angular-sanitize": "^1.6.6",
     "owl.carousel": "^2.2.1"
   }
