@@ -14,11 +14,18 @@
         $scope,
         PopulationProductResource
     ) {
-        PopulationProductResource.query().then(function (products) {
-            $scope.products = products;
-        }, function () {
-            $scope.populationProductsLoadError = true;
-        });
+        $scope.productLoad = true;
+        
+        PopulationProductResource.query()
+            .then(function (products) {
+                $scope.products = products;
+            }, function () {
+                $scope.populationProductsLoadError = true;
+            })
+            .finally(function () {
+                $scope.productLoad = false;
+            })
+        ;
     }
 
 })(angular);

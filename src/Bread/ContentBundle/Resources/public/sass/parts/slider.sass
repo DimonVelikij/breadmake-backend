@@ -11,3 +11,26 @@
 .owl-carousel
   margin-top: 15px
   border-top-left-radius: 10px
+
+.owl-item
+  &:hover
+    cursor: grab
+
+.owl-item-caption
+  position: absolute
+  top: 10px
+  left: 10px
+  font: 24px "RobotoSlabBold", sans-serif
+  color: $white
+  @media only screen and (max-width: $extra-small)
+    font-size: 16px
+
+.owl-item-description
+  position: absolute
+  top: 40px
+  left: 10px
+  font: 20px "RobotoSlabBold", sans-serif
+  color: $brown-dark
+  @media only screen and (max-width: $extra-small)
+    top: 30px
+    font-size: 12px

@@ -16,12 +16,17 @@
         SlideResource,
         Carousel
     ) {
-        SlideResource.query().then(function (slides) {
-            $scope.slides = slides;
-            Carousel.init();
-        }, function () {
+        $scope.slideLoad = true;
 
-        });
+        SlideResource.query()
+            .then(function (slides) {
+                $scope.slides = slides;
+                Carousel.init();
+            })
+            .finally(function () {
+                $scope.slideLoad = false;
+            })
+        ;
     }
 
 })(angular);

@@ -1,0 +1,11 @@
+{% extends '@BreadContent/AngularTemplates/base.html.twig' %}
+
+{% block templateId %}slide-directive.html{% endblock %}
+
+{% block templateContent %}
+    <div class="owl-item">
+        <p class="owl-item-caption">[[ slide.getTitle() ]]</p>
+        <p class="owl-item-description" ng-if="slide.getDescription()" ng-bind-html="slide.getDescription()"></p>
+        <img ng-src="[[ slide.getImage().getCropPath() ]]" alt="[[ slide.getTitle() ]]">
+    </div>
+{% endblock %}

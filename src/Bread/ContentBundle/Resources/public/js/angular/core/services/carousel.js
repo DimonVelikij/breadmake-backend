@@ -7,13 +7,11 @@
 
     CarouselFactory.$inject = [
         '$timeout',
-        '$interval',
         '_'
     ];
 
     function CarouselFactory(
         $timeout,
-        $interval,
         _
     ) {
         function Carousel() {}
@@ -22,18 +20,27 @@
             loop:true,
             margin:10,
             pagination: true,
-            autoplay:true,
-            autoplayTimeout:3000,
-            autoplayHoverPause:true,
-            responsive:{
-                0:{
-                    items:1
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1
                 },
-                480:{
-                    items:1
+                320: {
+                    items: 1
                 },
-                760:{
-                    items:1
+                480: {
+                    items: 1
+                },
+                768: {
+                    items: 1
+                },
+                992: {
+                    items: 1
+                },
+                1200: {
+                    items: 1
                 }
             }
         };
