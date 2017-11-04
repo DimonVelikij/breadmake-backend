@@ -16,8 +16,14 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 class PopulationProductController extends FOSRestController
 {
     /**
-     * @Rest\Get("")
-     * @Rest\View(serializerGroups={"api"})
+     * @Rest\Route(path="", methods={"GET"})
+     *
+     * @Rest\View(
+     *     serializerGroups={"api"},
+     *     statusCode=200
+     * )
+     *
+     * @return array
      */
     public function listAction()
     {
