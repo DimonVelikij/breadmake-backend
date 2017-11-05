@@ -30,6 +30,7 @@
             this.Weight = data.Weight;
             this.IsNew = data.IsNew;
             this.IsPopulation = data.IsPopulation;
+            this.IsInCart = data.IsInCart;
             this.Category = data.Category ? Category.build(data.Category) : null;
             this.Flour = data.Flour ? Flour.build(data.Flour) : null;
             this.Unit = data.Unit ? Unit.build(data.Unit) : null;
@@ -62,6 +63,10 @@
 
         Product.prototype.getIsPopulation = function () {
             return this.IsPopulation;
+        };
+
+        Product.prototype.isInCart = function () {
+            return this.IsInCart;
         };
 
         Product.prototype.getCategory = function () {

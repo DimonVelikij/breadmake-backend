@@ -1,5 +1,5 @@
 <header>
-    <div class="header-top">
+    <div class="header-top" ng-cloak>
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
@@ -7,8 +7,8 @@
                             <i class="fa fa-user"></i>
                         </span>
                         <span class="cart-button">
-                            <a href="#"><i class="fa fa-shopping-cart"> (10)</i></a>
-                            <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> (10)</i></a>-->
+                            <a href="#"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>
+                            <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>-->
                         </span>
                     <div class="user-links">
                         <ul>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="header-bottom">
+    <div class="header-bottom" ng-cloak>
         <div class="container">
             <div class="col-md-5 col-sm-12">
                 <div class="row">
@@ -45,28 +45,29 @@
             </div>
             <div class="col-md-2 col-sm-3">
                 <div class="row">
-                    <div id="header-cart" class="header-cart">
+                    <div class="loader loader_cart" ng-show="cartLoad"></div>
+                    <div id="header-cart" class="header-cart" ng-show="!cartLoad">
                         <div id="header-cart-insert" class="header-cart__insert">
                             <i class="fa fa-shopping-cart"></i>
                         </div>
                         <div class="cart-caption">
                             <p class="text_center">
                                 <a class="text text-cart" href="#"><i class="fa fa-shopping-cart"></i> Корзина</a>
-                                <span class="text text_orange header-cart__count-product"> (10)</span>
+                                <span class="text text_orange header-cart__count-product"> ([[ cart.length ]])</span>
                             </p>
                         </div>
                         <div class="header-cart__info">
-                            <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div class="col-md-6 col-sm-7 col-xs-7">
                                 <div class="row"><p class="text">Товаров</p></div>
                             </div>
-                            <div class="col-md-5 col-sm-5 col-xs-5">
-                                <div class="row"><p class="text text_orange">(10)</p></div>
+                            <div class="col-md-6 col-sm-5 col-xs-5">
+                                <div class="row"><p class="text text_orange">([[ cart.length ]])</p></div>
                             </div>
-                            <div class="col-md-7 col-sm-7 col-xs-7">
-                                <div class="row"><p class="text">На сумму</p></div>
+                            <div class="col-md-6 col-sm-7 col-xs-7">
+                                <div class="row"><p class="text text_narrow">На сумму</p></div>
                             </div>
-                            <div class="col-md-5 col-sm-5 col-xs-5">
-                                <div class="row"><p class="text text_orange">10000 <i class="fa fa-rouble"></i></p></div>
+                            <div class="col-md-6 col-sm-5 col-xs-5">
+                                <div class="row"><p class="text text_orange">[[ cartSum ]] <i class="fa fa-rouble"></i></p></div>
                             </div>
                         </div>
                     </div>

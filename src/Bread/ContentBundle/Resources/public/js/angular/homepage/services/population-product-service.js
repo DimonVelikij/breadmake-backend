@@ -23,7 +23,7 @@
         var resource = new EntityResource();
 
         resource
-            .setResourceUrl(Initializer.Routes.PopulationProduct)
+            .setResourceUrl(Initializer.Path.PopulationProductResource)
             .setBuilder(function (data) {
                 return _.map(data, Product.build);
             });

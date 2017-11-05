@@ -23,7 +23,7 @@ class SlideController extends FOSRestController
      *     statusCode=200
      * )
      */
-    public function listAction()
+    public function resourceAction()
     {
         /** @var EntityRepository $sliderRepo */
         $sliderRepo = $this->getDoctrine()->getRepository('BreadContentBundle:Slide');

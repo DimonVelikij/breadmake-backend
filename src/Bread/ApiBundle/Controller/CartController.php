@@ -17,7 +17,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 class CartController extends FOSRestController
 {
     /**
-     * @Rest\Route(path="/content", methods={"GET"})
+     * @Rest\Route(path="", methods={"GET"})
      *
      * @Rest\View(
      *     serializerGroups={"api"},
@@ -26,10 +26,31 @@ class CartController extends FOSRestController
      *
      * @return array|null
      */
-    public function contentAction()
+    public function resourceAction()
     {
         try {
             return $this->getCartService()->getCart();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
+     * @Rest\Route(path="/{id}", methods={"GET"}, requirements={"id": "\d+"})
+     *
+     * @Rest\View(
+     *     serializerGroups={"api"},
+     *     statusCode=200
+     * )
+     *
+     * @param int $id
+     *
+     * @return array|string
+     */
+    public function resourceItemAction(int $id)
+    {
+        try {
+            return $this->getCartService()->getCartItem($id);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -89,7 +110,7 @@ class CartController extends FOSRestController
      *
      * @return array|null
      */
-    public function removeAction(int $id)
+    public function removeItemAction(int $id)
     {
         try {
             return $this->getCartService()->removeItemCart($id);
@@ -99,7 +120,7 @@ class CartController extends FOSRestController
     }
 
     /**
-     * @Rest\Route(path="/clear", methods={"GET"})
+     * @Rest\Route(path="/remove", methods={"GET"})
      *
      * @Rest\View(
      *     serializerGroups={"api"},
@@ -108,7 +129,7 @@ class CartController extends FOSRestController
      *
      * @return array|string
      */
-    public function clearAction()
+    public function removeAction()
     {
         try {
             return $this->getCartService()->clearCart();

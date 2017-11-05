@@ -187,6 +187,15 @@ class Product
     private $imageCrop;
 
     /**
+     * @var bool
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("IsInCart")
+     * @JMS\Groups({"api"})
+     */
+    private $isInCart = false;
+
+    /**
      * @var UploadedFile
      */
     private $uploadedFile;
@@ -454,6 +463,30 @@ class Product
     public function getImageCrop()
     {
         return $this->imageCrop;
+    }
+
+    /**
+     * Set isInCart
+     *
+     * @param $isInCart
+     *
+     * @return Product
+     */
+    public function setIsInCart($isInCart)
+    {
+        $this->isInCart = $isInCart;
+
+        return $this;
+    }
+
+    /**
+     * Get isInCart
+     *
+     * @return bool
+     */
+    public function getIsInCart()
+    {
+        return $this->isInCart;
     }
 
     /**

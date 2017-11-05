@@ -3,7 +3,8 @@
 
     angular.module('content.core', [
         'ngResource',
-        'ngSanitize'
+        'ngSanitize',
+        'ui.mask'
     ]);
 
 })(angular);

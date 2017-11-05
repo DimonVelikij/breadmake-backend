@@ -82,6 +82,25 @@
   &:hover>.hint
     display: block
 
+.product-in-cart
+  position: absolute
+  bottom: 10px
+  right: 15px
+  &__label
+    color: green
+    font-size: 16px
+    font-weight: bold
+  &:hover
+    cursor: pointer
+    & .product-remove-in-cart
+      display: block
+
+.product-remove-in-cart
+  display: none
+  color: blue
+  font-size: 16px
+  font-weight: bold
+
 .hint-description
   bottom: 35px
   width: 250px
@@ -112,7 +131,3 @@
   &__caption
     font-size: 20px
     margin-bottom: 10px
-
-.button-cart-hint
-  width: 90px
-  font-size: 16px

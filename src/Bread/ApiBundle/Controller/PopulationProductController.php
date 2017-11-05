@@ -2,9 +2,12 @@
 
 namespace Bread\ApiBundle\Controller;
 
+use Bread\ContentBundle\Entity\Product;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Rest\Prefix("population-product")
@@ -25,14 +28,43 @@ class PopulationProductController extends FOSRestController
      *
      * @return array
      */
-    public function listAction()
+    public function resourceAction()
     {
+        $cart = $this->getSession()->get('cart');
+
         /** @var EntityRepository $productRepo */
         $productRepo = $this->getDoctrine()->getRepository('BreadContentBundle:Product');
-        return $productRepo->createQueryBuilder('p')
+
+        /** @var QueryBuilder $qb */
+        $qb = $productRepo->createQueryBuilder('p')
             ->where('p.public = :public')
-            ->setParameters(['public' => true])
-            ->getQuery()
-            ->getResult();
+            ->setParameters(['public' => true]);
+
+        if ($cart) {
+            $populationProducts = $qb->getQuery()->getResult();
+
+            if (!count($populationProducts)) {
+                return [];
+            }
+
+            /** @var Product $populationProduct */
+            foreach ($populationProducts as $populationProduct) {
+                if (isset($cart[$populationProduct->getId()])) {
+                    $populationProduct->setIsInCart(true);
+                }
+            }
+
+            return $populationProducts;
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return Session
+     */
+    private function getSession()
+    {
+        return $this->get('session');
     }
 }

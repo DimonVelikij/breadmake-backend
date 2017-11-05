@@ -3,29 +3,29 @@
 
     angular
         .module('content.homepage')
-        .service('SlideResource', SlideResourceService);
+        .service('CartResource', CartResourceService);
 
-    SlideResourceService.$inject = [
+    CartResourceService.$inject = [
         'EntityResource',
         'Initializer',
-        'Slide',
+        'Cart',
         '_'
     ];
 
-    function SlideResourceService(
+    function CartResourceService(
         EntityResource,
         Initializer,
-        Slide,
+        Cart,
         _
     ) {
-        function SlideResource() {}
+        function CartResource() {}
 
         var resource = new EntityResource();
 
         resource
-            .setResourceUrl(Initializer.Path.SlideResource)
+            .setResourceUrl(Initializer.Path.CartResource)
             .setBuilder(function (data) {
-                return _.map(data, Slide.build);
+                return _.map(data, Cart.build);
             });
 
         return resource;

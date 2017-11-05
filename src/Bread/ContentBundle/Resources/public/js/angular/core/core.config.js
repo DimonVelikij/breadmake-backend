@@ -6,15 +6,19 @@
         .config(config);
 
     config.$inject = [
-        '$interpolateProvider'
+        '$interpolateProvider',
+        '$resourceProvider'
     ];
 
     function config(
-        $interpolateProvider
+        $interpolateProvider,
+        $resourceProvider
     ) {
         $interpolateProvider
             .startSymbol('[[')
             .endSymbol(']]');
+
+        $resourceProvider.defaults.stripTrailingSlashes = false;
     }
 
 })(angular);
