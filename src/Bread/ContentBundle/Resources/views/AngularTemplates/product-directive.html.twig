@@ -72,7 +72,7 @@
                 </div>
                 <div class="product-in-cart" ng-show="product.isInCart()">
                     <p class="product-in-cart__label">В корзине <i class="fa fa-check-circle"></i></p>
-                    <p class="product-remove-in-cart">Убрать <i class="fa fa-minus-circle"></i></p>
+                    <p class="product-remove-in-cart" ng-click="removeItemCart()">Убрать <i class="fa fa-minus-circle"></i></p>
                 </div>
             </div>
             <img ng-if="product.getIsNew()" class="product__new-label" src="{{ asset('bundles/breadcontent/images/new_label.png') }}" alt="">

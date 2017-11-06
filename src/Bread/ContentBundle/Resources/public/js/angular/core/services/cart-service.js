@@ -9,26 +9,57 @@
         'EntityResource',
         'Initializer',
         'Cart',
-        '_'
+        '_',
+        '$http'
     ];
 
     function CartResourceService(
         EntityResource,
         Initializer,
         Cart,
-        _
+        _,
+        $http
     ) {
-        function CartResource() {}
+        function CartResource() {
+            this.resource = new EntityResource();
+        }
 
-        var resource = new EntityResource();
+        CartResource.prototype.query = function () {
+            return this.resource
+                .setResourceUrl(Initializer.Path.CartResource)
+                .setBuilder(function (data) {
+                    return _.map(data, Cart.build);
+                })
+                .query()
+            ;
 
-        resource
-            .setResourceUrl(Initializer.Path.CartResource)
-            .setBuilder(function (data) {
-                return _.map(data, Cart.build);
+        };
+
+        CartResource.prototype.update = function (args) {
+            return $http({
+                url: Initializer.Path.CartResource + '/update/' + args.Product.getId(),
+                method: 'GET',
+                params: {
+                    price: args.Product.getPrice(),
+                    count: args.Count
+                },
+                transformResponse: function (response) {
+                    return _.map(JSON.parse(response), Cart.build);
+                }
             });
+        };
 
-        return resource;
+        CartResource.prototype.delete = function (args) {
+            return $http({
+                url: Initializer.Path.CartResource + '/remove/' + args.Product.getId(),
+                method: 'GET',
+                transformResponse: function (response) {
+                    return _.map(JSON.parse(response), Cart.build);
+                }
+            });
+        };
+
+        return new CartResource();
     }
 
 })(angular);

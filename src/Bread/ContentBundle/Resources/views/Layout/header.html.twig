@@ -56,7 +56,7 @@
                                 <span class="text text_orange header-cart__count-product"> ([[ cart.length ]])</span>
                             </p>
                         </div>
-                        <div class="header-cart__info">
+                        <div class="header-cart__info" ng-show="!cartError">
                             <div class="col-md-6 col-sm-7 col-xs-7">
                                 <div class="row"><p class="text">Товаров</p></div>
                             </div>
@@ -69,6 +69,9 @@
                             <div class="col-md-6 col-sm-5 col-xs-5">
                                 <div class="row"><p class="text text_orange">[[ cartSum ]] <i class="fa fa-rouble"></i></p></div>
                             </div>
+                        </div>
+                        <div class="header-cart__info" ng-show="cartError">
+                            <p class="load-error load-error_14px">[[ cartError ]]</p>
                         </div>
                     </div>
                 </div>

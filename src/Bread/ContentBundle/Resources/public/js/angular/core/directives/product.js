@@ -52,10 +52,19 @@
                 };
 
                 scope.updateCart = function () {
-                    $rootScope.$broadcast("updateCart", {
+                    $rootScope.$broadcast("$updateCart", {
                         Product: scope.product,
                         Count: scope.cartCount
                     });
+                    scope.product.setIsInCart(true);
+                };
+
+                scope.removeItemCart = function () {
+                    $rootScope.$broadcast("$removeItemCart", {
+                        Product: scope.product
+                    });
+                    scope.product.setIsInCart(false);
+                    scope.cartCount = undefined;
                 };
             }
         };

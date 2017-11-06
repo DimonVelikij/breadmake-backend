@@ -69,6 +69,12 @@
             return this.IsInCart;
         };
 
+        Product.prototype.setIsInCart = function (value) {
+            this.IsInCart = value;
+
+            return this;
+        };
+
         Product.prototype.getCategory = function () {
             return this.Category;
         };

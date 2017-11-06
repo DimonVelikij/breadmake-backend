@@ -48,9 +48,11 @@ class CartService
             return [];
         }
 
-        return $this->prepareCartData([
-            $id => $cart[$id]
-        ]);
+        return [
+            'ProductId' =>  $id,
+            'Price'     =>  $cart[$id]['price'],
+            'Count'     =>  $cart[$id]['count']
+        ];
     }
 
     /**
@@ -73,9 +75,7 @@ class CartService
 
         $this->session->set('cart', $cart);
 
-        return $this->prepareCartData([
-            $id => $cart[$id]
-        ]);
+        return $this->prepareCartData($cart);
     }
 
     /**
