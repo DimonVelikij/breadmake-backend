@@ -5,8 +5,10 @@ namespace Bread\ApiBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
+ * удалить этот класс
  * @Rest\Prefix("standart")
  * @Rest\NamePrefix("api-standart-")
  *
@@ -41,7 +43,7 @@ class StandartController extends FOSRestController
     public function resourceAction()
     {
         //получение всех данных сущности
-        return self::$data;
+        return [self::$data];
     }
 
     /**
@@ -58,12 +60,11 @@ class StandartController extends FOSRestController
      */
     public function resourceItemAction(int $id)
     {
-        //получение сущности по id
-        if (isset(self::$data[$id])) {
-            return self::$data;
+        if (!isset(self::$data[$id])) {
+            throw new NotFoundHttpException('Undefined object with id ' . $id);
         }
 
-        return null;
+        return self::$data[$id];
     }
 
     /**
@@ -94,7 +95,7 @@ class StandartController extends FOSRestController
             'title' => $title
         ];
 
-        return self::$data[3];
+        return [3 => self::$data[3]];
     }
 
     /**
@@ -121,14 +122,14 @@ class StandartController extends FOSRestController
     {
         //обновление сущности
         if (!isset(self::$data[$id])) {
-            return null;
+            throw new NotFoundHttpException('Undefined object with id ' . $id);
         }
 
         $item = self::$data[$id];
 
         $item['title'] = $paramFetcher->get('title');
 
-        return self::$data[$id];
+        return [$id => self::$data[$id]];
     }
 
     /**
@@ -140,33 +141,16 @@ class StandartController extends FOSRestController
      * )
      *
      * @param int $id
-     * @return array|null
+     * @return true|null
      */
-    public function deleteItemAction(int $id)
+    public function deleteAction(int $id)
     {
         if (!isset(self::$data[$id])) {
-            return null;
+            throw new NotFoundHttpException('Undefined object with id ' . $id);
         }
 
         unset(self::$data[$id]);
 
-        return self::$data;
-    }
-
-    /**
-     * @Rest\Route(path="", methods={"DELETE"})
-     *
-     * @Rest\View(
-     *     serializerGroups={"api"},
-     *     statusCode=200
-     * )
-     *
-     * @return array
-     */
-    public function deleteAction()
-    {
-        self::$data = [];
-
-        return self::$data;
+        return true;
     }
 }
