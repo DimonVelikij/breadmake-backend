@@ -4,6 +4,7 @@
     angular.module('content.core', [
         'ngResource',
         'ngSanitize',
+        'ngMessages',
         'ui.mask'
     ]);
 
