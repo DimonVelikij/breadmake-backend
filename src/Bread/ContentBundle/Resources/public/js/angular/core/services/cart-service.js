@@ -50,6 +50,9 @@
         };
 
         CartResource.prototype.delete = function (args) {
+            //при удалении объекта нужно его удалить из пула объектов в js
+            delete Cart.objectPool[args.Product.getId()];
+
             return $http({
                 url: Initializer.Path.CartResource + '/remove/' + args.Product.getId(),
                 method: 'GET',

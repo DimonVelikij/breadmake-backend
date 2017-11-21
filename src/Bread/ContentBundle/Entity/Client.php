@@ -89,6 +89,13 @@ class Client
     private $orders;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Bread\ContentBundle\Entity\Request", mappedBy="client")
+     */
+    private $requests;
+
+    /**
      * @var int
      */
     private $countOrders;
@@ -271,6 +278,40 @@ class Client
     public function removeOrder(\Bread\ContentBundle\Entity\Order $order)
     {
         $this->orders->removeElement($order);
+    }
+
+    /**
+     * Add request
+     *
+     * @param \Bread\ContentBundle\Entity\Request $request
+     *
+     * @return Client
+     */
+    public function addRequest(\Bread\ContentBundle\Entity\Request $request)
+    {
+        $this->requests[] = $request;
+
+        return $this;
+    }
+
+    /**
+     * Remove request
+     *
+     * @param \Bread\ContentBundle\Entity\Request $request
+     */
+    public function removeRequest(\Bread\ContentBundle\Entity\Request $request)
+    {
+        $this->requests->removeElement($request);
+    }
+
+    /**
+     * Get requests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRequests()
+    {
+        return $this->requests;
     }
 
     /**

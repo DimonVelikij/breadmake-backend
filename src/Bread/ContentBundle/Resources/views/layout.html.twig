@@ -36,13 +36,7 @@
 
 {#общие js данные#}
 {% block jsData %}
-    {#StandartResource убрать#}
-    <script type="text/ng-init" name="Path">{{ {
-            PopulationProductResource: path('api-population-product-resource'),
-            SlideResource: path('api-slide-resource'),
-            CartResource: path('api-cart-resource'),
-            StandartResource: path('api-standart-resource')
-        } | json_encode | raw }}</script>
+    {{ render(controller('BreadContentBundle:Layout:initializerData')) }}
 {% endblock %}
 
 {#шаблоны для angular#}

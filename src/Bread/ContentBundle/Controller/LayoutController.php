@@ -5,6 +5,7 @@ namespace Bread\ContentBundle\Controller;
 use Bread\ContentBundle\Entity\Company;
 use Bread\ContentBundle\Repository\CompanyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Csrf\CsrfTokenManager;
 
 class LayoutController extends Controller
 {
@@ -42,6 +43,21 @@ class LayoutController extends Controller
         return $this->render('@BreadContent/Layout/footer.html.twig', [
             'product_categories'    =>  $productCategories,
             'company'               =>  $company
+        ]);
+    }
+
+    /**
+     * генерация конфигов для inizializer
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function initializerDataAction()
+    {
+        /** @var CsrfTokenManager $tokenManager */
+        $tokenManager = $this->get('security.csrf.token_manager');
+        $tokenManager->refreshToken('form');
+
+        return $this->render('@BreadContent/Layout/initializer-data.html.twig', [
+            'token'     =>  $tokenManager->getToken('form')->getValue()
         ]);
     }
 }

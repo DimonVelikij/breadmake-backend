@@ -8,13 +8,19 @@
     CoreController.$inject = [
         '$scope',
         'CartResource',
-        '_'
+        '_',
+        'FormHelper',
+        'Initializer',
+        'Request'
     ];
     
     function CoreController(
         $scope,
         CartResource,
-        _
+        _,
+        FormHelper,
+        Initializer,
+        Request
     ) {
         $scope.cartError = false;
         $scope.cartLoad = true;
@@ -67,6 +73,33 @@
                     $scope.cartLoad = false;
                 });
         });
+
+        $scope.submitFeedback = function ($event, form) {
+            $event.preventDefault();
+
+            FormHelper.forceDirty(form);
+
+            if (form.$invalid) {
+                return;
+            }
+
+            var formData = $scope.userData;
+            formData['Type'] = 'feedback';
+            formData['Token'] = Initializer.Config.FormToken;
+
+            Request.save(formData).then(function (response) {
+                if (response.success) {
+                    console.log('Успех', response);
+                } else {
+                    _.forEach(response.errors, function (message, fieldName) {
+                        $scope.feedback[fieldName].errorMessage = {
+                            backend: message
+                        };
+                        $scope.feedback[fieldName].$setValidity('backend', false);
+                    });
+                }
+            });
+        };
     }
 
 })(angular);

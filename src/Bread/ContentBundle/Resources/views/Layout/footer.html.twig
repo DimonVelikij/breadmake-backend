@@ -89,18 +89,73 @@
         </div>
         <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="footer-col">
-                <form action="#" method="post">
+                <form name="feedback" action="{{ path('homepage') }}" novalidate>
                     <div class="row">
-                        <input name="" type="text" class="field-text field-bottom-10" placeholder="ФИО">
+                        <div class="field-bottom-10">
+                            <input
+                                name="Name"
+                                ng-model="userData.Name"
+                                type="text"
+                                class="field-text"
+                                placeholder="ФИО"
+                                required
+                            >
+                            <div ng-if="feedback.Name.$invalid && feedback.Name.$dirty">
+                                <p class="alert-error" ng-message="required">Введите ФИО</p>
+                                <p class="alert-error" ng-message="backend">[[ feedback.Name.errorMessage.backend ]]</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <input name="" type="text" class="field-text field-bottom-10" placeholder="телефон">
+                        <div class="field-bottom-10">
+                            <input
+                                name="Phone"
+                                ng-model="userData.Phone"
+                                type="text"
+                                class="field-text"
+                                required
+                                ui-mask="+7(999)999-99-99"
+                            >
+                            <div ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty">
+                                <p class="alert-error" ng-message="required">Введите Телефон</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <textarea name="" class="field-text-area field-bottom-10" placeholder="вопрос, предложение, жалоба..."></textarea>
+                        <div class="field-bottom-10">
+                            <textarea
+                                name="Comment"
+                                ng-model="userData.Comment"
+                                class="field-text-area"
+                                placeholder="вопрос, предложение, жалоба..."
+                            ></textarea>
+                        </div>
                     </div>
                     <div class="row">
-                        <button type="submit" class="button button-footer">Отправить</button>
+                        <div class="field-bottom-10">
+                            <div class="agree-checkbox">
+                                <input
+                                    id="agree"
+                                    name="Agree"
+                                    ng-model="userData.Agree"
+                                    type="checkbox"
+                                    required
+                                >
+                            </div>
+                            <div class="agree-checkbox-label">
+                                <label for="agree" class="agree">Даю согласие на обработку персональных данных</label>
+                            </div>
+                            <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty">
+                                <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button
+                            type="submit"
+                            class="button button-footer"
+                            ng-click="submitFeedback($event, feedback)"
+                        >Отправить</button>
                     </div>
                 </form>
             </div>

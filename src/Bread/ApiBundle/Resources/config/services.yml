@@ -4,3 +4,8 @@ services:
         class: Bread\ApiBundle\Service\CartService
         arguments:
             - "@session"
+
+    bread_api.request_helper_service:
+        class: Bread\ApiBundle\Service\RequestHelperService
+        arguments:
+            - "@validator"
