@@ -92,10 +92,11 @@
                     console.log('Успех', response);
                 } else {
                     _.forEach(response.errors, function (message, fieldName) {
-                        $scope.feedback[fieldName].errorMessage = {
+                        $scope.feedback[fieldName].errorMessages = {
                             backend: message
                         };
                         $scope.feedback[fieldName].$setValidity('backend', false);
+                        $scope.feedback[fieldName].$validators.backend = true;
                     });
                 }
             });

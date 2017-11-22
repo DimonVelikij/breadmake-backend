@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-sm-12 col-xs-12" ng-cloak>
             <div class="footer-col">
                 <form name="feedback" action="{{ path('homepage') }}" novalidate>
                     <div class="row">
@@ -100,9 +100,9 @@
                                 placeholder="ФИО"
                                 required
                             >
-                            <div ng-if="feedback.Name.$invalid && feedback.Name.$dirty">
+                            <div ng-if="feedback.Name.$invalid && feedback.Name.$dirty" ng-messages="feedback.Name.$error">
                                 <p class="alert-error" ng-message="required">Введите ФИО</p>
-                                <p class="alert-error" ng-message="backend">[[ feedback.Name.errorMessage.backend ]]</p>
+                                <p class="alert-error" ng-message="backend">[[ feedback.Name.errorMessages.backend ]]</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                                 required
                                 ui-mask="+7(999)999-99-99"
                             >
-                            <div ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty">
+                            <div ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty" ng-messages="feedback.Phone.$error">
                                 <p class="alert-error" ng-message="required">Введите Телефон</p>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                             <div class="agree-checkbox-label">
                                 <label for="agree" class="agree">Даю согласие на обработку персональных данных</label>
                             </div>
-                            <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty">
+                            <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty" ng-messages="feedback.Agree.$error">
                                 <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
                             </div>
                         </div>

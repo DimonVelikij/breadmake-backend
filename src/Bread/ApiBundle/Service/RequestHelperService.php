@@ -65,8 +65,8 @@ class RequestHelperService
     private function getFeedbackData(ParamFetcher $paramFetcher)
     {
         return [
-            'Name'  =>  null/*$paramFetcher->get('Name')*/,
-            'Phone' =>  null/*$paramFetcher->get('Phone')*/,
+            'Name'  =>  $paramFetcher->get('Name'),
+            'Phone' =>  $paramFetcher->get('Phone'),
             'Agree' =>  $paramFetcher->get('Agree')
         ];
     }
