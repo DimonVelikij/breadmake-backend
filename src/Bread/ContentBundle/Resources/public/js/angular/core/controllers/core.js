@@ -96,7 +96,6 @@
                             backend: message
                         };
                         $scope.feedback[fieldName].$setValidity('backend', false);
-                        $scope.feedback[fieldName].$validators.backend = true;
                     });
                 }
             });

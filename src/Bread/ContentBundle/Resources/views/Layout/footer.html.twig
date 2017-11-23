@@ -99,6 +99,7 @@
                                 class="field-text"
                                 placeholder="ФИО"
                                 required
+                                backend
                             >
                             <div ng-if="feedback.Name.$invalid && feedback.Name.$dirty" ng-messages="feedback.Name.$error">
                                 <p class="alert-error" ng-message="required">Введите ФИО</p>
@@ -114,10 +115,12 @@
                                 type="text"
                                 class="field-text"
                                 required
+                                backend
                                 ui-mask="+7(999)999-99-99"
                             >
                             <div ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty" ng-messages="feedback.Phone.$error">
                                 <p class="alert-error" ng-message="required">Введите Телефон</p>
+                                <p class="alert-error" ng-message="backend">[[ feedback.Phone.errorMessages.backend ]]</p>
                             </div>
                         </div>
                     </div>
@@ -140,6 +143,7 @@
                                     ng-model="userData.Agree"
                                     type="checkbox"
                                     required
+                                    backend
                                 >
                             </div>
                             <div class="agree-checkbox-label">
@@ -147,6 +151,7 @@
                             </div>
                             <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty" ng-messages="feedback.Agree.$error">
                                 <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
+                                <p class="alert-error" ng-message="backend">[[ feedback.Agree.errorMessages.backend ]]</p>
                             </div>
                         </div>
                     </div>

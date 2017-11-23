@@ -85,6 +85,7 @@ class RequestHelperService
                 new Regex(['pattern' => '/^\d{10}$/', 'message' => 'Неверно введен телефон'])
             ],
             'Agree' =>  [
+                new NotBlank(['message' => 'Необходимо согласиться с условиями']),
                 new IsTrue(['message' => 'Необходимо согласиться с условиями'])
             ]
         ];
