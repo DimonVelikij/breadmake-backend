@@ -5,7 +5,19 @@ services:
         arguments:
             - "@session"
 
-    bread_api.request_helper_service:
-        class: Bread\ApiBundle\Service\RequestHelperService
+    bread_api.form_builder:
+        class: Bread\ApiBundle\Form\FormBuilder
+
+    bread_api.form_service:
+        class: Bread\ApiBundle\Form\FormService
+        abstract: true
+        public: false
         arguments:
             - "@validator"
+            - "@security.csrf.token_manager"
+            - "@bread_api.form_builder"
+
+    bread_api.feedback_type:
+        class: Bread\ApiBundle\Form\FeedbackType
+        parent: bread_api.form_service
+        public: true

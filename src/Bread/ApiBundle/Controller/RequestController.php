@@ -2,8 +2,7 @@
 
 namespace Bread\ApiBundle\Controller;
 
-use Bread\ApiBundle\Service\RequestHelperService;
-use Bread\ContentBundle\Entity\Client;
+use Bread\ApiBundle\Form\FormInterface;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -25,36 +24,17 @@ class RequestController extends FOSRestController
      *
      * @Rest\RequestParam(name="Phone")
      *
-     * @Rest\RequestParam(
-     *     name="Email",
-     *     nullable=true
-     * )
+     * @Rest\RequestParam(name="Email", nullable=true)
+     *
+     * @Rest\RequestParam(name="Comment", nullable=true)
      *
      * @Rest\RequestParam(name="Type")
      *
-     * @Rest\RequestParam(
-     *     name="Agree",
-     *     requirements="0|1",
-     *     nullable=false,
-     *     allowBlank=false,
-     *     strict=true,
-     *     default=false
-     * )
+     * @Rest\RequestParam(name="Agree", requirements="0|1", nullable=false, allowBlank=false, strict=true, default=false)
      *
-     * @Rest\RequestParam(
-     *     name="Token",
-     *     nullable=false,
-     *     allowBlank=false,
-     *     strict=true,
-     *     default="token"
-     * )
+     * @Rest\RequestParam(name="Token", nullable=false, allowBlank=false, strict=true, default="token")
      *
-     * @Rest\RequestParam(
-     *     name="Data",
-     *     nullable=true,
-     *     allowBlank=false,
-     *     strict=false
-     * )
+     * @Rest\RequestParam(name="Data", nullable=true, allowBlank=false, strict=false)
      *
      * @param ParamFetcher $paramFetcher
      *
@@ -64,30 +44,40 @@ class RequestController extends FOSRestController
      */
     public function saveAction(ParamFetcher $paramFetcher)
     {
-        if (!$this->isCsrfTokenValid('form', $paramFetcher->get('Token'))) {
-            throw new \Exception('Invalid request token');
-        }
+        try {
+            /** @var View $view */
+            $view = $this->view();
 
-        /** @var RequestHelperService $requestHelperService */
-        $requestHelperService = $this->get('bread_api.request_helper_service');
+            $formType = $paramFetcher->get('Type');
+            $formType = 'bread_api.' . $formType . '_type';
 
-        $requestErrors = $requestHelperService->validate($paramFetcher);
+            if (!$this->has($formType)) {
+                throw new \Exception("Undefined type '{$formType}'");
+            }
 
-        /** @var View $view */
-        $view = $this->view();
+            /** @var FormInterface $form */
+            $form = $this->get($formType);
 
-        if (count($requestErrors)) {
+            $form->handleRequest($paramFetcher);
+
+            if (!$form->isValid()) {
+                return $view->setData([
+                    'success'   =>  false,
+                    'errors'    =>  $form->getFormErrors()
+                ]);
+            }
+
+            //save object
+
+            return $view->setData([
+                'success'   =>  true,
+                'errors'    =>  false
+            ]);
+        } catch (\Exception $e) {
             return $view->setData([
                 'success'   =>  false,
-                'errors'    =>  $requestErrors
+                'errors'    =>  null
             ]);
         }
-
-        //сохранение в базу и отправка письма
-
-        return $view->setData([
-            'success'   =>  true,
-            'errors'    =>  false
-        ]);
     }
 }

@@ -74,6 +74,13 @@
                 });
         });
 
+        $scope.userData = {
+            Name: null,
+            Phone: null,
+            Comment: null,
+            Agree: null
+        };
+
         $scope.submitFeedback = function ($event, form) {
             $event.preventDefault();
 
@@ -91,6 +98,9 @@
                 if (response.success) {
                     console.log('Успех', response);
                 } else {
+                    if (!response.errors) {
+                        console.log('Exception');
+                    }
                     _.forEach(response.errors, function (message, fieldName) {
                         $scope.feedback[fieldName].errorMessages = {
                             backend: message
