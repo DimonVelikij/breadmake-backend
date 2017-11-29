@@ -5,6 +5,11 @@ services:
         arguments:
             - "@session"
 
+    bread_api.user_service:
+        class: Bread\ApiBundle\Service\UserService
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
     bread_api.form_builder:
         class: Bread\ApiBundle\Form\FormBuilder
 

@@ -39,7 +39,7 @@ class Request
     /**
      * @var Client
      * 
-     * @ORM\ManyToOne(targetEntity="Bread\ContentBundle\Entity\Client", inversedBy="requests")
+     * @ORM\ManyToOne(targetEntity="Bread\ContentBundle\Entity\Client", inversedBy="requests", cascade={"persist"})
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id", nullable=false)
      */
     private $client;

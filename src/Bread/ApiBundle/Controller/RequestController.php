@@ -3,6 +3,9 @@
 namespace Bread\ApiBundle\Controller;
 
 use Bread\ApiBundle\Form\FormInterface;
+use Bread\ApiBundle\Service\UserService;
+use Bread\ContentBundle\Entity\Request;
+use Bread\ContentBundle\Entity\RequestType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -67,7 +70,25 @@ class RequestController extends FOSRestController
                 ]);
             }
 
-            //save object
+            /** @var UserService $userService */
+            $userService = $this->get('bread_api.user_service');
+            $user = $userService->findOrCreateUser($paramFetcher);
+
+            /** @var RequestType $requestType */
+            $requestType = $this->getDoctrine()
+                ->getRepository('BreadContentBundle:RequestType')
+                ->findOneBy(['title' => $paramFetcher->get('Type')]);
+
+            $request = new Request();
+            $request
+                ->setType($requestType)
+                ->setClient($user)
+                ->setData($paramFetcher->get('Data'));
+
+            $this->getDoctrine()->getManager()->persist($request);
+            $this->getDoctrine()->getManager()->flush();
+
+            //отправка email
 
             return $view->setData([
                 'success'   =>  true,

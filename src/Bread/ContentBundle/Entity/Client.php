@@ -26,14 +26,14 @@ class Client
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string $phone
      *
-     * @ORM\Column(name="phone", type="string", length=12, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=12, unique=true, nullable=false)
      */
     private $phone;
 
@@ -61,9 +61,9 @@ class Client
     /**
      * @var bool $isRegistration
      *
-     * @ORM\Column(name="is_registration", type="boolean", nullable=false, options={"default": false})
+     * @ORM\Column(name="is_registration", type="boolean", nullable=false)
      */
-    private $isRegistration;
+    private $isRegistration = false;
 
     /**
      * @var \DateTime $createdAt
