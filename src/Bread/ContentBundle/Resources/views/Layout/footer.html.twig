@@ -89,7 +89,13 @@
         </div>
         <div class="col-md-4 col-sm-12 col-xs-12" ng-cloak>
             <div class="footer-col">
-                <form name="feedback" action="{{ path('homepage') }}" novalidate>
+                <div class="loader" ng-show="feedbackRequestSending"></div>
+                <form
+                    name="feedback"
+                    action="{{ path('homepage') }}"
+                    novalidate
+                    ng-show="!feedbackRequestSend && !feedbackRequestSending && !feedbackRequestSendError"
+                >
                     <div class="row">
                         <div class="field-bottom-10">
                             <input
@@ -128,7 +134,7 @@
                         <div class="field-bottom-10">
                             <textarea
                                 name="Comment"
-                                ng-model="userData.Comment"
+                                ng-model="userData.Data.Comment"
                                 class="field-text-area"
                                 placeholder="вопрос, предложение, жалоба..."
                             ></textarea>
@@ -163,6 +169,19 @@
                         >Отправить</button>
                     </div>
                 </form>
+                <div ng-show="feedbackRequestSend">
+                    <p class="footer-feedback-result footer-feedback-result_success">
+                        Уважаемый(ая) <span class="orange">[[ userData.Name ]]</span>, спасибо за заявку. <br>
+                        Наши специалисты свяжутся с Вами в ближайшее время.
+                    </p>
+                </div>
+                <div ng-show="feedbackRequestSendError">
+                    <p class="footer-feedback-result footer-feedback-result_error">
+                        Во время отправки заявки возникли ошибки.
+                        Вы можете позвонить на номер <a href="tel:{{ company.phone }}">{{ company.phone }}</a>
+                        {% if company.email %}или отправить письмо на адрес <span class="orange">{{ company.email }}</span>{% endif %}
+                    </p>
+                </div>
             </div>
         </div>
     </div>

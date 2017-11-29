@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20171129161941 extends AbstractMigration
+class Version20171129183104 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,7 +18,7 @@ class Version20171129161941 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('ALTER TABLE clients ALTER name DROP NOT NULL');
+        $this->addSql('ALTER TABLE clients ALTER is_registration DROP DEFAULT');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_C82E74444F97DD ON clients (phone)');
     }
 
@@ -31,6 +31,6 @@ class Version20171129161941 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('DROP INDEX UNIQ_C82E74444F97DD');
-        $this->addSql('ALTER TABLE clients ALTER name SET NOT NULL');
+        $this->addSql('ALTER TABLE clients ALTER is_registration SET DEFAULT \'false\'');
     }
 }

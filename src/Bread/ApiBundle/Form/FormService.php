@@ -91,7 +91,7 @@ abstract class FormService implements FormInterface
             $fieldValue = $formData[$fieldName];
 
             if ($fieldParams instanceof FormBuilder) {
-                $this->validate($fieldParams, $formData[$fieldName][0]);
+                $this->validate($fieldParams, $formData[$fieldName]);
             } else {
                 foreach ($fieldParams['constraints'] as $constraint) {
                     $validationResult = $this->validator->validate($fieldValue, $constraint);

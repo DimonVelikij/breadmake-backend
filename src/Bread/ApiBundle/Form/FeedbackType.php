@@ -26,12 +26,16 @@ class FeedbackType extends FormService
                     new Regex(['pattern' => '/^\d{10}$/', 'message' => 'Неверно введен телефон'])
                 ]
             ])
-            ->add('Comment')
             ->add('Agree', [
                 'constraints'   =>  [
                     new NotBlank(['message' => 'Необходимо согласиться с условиями']),
                     new IsTrue(['message' => 'Необходимо согласиться с условиями'])
                 ]
             ]);
+
+        $data = $builder->createForm();
+        $data->add('Comment');
+
+        $builder->add('Data', $data);
     }
 }

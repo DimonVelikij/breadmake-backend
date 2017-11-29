@@ -25,7 +25,9 @@ class UserService
      */
     public function findOrCreateUser(ParamFetcher $paramFetcher)
     {
+        $name = $paramFetcher->get('Name');
         $phone = '+7' . $paramFetcher->get('Phone');
+        $email = $paramFetcher->get('Email');
 
         /** @var EntityRepository $clientRepo */
         $clientRepo = $this->em->getRepository('BreadContentBundle:Client');
@@ -38,7 +40,10 @@ class UserService
 
         if (!$client) {
             $client = new Client();
-            $client->setPhone($phone);
+            $client
+                ->setName($name)
+                ->setPhone($phone)
+                ->setEmail($email);
         }
 
         return $client;

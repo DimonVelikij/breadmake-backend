@@ -24,7 +24,7 @@ class Request
     /**
      * @var string $data
      *
-     * @ORM\Column(name="data", type="text", nullable=true)
+     * @ORM\Column(name="data", type="object", nullable=true)
      */
     private $data;
 

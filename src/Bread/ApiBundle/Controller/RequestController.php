@@ -29,8 +29,6 @@ class RequestController extends FOSRestController
      *
      * @Rest\RequestParam(name="Email", nullable=true)
      *
-     * @Rest\RequestParam(name="Comment", nullable=true)
-     *
      * @Rest\RequestParam(name="Type")
      *
      * @Rest\RequestParam(name="Agree", requirements="0|1", nullable=false, allowBlank=false, strict=true, default=false)
