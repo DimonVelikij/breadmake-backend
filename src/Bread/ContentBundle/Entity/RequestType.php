@@ -29,6 +29,13 @@ class RequestType
     private $title;
 
     /**
+     * @var string $alias
+     *
+     * @ORM\Column(name="alias", type="string", length=255, nullable=false)
+     */
+    private $alias;
+
+    /**
      * Get id
      *
      * @return integer
@@ -60,5 +67,29 @@ class RequestType
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     *
+     * @return RequestType
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 }

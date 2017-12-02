@@ -3,6 +3,7 @@
 namespace Bread\ApiBundle\Controller;
 
 use Bread\ApiBundle\Form\FormInterface;
+use Bread\ApiBundle\Service\MailHandler;
 use Bread\ApiBundle\Service\UserService;
 use Bread\ContentBundle\Entity\Request;
 use Bread\ContentBundle\Entity\RequestType;
@@ -75,7 +76,7 @@ class RequestController extends FOSRestController
             /** @var RequestType $requestType */
             $requestType = $this->getDoctrine()
                 ->getRepository('BreadContentBundle:RequestType')
-                ->findOneBy(['title' => $paramFetcher->get('Type')]);
+                ->findOneBy(['alias' => $paramFetcher->get('Type')]);
 
             $request = new Request();
             $request
@@ -86,7 +87,9 @@ class RequestController extends FOSRestController
             $this->getDoctrine()->getManager()->persist($request);
             $this->getDoctrine()->getManager()->flush();
 
-            //отправка email
+            /** @var MailHandler $mailer */
+            $mailer = $this->get('bread_api.mail_handler');
+            $mailer->send($request, ['dimonvelikii-1992@mail.ru'], $requestType->getTitle(), $paramFetcher->get('Type'));
 
             return $view->setData([
                 'success'   =>  true,

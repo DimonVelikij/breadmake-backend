@@ -1,0 +1,14 @@
+{% extends '@BreadContent/Mail/base.html.twig' %}
+
+{% block caption %}Заявка "Обратная связь"{% endblock %}
+
+{% block content %}
+    {% if object.data.Comment %}
+        <p style="font-weight: bold;">Пользователь оставил комментарий:</p>
+        <p>{{ object.data.Comment }}</p>
+    {% endif %}
+{% endblock %}
+
+{% block name %}{{ object.client.name }}{% endblock %}
+{% block phone %}{{ object.client.phone }}{% endblock %}
+{% block email %}{{ object.client.email ? object.client.email : 'Не указано' }}{% endblock %}

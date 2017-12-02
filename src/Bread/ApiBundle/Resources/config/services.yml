@@ -1,15 +1,28 @@
 services:
 
+    #работа с корзиной
     bread_api.cart_service:
         class: Bread\ApiBundle\Service\CartService
         arguments:
             - "@session"
 
+    #работа с пользователями
     bread_api.user_service:
         class: Bread\ApiBundle\Service\UserService
         arguments:
             - "@doctrine.orm.entity_manager"
 
+    #отправка mail
+    bread_api.mail_handler:
+        class: Bread\ApiBundle\Service\MailHandler
+        arguments:
+            - "@mailer"
+            - "@templating"
+            -
+                from: '%mailer_user%'
+                user_title: '%mailer_user_title%'
+
+    #работа с формами
     bread_api.form_builder:
         class: Bread\ApiBundle\Form\FormBuilder
 
