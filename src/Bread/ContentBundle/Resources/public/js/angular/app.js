@@ -3,7 +3,8 @@
 
     angular.module('front', [
         'content.core',
-        'content.homepage'
+        'content.homepage',
+        'content.layer'
     ]);
 
 })(angular);

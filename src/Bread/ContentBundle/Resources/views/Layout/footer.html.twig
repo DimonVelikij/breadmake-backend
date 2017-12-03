@@ -80,7 +80,7 @@
                         {% endif %}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a href="#" class="text text_white text_center text-footer"><i class="fa fa-map-marker"></i> на карте</a>
+                                <a href ng-click="loadFooterMap('{{ path('layer', {'name': 'map'}) }}')" class="text text_white text_center text-footer"><i class="fa fa-map-marker"></i> на карте</a>
                             </div>
                         </div>
                     </div>
@@ -185,4 +185,5 @@
             </div>
         </div>
     </div>
+    <div id="layer"></div>
 </footer>

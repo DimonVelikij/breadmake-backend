@@ -6,8 +6,9 @@
   right: 0
   bottom: 0
   left: 0
-  background: rgba(117, 75, 30, .5)
+  background: rgba(70, 70, 70, .5)
   z-index: 100
+
 .layer
   overflow-x: hidden
   overflow-y: auto
@@ -17,6 +18,7 @@
   bottom: 0
   left: 0
   z-index: 200
+
 .layer-dialog
   width: 600px
   height: auto
@@ -26,6 +28,7 @@
   @media only screen and (max-width: $layer)
     width: auto
     margin: 30px 15px
+
 .layer-close
   position: relative
   width: 30px
@@ -47,8 +50,10 @@
     background-color: $orange
     &>.layer-close-icon
       color: $brown-dark
+
 .layer-caption
   margin: -15px 0 20px 0
+
 .layer-content
   padding-bottom: 20px
 
@@ -57,7 +62,11 @@
   width: 99%
   height: 430px
   border: 3px solid $brown-dark
+  &_in-layer
+    height: 300px
   @media only screen and (max-width: $medium - 1)
+    &_in-layer
+      height: 300px
     height: 500px
   @media only screen and (max-width: $small - 1)
     height: 300px
@@ -67,7 +76,7 @@
   color: $brown-dark
   font: 16px "RobotoSlabRegular", sans-serif
   font-weight: bold
-  background: url("../img/logo.png") no-repeat
+  background: url("../images/logo.png") no-repeat
   background-size: 35px auto
   padding-left: 35px
   text-align: center

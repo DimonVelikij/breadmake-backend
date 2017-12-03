@@ -11,7 +11,8 @@
         '_',
         'FormHelper',
         'Initializer',
-        'Request'
+        'Request',
+        'Layer'
     ];
     
     function CoreController(
@@ -20,7 +21,8 @@
         _,
         FormHelper,
         Initializer,
-        Request
+        Request,
+        Layer
     ) {
         $scope.cartError = false;
         $scope.cartLoad = true;
@@ -73,6 +75,10 @@
                     $scope.cartLoad = false;
                 });
         });
+
+        $scope.loadFooterMap = function (url) {
+            Layer.open(url, $scope);
+        };
 
         $scope.userData = {
             Name: null,
