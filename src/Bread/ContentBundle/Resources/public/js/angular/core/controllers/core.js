@@ -24,6 +24,33 @@
         Request,
         Layer
     ) {
+        //выдвигашка корзины на адаптиве
+        angular.element('#header-cart').hover(
+            function () {
+                $(this).stop().animate({
+                    right: '0'
+                }, 700, 'easeInSine');
+            },
+            function () {
+                $(this).stop().animate({
+                    right: '-230px'
+                }, 700, 'easeOutBounce');
+            }
+        );
+
+        //галерея
+        angular.element("[data-fancybox]").fancybox();
+
+        //раскрывашка меню юзеров
+        $scope.toggleUserMenu = function () {
+            angular.element(".user-links").slideToggle();
+        };
+
+        //раскрывашка основного меню
+        $scope.toggleMenu = function () {
+            angular.element(".menu").slideToggle();
+        };
+
         $scope.cartError = false;
         $scope.cartLoad = true;
 
