@@ -185,35 +185,33 @@ assetic:
         libsjs:
             inputs:
                 - 'bundles/breadcontent/js/libs.min.js'
-        commonjs:
-            inputs:
-                - 'bundles/breadcontent/js/jquery/common.js'
+
         core_module:
             inputs:
-                - 'bundles/breadcontent/js/angular/core/core.module.js'
-                - 'bundles/breadcontent/js/angular/core/core.config.js'
-                - 'bundles/breadcontent/js/angular/core/controllers/*.js'
-                - 'bundles/breadcontent/js/angular/core/services/*.js'
-                - 'bundles/breadcontent/js/angular/core/models/*.js'
-                - 'bundles/breadcontent/js/angular/core/directives/*.js'
-                - 'bundles/breadcontent/js/angular/core/filters/*.js'
+                - 'bundles/breadcontent/js/core/core.module.js'
+                - 'bundles/breadcontent/js/core/core.config.js'
+                - 'bundles/breadcontent/js/core/controllers/*.js'
+                - 'bundles/breadcontent/js/core/services/*.js'
+                - 'bundles/breadcontent/js/core/models/*.js'
+                - 'bundles/breadcontent/js/core/directives/*.js'
+                - 'bundles/breadcontent/js/core/filters/*.js'
         homepage_module:
             inputs:
-                - 'bundles/breadcontent/js/angular/homepage/homepage.module.js'
-                - 'bundles/breadcontent/js/angular/homepage/controllers/*.js'
-                - 'bundles/breadcontent/js/angular/homepage/services/*.js'
+                - 'bundles/breadcontent/js/homepage/homepage.module.js'
+                - 'bundles/breadcontent/js/homepage/controllers/*.js'
+                - 'bundles/breadcontent/js/homepage/services/*.js'
 
         layer:
             inputs:
-                - 'bundles/breadcontent/js/angular/layer/layer.module.js'
-                - 'bundles/breadcontent/js/angular/layer/controllers/*.js'
-                - 'bundles/breadcontent/js/angular/layer/services/*.js'
+                - 'bundles/breadcontent/js/layer/layer.module.js'
+                - 'bundles/breadcontent/js/layer/controllers/*.js'
+                - 'bundles/breadcontent/js/layer/services/*.js'
         appjs:
             inputs:
                 - '@layer'
                 - '@homepage_module'
                 - '@core_module'
-                - 'bundles/breadcontent/js/angular/app.js'
+                - 'bundles/breadcontent/js/app.js'
 
 #fos rest
 fos_rest:
