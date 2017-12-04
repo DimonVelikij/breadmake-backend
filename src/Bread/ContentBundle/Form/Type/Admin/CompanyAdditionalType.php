@@ -13,6 +13,13 @@ class CompanyAdditionalType extends AbstractType
     {
         $builder
             ->add('working_days', TextType::class, [
+                'label'     =>  'Дни работы',
+                'required'  =>  false,
+                'attr'      =>  [
+                    'placeholder'   =>  'пн-пт'
+                ]
+            ])
+            ->add('working_time', TextType::class, [
                 'label'     =>  'Время работы',
                 'required'  =>  false,
                 'attr'      =>  [

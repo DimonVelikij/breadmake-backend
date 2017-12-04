@@ -206,11 +206,17 @@ assetic:
                 - 'bundles/breadcontent/js/layer/layer.module.js'
                 - 'bundles/breadcontent/js/layer/controllers/*.js'
                 - 'bundles/breadcontent/js/layer/services/*.js'
+
+        about:
+            inputs:
+                - 'bundles/breadcontent/js/about/about.module.js'
+                - 'bundles/breadcontent/js/about/controllers/*.js'
         appjs:
             inputs:
-                - '@layer'
-                - '@homepage_module'
                 - '@core_module'
+                - '@homepage_module'
+                - '@layer'
+                - '@about'
                 - 'bundles/breadcontent/js/app.js'
 
 #fos rest
