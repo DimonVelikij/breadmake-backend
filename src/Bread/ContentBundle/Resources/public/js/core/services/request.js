@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module('content.homepage')
+        .module('content.core')
         .service('Request', RequestService);
 
     RequestService.$inject = [
