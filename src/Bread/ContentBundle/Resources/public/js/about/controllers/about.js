@@ -7,19 +7,21 @@
 
     AboutController.$inject = [
         '$scope',
-        'Map'
+        'Map',
+        'Layer'
     ];
 
     function AboutController(
         $scope,
-        Map
+        Map,
+        Layer
     ) {
         var map = new Map();
         map.setConfigs({id: 'about-map-block'})
             .load();
 
-        $scope.openFeedbackLayer = function () {
-            
+        $scope.openFeedbackLayer = function (url) {
+            Layer.open(url, $scope);
         }
     }
 

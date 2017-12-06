@@ -1,0 +1,56 @@
+{% extends '@BreadContent/Layer/base.html.twig' %}
+
+{% block title %}Обратная связь{% endblock %}
+
+{% block content %}
+    <div ng-controller="FeedbackCtrl">
+        <form name="feedback" novalidate>
+            <div class="form-group">
+                <label for="feedback-name" class="required">ФИО</label>
+                <input
+                    id="feedback-name"
+                    name="Name"
+                    ng-model="userData.Name"
+                    type="text"
+                    class="field-text"
+                    required
+                    backend
+                >
+                <div class="input-error" ng-if="feedback.Name.$invalid && feedback.Name.$dirty" ng-messages="feedback.Name.$error">
+                    <p class="alert-error" ng-message="required">Введите ФИО</p>
+                    <p class="alert-error" ng-message="backend">[[ feedback.Name.errorMessages.backend ]]</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="feedback-phone" class="required">Телефон</label>
+                <input
+                    id="feedback-phone"
+                    name="Phone"
+                    ng-model="userData.Phone"
+                    type="text"
+                    class="field-text"
+                    required
+                    backend
+                >
+                <div class="input-error" ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty" ng-messages="feedback.Phone.$error">
+                    <p class="alert-error" ng-message="required">Введите Телефон</p>
+                    <p class="alert-error" ng-message="backend">[[ feedback.Phone.errorMessages.backend ]]</p>
+                </div>
+            </div>
+            <div class="form-group form-group_no-margin">
+                <label for="feedback-comment">Комментарий</label>
+                <textarea
+                    id="feedback-comment"
+                    name="Comment"
+                    ng-model="formData.Comment"
+                    class="field-text-area field-bottom-10"
+                ></textarea>
+            </div>
+            <button
+                type="submit"
+                class="button"
+                ng-click="submitFeedback($event, feedback)"
+            >Отправить</button>
+        </form>
+    </div>
+{% endblock %}

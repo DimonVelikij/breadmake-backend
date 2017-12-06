@@ -5,11 +5,15 @@
 .field-bottom-20
   margin-bottom: 20px
 
+.form-group
+  margin-bottom: 10px
+  &_no-margin
+    margin-bottom: 0
+
 label
   display: block
   color: $orange
   font: 20px "RobotoSlabBold", sans-serif
-  margin-bottom: 10px
 .required:after
   content: '*'
   color: red
@@ -53,8 +57,11 @@ label
       color: $brown-dark
       background-color: $orange
 
+.input-error
+  margin-top: 5px
+
 .alert-error
   color: red
   font: 12px "RobotoSlabRegular", sans-serif
   font-weight: bold
-  margin: 3px 0 0 5px
+  margin: 0 0 0 5px
