@@ -1,14 +1,5 @@
 @import "../base-variables"
 
-.background
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  background: rgba(70, 70, 70, .5)
-  z-index: 100
-
 .layer
   overflow-x: hidden
   overflow-y: auto
@@ -17,9 +8,20 @@
   right: 0
   bottom: 0
   left: 0
-  z-index: 200
+  z-index: 1000
+
+.layer-background
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(70, 70, 70, .5)
+  &:hover
+    cursor: pointer
 
 .layer-dialog
+  position: relative
   width: 600px
   height: auto
   background-color: $white

@@ -42,9 +42,28 @@
                 <textarea
                     id="feedback-comment"
                     name="Comment"
-                    ng-model="formData.Comment"
+                    ng-model="userData.Data.Comment"
                     class="field-text-area field-bottom-10"
                 ></textarea>
+            </div>
+            <div class="form-group">
+                <div class="agree-checkbox">
+                    <input
+                        id="layer-agree"
+                        name="Agree"
+                        ng-model="userData.Agree"
+                        type="checkbox"
+                        required
+                        backend
+                    >
+                </div>
+                <div class="agree-checkbox-label">
+                    <label for="layer-agree" class="agree">Даю согласие на обработку персональных данных</label>
+                </div>
+                <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty" ng-messages="feedback.Agree.$error">
+                    <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
+                    <p class="alert-error" ng-message="backend">[[ feedback.Agree.errorMessages.backend ]]</p>
+                </div>
             </div>
             <button
                 type="submit"

@@ -7,13 +7,26 @@
 
     FeedbackController.$inject = [
         '$scope',
-        'FormHelper'
+        'FormHelper',
+        'Initializer',
+        'Request'
     ];
 
     function FeedbackController (
         $scope,
-        FormHelper
+        FormHelper,
+        Initializer,
+        Request
     ) {
+        $scope.userData = {
+            Name: null,
+            Phone: null,
+            Data: {
+                Comment: null
+            },
+            Agree: null
+        };
+
         $scope.submitFeedback = function ($event, form) {
             $event.preventDefault();
 
@@ -23,7 +36,31 @@
                 return;
             }
 
-            console.log(1);
+            $scope.feedbackRequestSending = true;
+
+            var formData = $scope.userData;
+            formData['Type'] = 'feedback';
+            formData['Token'] = Initializer.Config.FormToken;
+
+            Request.save(formData)
+                .then(function (response) {
+                    if (response.success) {
+                        $scope.feedbackRequestSend = true;
+                    } else {
+                        if (!response.errors) {
+                            $scope.feedbackRequestSendError = true;
+                        }
+                        _.forEach(response.errors, function (message, fieldName) {
+                            $scope.feedback[fieldName].errorMessages = {
+                                backend: message
+                            };
+                            $scope.feedback[fieldName].$setValidity('backend', false);
+                        });
+                    }
+                })
+                .finally(function () {
+                    $scope.feedbackRequestSending = false;
+                });
         }
     }
 

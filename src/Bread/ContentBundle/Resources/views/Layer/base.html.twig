@@ -1,21 +1,19 @@
-<div ng-controller="LayerCtrl">
-    <div class="background" ng-if="!layerClosed"></div>
-    <div class="layer" ng-if="!layerClosed">
-        <div class="layer-dialog">
-            <div class="layer-header clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="layer-close" ng-click="closeLayer()">
-                        <i class="fa fa-close layer-close-icon"></i>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="layer-caption">{% block title %}{% endblock %}</h2>
+<div class="layer">
+    <div id="layer-background" class="layer-background"></div>
+    <div class="layer-dialog">
+        <div class="layer-header clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="layer-close" class="layer-close">
+                    <i class="fa fa-close layer-close-icon"></i>
                 </div>
             </div>
-            <div class="layer-content clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    {% block content %}{% endblock %}
-                </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="layer-caption">{% block title %}{% endblock %}</h2>
+            </div>
+        </div>
+        <div class="layer-content clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {% block content %}{% endblock %}
             </div>
         </div>
     </div>
