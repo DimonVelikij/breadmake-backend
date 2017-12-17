@@ -199,7 +199,6 @@ assetic:
             inputs:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/homepage/controllers/*.js'
-                - 'bundles/breadcontent/js/homepage/services/*.js'
 
         layer:
             inputs:

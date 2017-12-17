@@ -3,7 +3,8 @@
 
     angular
         .module('content.core')
-        .factory('Slide', SlideFactory);
+        .factory('Slide', SlideFactory)
+        .service('SlideResource', SlideResourceService);
 
     SlideFactory.$inject = [
         'Entity',
@@ -44,6 +45,32 @@
         };
 
         return Slide;
+    }
+
+    SlideResourceService.$inject = [
+        'EntityResource',
+        'Initializer',
+        'Slide',
+        '_'
+    ];
+
+    function SlideResourceService(
+        EntityResource,
+        Initializer,
+        Slide,
+        _
+    ) {
+        function SlideResource() {}
+
+        var resource = new EntityResource();
+
+        resource
+            .setResourceUrl(Initializer.Path.SlideResource)
+            .setBuilder(function (data) {
+                return _.map(data, Slide.build);
+            });
+
+        return resource;
     }
 
 })(angular);

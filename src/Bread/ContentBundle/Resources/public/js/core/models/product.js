@@ -3,7 +3,8 @@
 
     angular
         .module('content.core')
-        .factory('Product', ProductFactory);
+        .factory('Product', ProductFactory)
+        .service('PopulationProductResource', PopulationProductResourceService);
 
     ProductFactory.$inject = [
         'Entity',
@@ -96,6 +97,32 @@
         };
 
         return Product;
+    }
+
+    PopulationProductResourceService.$inject = [
+        'EntityResource',
+        'Initializer',
+        'Product',
+        '_'
+    ];
+
+    function PopulationProductResourceService(
+        EntityResource,
+        Initializer,
+        Product,
+        _
+    ) {
+        function PopulationProductResource() {}
+
+        var resource = new EntityResource();
+
+        resource
+            .setResourceUrl(Initializer.Path.PopulationProductResource)
+            .setBuilder(function (data) {
+                return _.map(data, Product.build);
+            });
+
+        return resource;
     }
 
 })(angular);
