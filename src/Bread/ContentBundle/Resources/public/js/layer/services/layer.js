@@ -3,58 +3,75 @@
 
     angular
         .module('content.layer')
-        .service('Layer', LayerService);
+        .factory('Layer', LayerFactory);
 
-    LayerService.$inject = [
+    LayerFactory.$inject = [
         '$http',
         '$compile',
         '$q'
     ];
 
-    function LayerService(
+    function LayerFactory(
         $http,
         $compile,
         $q
     ) {
-        function Layer () {}
+        return {
+            open: open,
+            close: close
+        };
 
-        Layer.prototype.load = angular.element('#load');//лоадер
-        Layer.prototype.close = null;//крестик закрытия, доступен после загрузки слоя
-        Layer.prototype.background = null;//фон
+        function isOpenLayer(isOpen) {
+            var body = angular.element('body');
 
-        Layer.prototype.open  = function (url, scope) {
+            if (isOpen) {
+                body.addClass('modal');
+            } else {
+                body.removeClass('modal');
+            }
+        }
+
+        function open(url, scope) {
             var defer = $q.defer();
 
             scope.load = true;
 
-            var self = this;
+            angular.extend(scope, {
+                Layer: {
+                    ok: function (data) {
+                        defer.resolve(data);
+                        close();
+                    },
+                    cancel: function (data) {
+                        defer.reject(data);
+                        close();
+                    }
+                }
+            });
 
-            $http.get(url)
-                .then(function (response) {
-                    var html = response.data,
-                        layer = angular.element('#layer');
+            $http.get(url).then(function (response) {
+                isOpenLayer(true);
+                var html = response.data,
+                    $layer = angular.element('#layer');
 
-                    layer.html($compile(html)(scope));
+                $layer.html($compile(html)(scope));
 
-                    self.close = angular.element('#layer-close');
-                    self.background = angular.element('#layer-background');
-
-                    self.background.bind('click', function () {
-                        layer.html('');
-                    });
-                    self.close.bind('click', function () {//закрываем слой
-                        layer.html('');
-                    });
-
-                    defer.resolve(true);
-                })
-                .finally(function () {
-                    scope.load = false;
+                angular.element('#layer-close').bind('click', function () {
+                    $layer.html('');
+                    isOpenLayer(false);
                 });
 
-            return defer.promise;
-        };
+            }).finally(function () {
+                scope.load = false;
+            });
 
-        return new Layer;
+            return defer.promise;
+        }
+
+        function close() {
+            angular.element('#layer-close').click();
+            isOpenLayer(false);
+        }
     }
+
 })(angular);

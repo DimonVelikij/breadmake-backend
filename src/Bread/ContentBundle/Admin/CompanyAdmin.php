@@ -74,7 +74,8 @@ class CompanyAdmin extends AbstractAdmin
                     ])
                     ->add('email', null, [
                         'label'     =>  'E-mail',
-                        'required'  =>  false
+                        'required'  =>  false,
+                        'sonata_help'=>  "Можно указан несколько email'ов через ;"
                     ])
                     ->add('address', null, [
                         'label'     =>  'Адрес',

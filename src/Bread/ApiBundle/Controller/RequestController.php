@@ -5,8 +5,10 @@ namespace Bread\ApiBundle\Controller;
 use Bread\ApiBundle\Form\FormInterface;
 use Bread\ApiBundle\Service\MailHandler;
 use Bread\ApiBundle\Service\UserService;
+use Bread\ContentBundle\Entity\Company;
 use Bread\ContentBundle\Entity\Request;
 use Bread\ContentBundle\Entity\RequestType;
+use Bread\ContentBundle\Repository\CompanyRepository;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -28,7 +30,7 @@ class RequestController extends FOSRestController
      *
      * @Rest\RequestParam(name="Phone")
      *
-     * @Rest\RequestParam(name="Email", nullable=true)
+     * @Rest\RequestParam(name="Email")
      *
      * @Rest\RequestParam(name="Type")
      *
@@ -74,9 +76,7 @@ class RequestController extends FOSRestController
             $user = $userService->findOrCreateUser($paramFetcher);
 
             /** @var RequestType $requestType */
-            $requestType = $this->getDoctrine()
-                ->getRepository('BreadContentBundle:RequestType')
-                ->findOneBy(['alias' => $paramFetcher->get('Type')]);
+            $requestType = $this->getRequestType($paramFetcher->get('Type'));
 
             $request = new Request();
             $request
@@ -89,7 +89,7 @@ class RequestController extends FOSRestController
 
             /** @var MailHandler $mailer */
             $mailer = $this->get('bread_api.mail_handler');
-            $mailer->send($request, ['dimonvelikii-1992@mail.ru'], $requestType->getTitle(), $paramFetcher->get('Type'));
+            $mailer->send($request, $this->getEmailsForSend(), $requestType->getTitle(), $paramFetcher->get('Type'));
 
             return $view->setData([
                 'success'   =>  true,
@@ -101,5 +101,31 @@ class RequestController extends FOSRestController
                 'errors'    =>  null
             ]);
         }
+    }
+
+    /**
+     * @param $alias
+     * @return object
+     */
+    private function getRequestType($alias)
+    {
+        return $this->getDoctrine()
+            ->getRepository('BreadContentBundle:RequestType')
+            ->findOneBy(['alias' => $alias]);
+    }
+
+    /**
+     * получение email, на которые нужно отправить письмо
+     * @return array
+     */
+    private function getEmailsForSend()
+    {
+        /** @var CompanyRepository $companyRepo */
+        $companyRepo = $this->getDoctrine()->getRepository('BreadContentBundle:Company');
+
+        /** @var Company $company */
+        $company = $companyRepo->findOneCompany();
+
+        return explode(';', $company->getEmail());
     }
 }

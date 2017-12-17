@@ -110,6 +110,7 @@
         $scope.userData = {
             Name: null,
             Phone: null,
+            Email: null,
             Data: {
                 Comment: null
             },

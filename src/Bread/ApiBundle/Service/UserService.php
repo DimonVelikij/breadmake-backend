@@ -34,7 +34,8 @@ class UserService
 
         $qb = $clientRepo->createQueryBuilder('client')
             ->where('client.phone = :client_phone')
-            ->setParameter('client_phone', $phone);
+            ->andWhere('client.email = :client_email')
+            ->setParameters(['client_phone' => $phone, 'client_email' => $email]);
 
         $client = $qb->getQuery()->getOneOrNullResult();
 

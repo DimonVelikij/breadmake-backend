@@ -9,7 +9,8 @@
         '$scope',
         'FormHelper',
         'Initializer',
-        'Request'
+        'Request',
+        'Layer'
     ];
 
     function FeedbackController (
@@ -21,6 +22,7 @@
         $scope.userData = {
             Name: null,
             Phone: null,
+            Email: null,
             Data: {
                 Comment: null
             },
@@ -36,7 +38,7 @@
                 return;
             }
 
-            $scope.feedbackRequestSending = true;
+            $scope.layerSubmitting = true;
 
             var formData = $scope.userData;
             formData['Type'] = 'feedback';
@@ -45,21 +47,22 @@
             Request.save(formData)
                 .then(function (response) {
                     if (response.success) {
-                        $scope.feedbackRequestSend = true;
+                        $scope.Layer.ok(true);
                     } else {
                         if (!response.errors) {
-                            $scope.feedbackRequestSendError = true;
+                            $scope.Layer.cancel(true);
+                        } else {
+                            _.forEach(response.errors, function (message, fieldName) {
+                                $scope.feedback[fieldName].errorMessages = {
+                                    backend: message
+                                };
+                                $scope.feedback[fieldName].$setValidity('backend', false);
+                            });
                         }
-                        _.forEach(response.errors, function (message, fieldName) {
-                            $scope.feedback[fieldName].errorMessages = {
-                                backend: message
-                            };
-                            $scope.feedback[fieldName].$setValidity('backend', false);
-                        });
                     }
                 })
                 .finally(function () {
-                    $scope.feedbackRequestSending = false;
+                    $scope.layerSubmitting = false;
                 });
         }
     }

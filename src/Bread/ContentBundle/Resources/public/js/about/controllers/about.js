@@ -8,21 +8,27 @@
     AboutController.$inject = [
         '$scope',
         'Map',
-        'Layer'
+        'Layer',
+        'Initializer'
     ];
 
     function AboutController(
         $scope,
         Map,
-        Layer
+        Layer,
+        Initializer
     ) {
         var map = new Map();
         map.setConfigs({id: 'about-map-block'})
             .load();
 
         $scope.openFeedbackLayer = function (url) {
-            Layer.open(url, $scope);
-        }
+            Layer.open(url, $scope).then(function (response) {
+                Layer.open(Initializer.Path.LayerThanks, $scope);
+            }, function (error) {
+                Layer.open(Initializer.Path.LayerError, $scope);
+            });
+        };
     }
 
 })(angular);

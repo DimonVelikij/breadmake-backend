@@ -4,7 +4,9 @@
         SlideResource: path('api-slide-resource'),
         CartResource: path('api-cart-resource'),
         StandartResource: path('api-standart-resource'),
-        RequestResource: path('api-request-save')
+        RequestResource: path('api-request-save'),
+        LayerThanks: path('layer', {name: 'thanks'}),
+        LayerError: path('layer', {name: 'error'})
     } | json_encode | raw }}</script>
 
 <script type="text/ng-init" name="Config">{{ {

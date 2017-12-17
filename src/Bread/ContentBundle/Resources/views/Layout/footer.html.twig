@@ -124,11 +124,29 @@
                                 class="field-text"
                                 required
                                 backend
-                                ui-mask="+7(999)999-99-99"
+                                ui-mask="+7 999 999 99 99"
                             >
                             <div ng-if="feedback.Phone.$invalid && feedback.Phone.$dirty" ng-messages="feedback.Phone.$error">
                                 <p class="alert-error" ng-message="required">Введите Телефон</p>
                                 <p class="alert-error" ng-message="backend">[[ feedback.Phone.errorMessages.backend ]]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="field-bottom-10">
+                            <input
+                                name="Email"
+                                ng-model="userData.Email"
+                                type="email"
+                                class="field-text"
+                                placeholder="E-mail"
+                                required
+                                backend
+                            >
+                            <div ng-if="feedback.Email.$invalid && feedback.Email.$dirty" ng-messages="feedback.Email.$error">
+                                <p class="alert-error" ng-message="required">Введите E-mail</p>
+                                <p class="alert-error" ng-message="email">E-mail введен неверно</p>
+                                <p class="alert-error" ng-message="backend">[[ feedback.Email.errorMessages.backend ]]</p>
                             </div>
                         </div>
                     </div>

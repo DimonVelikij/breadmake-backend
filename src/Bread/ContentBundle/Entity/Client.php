@@ -40,7 +40,7 @@ class Client
     /**
      * @var string $email
      *
-     * @ORM\Column(name="email", type="string", length=50, unique=true, nullable=true)
+     * @ORM\Column(name="email", type="string", length=50, unique=true, nullable=false)
      */
     private $email;
 

@@ -1,35 +1,45 @@
 @import "../base-variables"
 
+.modal
+  position: static
+  overflow: hidden
+
+.background-layer,
+.layer-submitting
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  opacity: .5
+  z-index: 1040
+  background: rgba(70, 70, 70, .5)
+
 .layer
+  position: fixed
+  display: block
   overflow-x: hidden
   overflow-y: auto
-  position: fixed
   top: 0
   right: 0
   bottom: 0
   left: 0
-  z-index: 1000
-
-.layer-background
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  background: rgba(70, 70, 70, .5)
-  &:hover
-    cursor: pointer
+  z-index: 1050
 
 .layer-dialog
   position: relative
   width: 600px
   height: auto
-  background-color: $white
   margin: 30px auto
-  border-radius: $border-radius
   @media only screen and (max-width: $layer)
     width: auto
     margin: 30px 15px
+
+.layer-block
+  position: relative
+  background-color: white
+  border-radius: $border-radius
+  box-shadow: 0 0 10px 0 $box-shadow-color
 
 .layer-close
   position: relative
@@ -58,6 +68,9 @@
 
 .layer-content
   padding-bottom: 20px
+
+.layer-submitting
+  z-index: 1500
 
 .layer-map
   display: block

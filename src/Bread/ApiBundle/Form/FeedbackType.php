@@ -2,6 +2,7 @@
 
 namespace Bread\ApiBundle\Form;
 
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
@@ -23,7 +24,16 @@ class FeedbackType extends FormService
             ->add('Phone', [
                 'constraints'   =>  [
                     new NotBlank(['message' => 'Введите телефон']),
-                    new Regex(['pattern' => '/^\d{10}$/', 'message' => 'Неверно введен телефон'])
+                    new Regex([
+                        'pattern' => '/^\d{10}$/',
+                        'message' => 'Неверно введен телефон'
+                    ])
+                ]
+            ])
+            ->add('Email', [
+                'constraints'   =>  [
+                    new NotBlank(['message' =>  'Введите E-mail']),
+                    new Email(['message'    =>  'E-mail введен неверно'])
                 ]
             ])
             ->add('Agree', [
