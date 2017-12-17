@@ -3,6 +3,7 @@
 namespace Bread\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class Company
@@ -10,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="company")
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Bread\ContentBundle\Repository\CompanyRepository")
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class Company
 {
@@ -26,6 +29,11 @@ class Company
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Title")
+     * @JMS\Groups({"api"})
      */
     private $title;
 
@@ -33,6 +41,11 @@ class Company
      * @var string $phone
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Phone")
+     * @JMS\Groups({"api"})
      */
     private $phone;
 
@@ -40,6 +53,11 @@ class Company
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Email")
+     * @JMS\Groups({"api"})
      */
     private $email;
 
@@ -47,6 +65,11 @@ class Company
      * @var string $address
      *
      * @ORM\Column(name="address", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Address")
+     * @JMS\Groups({"api"})
      */
     private $address;
 
@@ -54,6 +77,11 @@ class Company
      * @var string $data
      *
      * @ORM\Column(name="data", type="object", nullable=true)
+     *
+     * @JMS\Expose
+     * @JMS\Type("array")
+     * @JMS\SerializedName("Data")
+     * @JMS\Groups({"api"})
      */
     private $data;
 
