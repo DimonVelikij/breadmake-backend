@@ -9,18 +9,34 @@
         '$scope',
         'Map',
         'Layer',
-        'Initializer'
+        'Initializer',
+        'CompanyResource'
     ];
 
     function AboutController(
         $scope,
         Map,
         Layer,
-        Initializer
+        Initializer,
+        CompanyResource
     ) {
-        var map = new Map();
-        map.setConfigs({id: 'about-map-block'})
-            .load();
+        $scope.load = true;
+
+        CompanyResource.query()
+            .then(function (company) {
+                $scope.company = company;
+
+                var map = new Map();
+                map
+                    .setConfigs({
+                        id: 'about-map-block',
+                        company: company
+                    })
+                    .load();
+            })
+            .finally(function () {
+                $scope.load = false;
+            });
 
         $scope.openFeedbackLayer = function (url) {
             Layer.open(url, $scope).then(function (response) {

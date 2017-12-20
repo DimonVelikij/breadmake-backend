@@ -9,59 +9,39 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="about-info">
                             <h2 class="about-caption">Контакты</h2>
-                            {% if company.phone %}
-                                <p class="text orange about-info__phone">{{ company.phone }}</p>
-                            {% endif %}
-                            {% if company.address %}
-                                <div class="about-address">
-                                    <h3>Наш адрес</h3>
-                                    <p class="brown-light">{{ company.address }}</p>
-                                </div>
-                            {% endif %}
-                            {% if
-                                company.data.working_time is defined and company.data.working_time and
-                                company.data.working_days is defined and company.data.working_days or
-                                company.data.weekend is defined and company.data.weekend
-                            %}
-                                <div class="about-info-work-time">
-                                    <h3>Режим работы</h3>
-                                    {% if
-                                        company.data.working_days is defined and company.data.working_days and
-                                        company.data.working_time is defined and company.data.working_time
-                                    %}
-                                        <div class="row">
-                                            <div class="col-md-5 col-sm-5 col-xs-5">
-                                                <span class="text">{{ company.data.working_days }}</span>
-                                            </div>
-                                            <div class="col-md-7 col-sm-7 col-xs-7">
-                                                <span class="text orange">{{ company.data.working_time }}</span>
-                                            </div>
+                            <p class="text orange about-info__phone">[[ company.getPhone() ]]</p>
+                            <p class="text orange about-info__phone" ng-if="company.getEmail()">[[ company.getEmail() ]]</p>
+                            <div class="about-address">
+                                <h3>Наш адрес</h3>
+                                <p class="brown-light">[[ company.getAddress() ]]</p>
+                            </div>
+                            <div class="about-info-work-time" ng-if="company.getWorkingDays() && company.getWorkingTime() || company.getWeekend()">
+                                <h3>Режим работы</h3>
+                                    <div class="row" ng-if="company.getWorkingDays() && company.getWorkingTime()">
+                                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                            <span class="text">[[ company.getWorkingDays() ]]</span>
                                         </div>
-                                    {% endif %}
-                                    {% if company.data.weekend is defined and company.data.weekend %}
-                                        <div class="row">
-                                            <div class="col-md-5 col-sm-5 col-xs-5">
-                                                <span class="text">выходные:</span>
-                                            </div>
-                                            <div class="col-md-7 col-sm-7 col-xs-7">
-                                                <span class="text orange">{{ company.data.weekend }}</span>
-                                            </div>
+                                        <div class="col-md-7 col-sm-7 col-xs-7">
+                                            <span class="text orange">[[ company.getWorkingTime() ]]</span>
                                         </div>
-                                    {% endif %}
-                                </div>
-                            {% endif %}
-                            {% if company.data.payment is defined and company.data.payment %}
-                                <div class="about-payment">
-                                    <h3>Оплата</h3>
-                                    <span class="brown-light">{{ company.data.payment | raw }}</span>
-                                </div>
-                            {% endif %}
-                            {% if company.data.delivery is defined and company.data.delivery %}
-                                <div class="about-delivery">
-                                    <h3>Доставка</h3>
-                                    <span class="brown-light">{{ company.data.delivery | raw }}</span>
-                                </div>
-                            {% endif %}
+                                    </div>
+                                    <div class="row" ng-if="company.getWeekend()">
+                                        <div class="col-md-5 col-sm-5 col-xs-5">
+                                            <span class="text">выходные:</span>
+                                        </div>
+                                        <div class="col-md-7 col-sm-7 col-xs-7">
+                                            <span class="text orange">[[ company.getWeekend() ]]</span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="about-payment" ng-if="company.getPayment()">
+                                <h3>Оплата</h3>
+                                <span class="brown-light" ng-bind-html="company.getPayment()"></span>
+                            </div>
+                            <div class="about-delivery" ng-if="company.getDelivery()">
+                                <h3>Доставка</h3>
+                                <span class="brown-light" ng-bind-html="company.getDelivery()"></span>
+                            </div>
                             <div class="about-feedback-form">
                                 <button class="button" ng-click="openFeedbackLayer('{{ path('layer', {name: 'feedback'}) }}')">Обратная связь</button>
                             </div>

@@ -6,16 +6,24 @@
         .controller('MapCtrl', MapController);
 
     MapController.$inject = [
-        'Map'
+        'Map',
+        'CompanyResource'
     ];
 
     function MapController (
-        Map
+        Map,
+        CompanyResource
     ) {
-        var map = new Map();
-        map
-            .setConfigs({id: 'layer-map-block'})
-            .load();
+        CompanyResource.query()
+            .then(function (company) {
+                var map = new Map();
+                map
+                    .setConfigs({
+                        id: 'layer-map-block',
+                        company: company
+                    })
+                    .load();
+            });
     }
 
 })(angular);

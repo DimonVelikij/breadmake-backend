@@ -28,11 +28,14 @@
                 throw new Error('Не установлен id для карты');
             }
 
+            if (!this.configs['company']) {
+                throw new Error('Не установлена компания');
+            }
+
             if (this.isLoad) {
                 return;
             }
 
-            //нужно подгрузить компанию, и вставить данные в баллон
             this.isLoad = true;
             var self = this;
 
@@ -65,12 +68,42 @@
                                 coordinates: [57.5375, 60.2929]
                             },
                             properties: {
-                                "balloonContent": "<div class='balloon'><p class='balloon-title'>Быньговское потребительское общество</p><a href='tel:89222271420' class='text orange'>89222271420</a><p class='brown-light'>Невьянский район, с.Быньги, ул.Мартьянова, 22</p><p class='brown-dark'>пн-пт: <span class='orange'>08:00-17:00</span></p><p class='brown-dark'>сб-вс: <span class='orange'>выходной</span></p></div>",
-                                "hintContent": "Быньговское потребительское общество"
+                                "balloonContent": getBallonContent(),
+                                "hintContent":  getHintContent()
                             }
                         });
                         map.geoObjects.add(geoObject);
                     });
+                }
+
+                function getBallonContent() {
+                    var company = self.configs['company'],
+                        content = "" +
+                            "<div class='balloon'>" +
+                                "<p class='balloon-title'>" + company.getTitle() + "</p>" +
+                                "<a href='tel:" + company.getPhone() + "' class='text orange'>" + company.getPhone() + "</a>";
+
+                    if (company.getEmail()) {
+                        content += "<p class='text orange'>" + company.getEmail() + "</p>"
+                    }
+
+                    content += "<p class='brown-light'>" + company.getAddress() + "</p>";
+
+                    if (company.getWorkingDays() && company.getWorkingTime()) {
+                        content += "<p class='brown-dark'>" + company.getWorkingDays() + ": <span class='orange'>" + company.getWorkingTime() + "</span></p>"
+                    }
+
+                    if (company.getWeekend()) {
+                        content += "<p class='brown-dark'>" + company.getWeekend() + ": <span class='orange'>выходные</span></p>";
+                    }
+
+                    content += "</div>";
+
+                    return content;
+                }
+
+                function getHintContent() {
+                    return self.configs['company'].getTitle();
                 }
             }
         };
