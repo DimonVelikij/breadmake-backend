@@ -4,8 +4,9 @@
     angular.module('front', [
         'content.core',
         'content.homepage',
-        'content.layer',
-        'content.about'
+        'content.news',
+        'content.about',
+        'content.layer'
     ]);
 
 })(angular);

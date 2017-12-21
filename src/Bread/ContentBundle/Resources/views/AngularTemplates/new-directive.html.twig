@@ -1,0 +1,38 @@
+{% extends '@BreadContent/AngularTemplates/base.html.twig' %}
+
+{% block templateId %}new-directive.html{% endblock %}
+
+{% block templateContent %}
+    <div class="new">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a href="#" class="new-item">
+                <div class="overlay">
+                    <div class="overlay__arrow">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 new-item__img-block">
+                        <img ng-if="new.getCountImages()" ng-src="[[ new.getImages()[0].getCropPath() ]]" alt="" class="new-item__img">
+                        {#нужна заглушка#}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <p class="new-item__title">[[ new.getTitle() ]]</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p class="new-item__count-photo">
+                            <i class="fa fa-photo"></i> [[ new.getCountImages() ]]
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p class="new-item__date"><i class="fa fa-paperclip"></i> [[ new.getCreatedAtDate() ]]</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

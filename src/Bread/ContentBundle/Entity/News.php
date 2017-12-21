@@ -5,12 +5,15 @@ namespace Bread\ContentBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class News
  * @package Bread\ContentBundle\Entity
  * @ORM\Table(name="news")
  * @ORM\Entity
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class News
 {
@@ -20,6 +23,11 @@ class News
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("Id")
+     * @JMS\Groups({"api"})
      */
     private $id;
 
@@ -27,6 +35,11 @@ class News
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Title")
+     * @JMS\Groups({"api"})
      */
     private $title;
 
@@ -34,6 +47,11 @@ class News
      * @var string $description
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Description")
+     * @JMS\Groups({"api"})
      */
     private $description;
 
@@ -49,6 +67,11 @@ class News
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("DateTime<'Y-m-d H:i'>")
+     * @JMS\SerializedName("CreatedAt")
+     * @JMS\Groups({"api"})
      */
     private $createdAt;
 
@@ -65,6 +88,10 @@ class News
      *     joinColumns={@ORM\JoinColumn(name="new_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true
      * )})
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Images")
+     * @JMS\Groups({"api"})
      */
     private $images;
 

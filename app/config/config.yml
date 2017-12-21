@@ -130,8 +130,8 @@ bread_content:
             max_width: 5000
             max_height: 4000
             crop_size:
-                width: 400
-                height: 400
+                width: 250
+                height: 250
             mime_types: ['jpeg', 'png']
             max_count: 5
 
@@ -200,22 +200,28 @@ assetic:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/homepage/controllers/*.js'
 
-        layer:
+        news:
             inputs:
-                - 'bundles/breadcontent/js/layer/layer.module.js'
-                - 'bundles/breadcontent/js/layer/controllers/*.js'
-                - 'bundles/breadcontent/js/layer/services/*.js'
+                - 'bundles/breadcontent/js/news/news.module.js'
+                - 'bundles/breadcontent/js/news/controllers/*.js'
 
         about:
             inputs:
                 - 'bundles/breadcontent/js/about/about.module.js'
                 - 'bundles/breadcontent/js/about/controllers/*.js'
+
+        layer:
+            inputs:
+                - 'bundles/breadcontent/js/layer/layer.module.js'
+                - 'bundles/breadcontent/js/layer/controllers/*.js'
+                - 'bundles/breadcontent/js/layer/services/*.js'
         appjs:
             inputs:
                 - '@core_module'
                 - '@homepage_module'
-                - '@layer'
+                - '@news'
                 - '@about'
+                - '@layer'
                 - 'bundles/breadcontent/js/app.js'
 
 #fos rest
