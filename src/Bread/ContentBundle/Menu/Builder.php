@@ -41,10 +41,15 @@ class Builder
 
         $menu = $this->factory->createItem('root');
 
+        $currentRoute = $request->getMasterRequest()->attributes->get('_route');
+
         /** @var Menu $menuItem */
         foreach ($menuItems as $menuItem) {
             $currentMenuItem = $menu->addChild($menuItem->getTitle(), ['route' => $menuItem->getPath()]);
-            if ($request->getMasterRequest()->attributes->get('_route') == $menuItem->getPath()) {
+            if (
+                $currentRoute == $menuItem->getPath() ||
+                ($currentRoute == 'new-item' && $menuItem->getPath() == 'news')
+            ) {
                 $currentMenuItem->setCurrent(true);
             }
         }

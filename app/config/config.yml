@@ -98,8 +98,8 @@ bread_content:
     asset_dir: "media/images"
     entities:
         product:
-            min_width: 500
-            min_height: 600
+            min_width: 250
+            min_height: 250
             max_width: 5000
             max_height: 4000
             crop_size:
@@ -107,8 +107,8 @@ bread_content:
                 height: 250
             mime_types: ['jpeg', 'png']
         declaration:
-            min_width: 1500
-            min_height: 1000
+            min_width: 1000
+            min_height: 600
             max_width: 5000
             max_height: 4000
             crop_size:
@@ -125,8 +125,8 @@ bread_content:
                 height: 400
             mime_types: ['jpeg', 'png']
         news:
-            min_width: 1500
-            min_height: 1000
+            min_width: 250
+            min_height: 250
             max_width: 5000
             max_height: 4000
             crop_size:

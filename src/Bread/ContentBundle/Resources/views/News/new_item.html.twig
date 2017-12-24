@@ -1,0 +1,40 @@
+{% extends '@BreadContent/layout.html.twig' %}
+
+{% block content %}
+    <script type="text/ng-init" name="Data">{{ {
+            NewId: id
+        } | json_encode | raw }}</script>
+    <div class="content" ng-controller="NewItemCtrl" ng-cloak>
+        <div class="load" ng-show="load"></div>
+        <section>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h1>[[ newItem.getTitle() ]]</h1>
+                    </div>
+                </div>
+                <div class="new">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text new-text" ng-if="newItem.getDescription()" ng-bind-html="newItem.getDescription()"></p>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="newItem.getCountImages()">
+                        <div class="col-md-12">
+                            <h2>Галерея</h2>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="newItem.getCountImages()">
+                        <div class="new-gallery clearfix">
+                            <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="image in newItem.getImages()">
+                                <a ng-href="[[ image.getPath() ]]" data-fancybox="new-img">
+                                    <img ng-src="[[ image.getCropPath() ]]" alt="" class="new__img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

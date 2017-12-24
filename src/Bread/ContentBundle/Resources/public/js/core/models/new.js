@@ -79,17 +79,30 @@
         New,
         _
     ) {
-        function NewResource() {}
+        function NewResource() {
+            this.resource = new EntityResource();
+        }
 
-        var resource = new EntityResource();
+        NewResource.prototype.query = function () {
+            return this.resource
+                .setResourceUrl(Initializer.Path.NewResource)
+                .setBuilder(function (data) {
+                    return _.map(data, New.build);
+                })
+                .query();
+        };
 
-        resource
-            .setResourceUrl(Initializer.Path.NewResource)
-            .setBuilder(function (data) {
-                return _.map(data, New.build);
-            });
+        NewResource.prototype.get = function (id) {
+            return this.resource
+                .setResourceUrl(Initializer.Path.NewResource + '/:id')
+                .setDefaultParams({id: '@id'})
+                .setBuilder(function (data) {
+                    return New.build(data);
+                })
+                .get(id);
+        };
 
-        return resource;
+        return new NewResource();
     }
 
 })(angular);

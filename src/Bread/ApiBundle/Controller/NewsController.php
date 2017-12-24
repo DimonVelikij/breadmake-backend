@@ -41,4 +41,33 @@ class NewsController extends FOSRestController
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @Rest\Route(path="/{id}", methods={"GET"}, requirements={"id": "\d+"})
+     *
+     * @Rest\View(
+     *     serializerGroups={"api"},
+     *     statusCode=200
+     * )
+     *
+     * @param int $id
+     *
+     * @return array|null
+     */
+    public function resourceItemAction(int $id)
+    {
+        /** @var EntityRepository $newsRepo */
+        $newsRepo = $this->getDoctrine()->getRepository('BreadContentBundle:News');
+
+        /** @var QueryBuilder $qb */
+        $qb = $newsRepo->createQueryBuilder('n');
+
+        return $qb
+            ->where('n.public = :is_public')
+            ->andWhere('n.id = :id')
+            ->join('n.images', 'i')
+            ->setParameters(['is_public' => true, 'id' => $id])
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
