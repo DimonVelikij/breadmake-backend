@@ -1,0 +1,34 @@
+{% extends '@BreadContent/AngularTemplates/base.html.twig' %}
+
+{% block templateId %}declaration-directive.html{% endblock %}
+
+{% block templateContent %}
+    <div class="declaration">
+        <div class="col-md-6 col-sm-6">
+            <div class="declaration-item">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <p class="declaration-item__title">[[ declaration.getTitle() ]]</p>
+                    </div>
+                </div>
+                <div class="row" ng-if="declaration.getDescription()">
+                    <div class="col-md-12 col-sm-12">
+                        <span class="declaration__description">описание
+                            <i class="fa fa-tag declaration__description-icon"></i>
+                            <div class="hint hint-declaration">
+                                <p class="hint-declaration__text" ng-bind-html="declaration.getDescription()"></p>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 declaration-item__img-block">
+                        <a ng-href="[[ declaration.getImage().getPath() ]]" data-fancybox>
+                            <img ng-src="[[ declaration.getImage().getCropPath() ]]" alt="" class="declaration-item__img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

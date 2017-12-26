@@ -15,8 +15,6 @@ class DeclarationController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('@BreadContent/Declaration/declaration.html.twig', [
-
-        ]);
+        return $this->render('@BreadContent/Declaration/declaration.html.twig');
     }
 }

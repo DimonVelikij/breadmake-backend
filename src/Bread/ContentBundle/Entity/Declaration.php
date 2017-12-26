@@ -3,6 +3,7 @@
 namespace Bread\ContentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -10,6 +11,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @package Bread\ContentBundle\Entity
  * @ORM\Table(name="declarations")
  * @ORM\Entity
+ *
+ * @JMS\ExclusionPolicy("all")
  */
 class Declaration
 {
@@ -19,6 +22,11 @@ class Declaration
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
+     * @JMS\Expose
+     * @JMS\Type("integer")
+     * @JMS\SerializedName("Id")
+     * @JMS\Groups({"api"})
      */
     private $id;
 
@@ -26,6 +34,11 @@ class Declaration
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Title")
+     * @JMS\Groups({"api"})
      */
     private $title;
 
@@ -33,12 +46,21 @@ class Declaration
      * @var string $description
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     *
+     * @JMS\Expose
+     * @JMS\Type("string")
+     * @JMS\SerializedName("Description")
+     * @JMS\Groups({"api"})
      */
     private $description;
 
     /**
      * @ORM\OneToOne(targetEntity="Bread\ContentBundle\Entity\Image", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id", onDelete="SET NULL")
+     *
+     * @JMS\Expose
+     * @JMS\SerializedName("Image")
+     * @JMS\Groups({"api"})
      */
     private $image;
 

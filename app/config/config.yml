@@ -107,13 +107,13 @@ bread_content:
                 height: 250
             mime_types: ['jpeg', 'png']
         declaration:
-            min_width: 1000
-            min_height: 600
+            min_width: 425
+            min_height: 585
             max_width: 5000
             max_height: 4000
             crop_size:
-                width: 1000
-                height: 600
+                width: 425
+                height: 585
             mime_types: ['jpeg', 'png']
         slide:
             min_width: 1200
@@ -200,6 +200,11 @@ assetic:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/homepage/controllers/*.js'
 
+        declaration:
+            inputs:
+                - 'bundles/breadcontent/js/declaration/declaration.module.js'
+                - 'bundles/breadcontent/js/declaration/controllers/*.js'
+
         news:
             inputs:
                 - 'bundles/breadcontent/js/news/news.module.js'
@@ -219,6 +224,7 @@ assetic:
             inputs:
                 - '@core_module'
                 - '@homepage_module'
+                - '@declaration'
                 - '@news'
                 - '@about'
                 - '@layer'

@@ -1,1 +1,31 @@
-Declarations
+{% extends '@BreadContent/layout.html.twig' %}
+
+{% block content %}
+    <div ng-controller="DeclarationCtrl" ng-cloak>
+        <div class="load" ng-show="load"></div>
+        <section>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h1>Декларации</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="declarations-list clearfix" ng-show="declarations.length">
+                        <declaration ng-repeat="declaration in declarations" source="declaration"></declaration>
+                    </div>
+                    <div ng-show="!declarations.length && !dataLoadError">
+                        <div class="col-md-12">
+                            <p>Спиок деклараций пуст</p>
+                        </div>
+                    </div>
+                    <div ng-show="dataLoadError">
+                        <div class="col-md-12">
+                            <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
