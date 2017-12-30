@@ -1,1 +1,52 @@
-PriceList
+{% extends '@BreadContent/layout.html.twig' %}
+
+{% block content %}
+    <section ng-controller="PriceListCtrl" ng-cloak>
+        <div class="load" ng-show="load"></div>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <h1>Прайс лист</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ng-show="products.length">
+                    <div class="price-list">
+                        <div class="order-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="#" class="text excel">Скачать Excel-файл</a>
+                                    <br>
+                                    <a href="#" class="text pdf">Открыть PDF-файл</a>
+                                    <p>Фильтр по категории продукта и сортировка по цене</p>
+                                    <table class="order-item__table">
+                                        <tr class="order-item__table-caption order-item__table-caption_bold">
+                                            <th>Товар</th>
+                                            <th>Категория</th>
+                                            <th>Цена, <i class="fa fa-rouble"></i></th>
+                                        </tr>
+                                        <tr class="order-item__table-text" ng-repeat="product in products">
+                                            <td>[[ product.getTitle() ]]</td>
+                                            <td>[[ product.getCategory().getTitle() ]]</td>
+                                            <td>[[ product.getPrice() | price ]]</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="!products.length && !dataLoadError">
+                    <div class="col-md-12">
+                        <p>Прайс-лист пуст</p>
+                    </div>
+                </div>
+                <div ng-show="dataLoadError">
+                    <div class="col-md-12">
+                        <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

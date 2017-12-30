@@ -200,22 +200,27 @@ assetic:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/homepage/controllers/*.js'
 
-        declaration:
+        price_list_module:
+            inputs:
+                - 'bundles/breadcontent/js/price-list/price-list.module.js'
+                - 'bundles/breadcontent/js/price-list/controllers/*.js'
+
+        declaration_module:
             inputs:
                 - 'bundles/breadcontent/js/declaration/declaration.module.js'
                 - 'bundles/breadcontent/js/declaration/controllers/*.js'
 
-        news:
+        news_module:
             inputs:
                 - 'bundles/breadcontent/js/news/news.module.js'
                 - 'bundles/breadcontent/js/news/controllers/*.js'
 
-        about:
+        about_module:
             inputs:
                 - 'bundles/breadcontent/js/about/about.module.js'
                 - 'bundles/breadcontent/js/about/controllers/*.js'
 
-        layer:
+        layer_module:
             inputs:
                 - 'bundles/breadcontent/js/layer/layer.module.js'
                 - 'bundles/breadcontent/js/layer/controllers/*.js'
@@ -224,10 +229,11 @@ assetic:
             inputs:
                 - '@core_module'
                 - '@homepage_module'
-                - '@declaration'
-                - '@news'
-                - '@about'
-                - '@layer'
+                - '@price_list_module'
+                - '@declaration_module'
+                - '@news_module'
+                - '@about_module'
+                - '@layer_module'
                 - 'bundles/breadcontent/js/app.js'
 
 #fos rest

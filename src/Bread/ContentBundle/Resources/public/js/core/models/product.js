@@ -4,7 +4,7 @@
     angular
         .module('content.core')
         .factory('Product', ProductFactory)
-        .service('PopulationProductResource', PopulationProductResourceService);
+        .service('ProductResource', ProductResourceService);
 
     ProductFactory.$inject = [
         'Entity',
@@ -99,30 +99,42 @@
         return Product;
     }
 
-    PopulationProductResourceService.$inject = [
+    ProductResourceService.$inject = [
         'EntityResource',
         'Initializer',
         'Product',
         '_'
     ];
 
-    function PopulationProductResourceService(
+    function ProductResourceService(
         EntityResource,
         Initializer,
         Product,
         _
     ) {
-        function PopulationProductResource() {}
-
-        var resource = new EntityResource();
-
-        resource
-            .setResourceUrl(Initializer.Path.PopulationProductResource)
-            .setBuilder(function (data) {
-                return _.map(data, Product.build);
-            });
-
-        return resource;
+        function ProductResource() {
+            this.resource = new EntityResource();
+        }
+        
+        ProductResource.prototype.queryPopulation = function () {
+            return this.resource
+                    .setResourceUrl(Initializer.Path.PopulationProductResource)
+                    .setBuilder(function (data) {
+                        return _.map(data, Product.build);
+                    })
+                    .query();
+        };
+        
+        ProductResource.prototype.query = function () {
+            return this.resource
+                    .setResourceUrl(Initializer.Path.ProductResource)
+                    .setBuilder(function (data) {
+                        return _.map(data, Product.build);
+                    })
+                    .query();
+        };
+        
+        return new ProductResource();
     }
 
 })(angular);

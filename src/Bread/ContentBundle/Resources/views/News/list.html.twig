@@ -1,31 +1,29 @@
 {% extends '@BreadContent/layout.html.twig' %}
 
 {% block content %}
-    <div class="content" ng-controller="NewsCtrl" ng-cloak>
+    <section ng-controller="NewsCtrl" ng-cloak>
         <div class="load" ng-show="load"></div>
-        <section>
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="row">
-                        <h1>Новости</h1>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <h1>Новости</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="news-list clearfix" ng-show="news.length">
+                    <new ng-repeat="new in news" source="new"></new>
+                </div>
+                <div ng-show="!news.length && !dataLoadError">
+                    <div class="col-md-12">
+                        <p>Спиок новостей пуст</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="news-list clearfix" ng-show="news.length">
-                        <new ng-repeat="new in news" source="new"></new>
-                    </div>
-                    <div ng-show="!news.length && !dataLoadError">
-                        <div class="col-md-12">
-                            <p>Спиок новостей пуст</p>
-                        </div>
-                    </div>
-                    <div ng-show="dataLoadError">
-                        <div class="col-md-12">
-                            <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
-                        </div>
+                <div ng-show="dataLoadError">
+                    <div class="col-md-12">
+                        <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 {% endblock %}

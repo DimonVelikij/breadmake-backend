@@ -8,7 +8,7 @@
     HomepageController.$inject = [
         '$scope',
         '$q',
-        'PopulationProductResource',
+        'ProductResource',
         'SlideResource',
         'Carousel'
     ];
@@ -16,14 +16,14 @@
     function HomepageController(
         $scope,
         $q,
-        PopulationProductResource,
+        ProductResource,
         SlideResource,
         Carousel
     ) {
         $scope.load = true;
 
         $q.all([
-            PopulationProductResource.query(),
+            ProductResource.queryPopulation(),
             SlideResource.query()
         ])
             .then(function (response) {
