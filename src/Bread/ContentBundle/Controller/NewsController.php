@@ -2,11 +2,11 @@
 
 namespace Bread\ContentBundle\Controller;
 
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class NewsController extends Controller
+class NewsController extends BaseController
 {
     /**
      * @Route("/news", name="news")
@@ -15,7 +15,9 @@ class NewsController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('@BreadContent/News/list.html.twig');
+        return $this->render('@BreadContent/News/list.html.twig', [
+            'page'  =>  $this->getPage()
+        ]);
     }
 
     /**

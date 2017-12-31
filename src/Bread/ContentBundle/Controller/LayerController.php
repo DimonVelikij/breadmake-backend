@@ -2,11 +2,11 @@
 
 namespace Bread\ContentBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class LayerController extends Controller
+class LayerController extends BaseController
 {
     /**
      * @Route("/layer/{name}", name="layer")
@@ -16,6 +16,8 @@ class LayerController extends Controller
      */
     public function layerAction(Request $request, $name)
     {
-        return $this->render('@BreadContent/Layer/' . $name . '.html.twig');
+        return $this->render('@BreadContent/Layer/' . $name . '.html.twig', [
+
+        ]);
     }
 }

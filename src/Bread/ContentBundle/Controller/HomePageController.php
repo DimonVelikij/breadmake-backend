@@ -2,11 +2,11 @@
 
 namespace Bread\ContentBundle\Controller;
 
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class HomePageController extends Controller
+class HomePageController extends BaseController
 {
     /**
      * @Route("/", name="homepage")

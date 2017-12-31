@@ -2,11 +2,11 @@
 
 namespace Bread\ContentBundle\Controller;
 
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DeclarationController extends Controller
+class DeclarationController extends BaseController
 {
     /**
      * @Route("/declarations", name="declaration")
@@ -15,6 +15,8 @@ class DeclarationController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('@BreadContent/Declaration/declaration.html.twig');
+        return $this->render('@BreadContent/Declaration/declaration.html.twig', [
+            'page'  =>  $this->getPage()
+        ]);
     }
 }

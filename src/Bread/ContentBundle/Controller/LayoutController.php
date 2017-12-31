@@ -2,12 +2,12 @@
 
 namespace Bread\ContentBundle\Controller;
 
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Bread\ContentBundle\Entity\Company;
 use Bread\ContentBundle\Repository\CompanyRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 
-class LayoutController extends Controller
+class LayoutController extends BaseController
 {
     /**
      * генерация шаблона хедера

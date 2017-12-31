@@ -2,11 +2,11 @@
 
 namespace Bread\ContentBundle\Controller;
 
+use Bread\ContentBundle\Controller\Base\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class AboutController extends Controller
+class AboutController extends BaseController
 {
     /**
      * @Route("/about", name="about")
@@ -15,6 +15,8 @@ class AboutController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('@BreadContent/About/about.html.twig');
+        return $this->render('@BreadContent/About/about.html.twig', [
+
+        ]);
     }
 }
