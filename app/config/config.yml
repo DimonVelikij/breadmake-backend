@@ -200,6 +200,11 @@ assetic:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
                 - 'bundles/breadcontent/js/homepage/controllers/*.js'
 
+        product_module:
+            inputs:
+                - 'bundles/breadcontent/js/product/product.module.js'
+                - 'bundles/breadcontent/js/product/controllers/*.js'
+
         price_list_module:
             inputs:
                 - 'bundles/breadcontent/js/price-list/price-list.module.js'
@@ -229,6 +234,7 @@ assetic:
             inputs:
                 - '@core_module'
                 - '@homepage_module'
+                - '@product_module'
                 - '@price_list_module'
                 - '@declaration_module'
                 - '@news_module'
