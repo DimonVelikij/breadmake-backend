@@ -5,7 +5,8 @@
         'ngResource',
         'ngSanitize',
         'ngMessages',
-        'ui.mask'
+        'ui.mask',
+        'duScroll'
     ]);
 
 })(angular);
