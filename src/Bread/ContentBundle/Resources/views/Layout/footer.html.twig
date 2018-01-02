@@ -70,14 +70,14 @@
                         {% if company.data.payment is defined and company.data.payment %}
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ path('about') }}" class="text text_white text_center text-footer"><i class="fa fa-credit-card"></i> Оплата</a>
+                                    <a href="{{ path('about') }}#payment" class="text text_white text_center text-footer"><i class="fa fa-credit-card"></i> Оплата</a>
                                 </div>
                             </div>
                         {% endif %}
                         {% if company.data.delivery is defined and company.data.delivery %}
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <a href="{{ path('about') }}" class="text text_white text_center text-footer"><i class="fa fa-truck"></i> Доставка</a>
+                                    <a href="{{ path('about') }}#delivery" class="text text_white text_center text-footer"><i class="fa fa-truck"></i> Доставка</a>
                                 </div>
                             </div>
                         {% endif %}

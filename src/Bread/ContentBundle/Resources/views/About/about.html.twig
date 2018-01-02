@@ -34,11 +34,11 @@
                                         </div>
                                     </div>
                             </div>
-                            <div class="about-payment" ng-if="company.getPayment()">
+                            <div id="_payment" class="about-payment" ng-if="company.getPayment()">
                                 <h3>Оплата</h3>
                                 <span class="brown-light" ng-bind-html="company.getPayment()"></span>
                             </div>
-                            <div class="about-delivery" ng-if="company.getDelivery()">
+                            <div id="_delivery" class="about-delivery" ng-if="company.getDelivery()">
                                 <h3>Доставка</h3>
                                 <span class="brown-light" ng-bind-html="company.getDelivery()"></span>
                             </div>

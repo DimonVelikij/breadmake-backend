@@ -190,6 +190,7 @@ assetic:
             inputs:
                 - 'bundles/breadcontent/js/core/core.module.js'
                 - 'bundles/breadcontent/js/core/core.config.js'
+                - 'bundles/breadcontent/js/core/core.run.js'
                 - 'bundles/breadcontent/js/core/controllers/*.js'
                 - 'bundles/breadcontent/js/core/services/*.js'
                 - 'bundles/breadcontent/js/core/models/*.js'
