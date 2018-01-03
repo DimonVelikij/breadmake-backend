@@ -98,13 +98,13 @@ bread_content:
     asset_dir: "media/images"
     entities:
         product:
-            min_width: 250
-            min_height: 250
+            min_width: 270
+            min_height: 270
             max_width: 5000
             max_height: 4000
             crop_size:
-                width: 250
-                height: 250
+                width: 270
+                height: 270
             mime_types: ['jpeg', 'png']
         declaration:
             min_width: 425
