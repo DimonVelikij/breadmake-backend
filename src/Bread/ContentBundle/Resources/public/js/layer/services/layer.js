@@ -34,7 +34,7 @@
         function open(url, scope) {
             var defer = $q.defer();
 
-            scope.load = true;
+            scope.technicalLoad = true;
 
             angular.extend(scope, {
                 Layer: {
@@ -62,7 +62,7 @@
                 });
 
             }).finally(function () {
-                scope.load = false;
+                scope.technicalLoad = false;
             });
 
             return defer.promise;
