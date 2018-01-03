@@ -3,9 +3,10 @@
 {% block content %}
     <div ng-controller="DeclarationCtrl" ng-cloak>
         <div class="load" ng-show="load"></div>
+        <div class="load-space-block" ng-hide="!load"></div>
         <section>
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-12" ng-show="!load">
                     <div class="row">
                         <h1>{{ page.title }}</h1>
                     </div>
@@ -14,12 +15,12 @@
                     <div class="declarations-list clearfix" ng-show="declarations.length">
                         <declaration ng-repeat="declaration in declarations" source="declaration"></declaration>
                     </div>
-                    <div ng-show="!declarations.length && !dataLoadError">
+                    <div ng-if="!load && !declarations.length && !dataLoadError">
                         <div class="col-md-12">
                             <p>Спиок деклараций пуст</p>
                         </div>
                     </div>
-                    <div ng-show="dataLoadError">
+                    <div ng-if="dataLoadError">
                         <div class="col-md-12">
                             <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
                         </div>

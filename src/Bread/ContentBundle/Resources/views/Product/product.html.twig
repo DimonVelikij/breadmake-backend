@@ -3,8 +3,9 @@
 {% block content %}
     <section ng-controller="ProductCtrl" ng-cloak>
         <div class="load" ng-show="load"></div>
+        <div class="load-space-block" ng-hide="!load"></div>
         <div class="container">
-            <div class="col-md-12">
+            <div class="col-md-12" ng-show="!load">
                 <div class="row">
                     <h1>{{ page.title }}</h1>
                 </div>
@@ -19,12 +20,12 @@
             <div class="row" ng-show="products.length">
                 <product ng-repeat="product in products" source="product"></product>
             </div>
-            <div class="row" ng-show="!products.length && !dataLoadError">
+            <div class="row" ng-if="!load && !products.length && !dataLoadError">
                 <div class="col-md-12">
                     <p>Список продукции пуст</p>
                 </div>
             </div>
-            <div class="row" ng-show="dataLoadError">
+            <div class="row" ng-if="dataLoadError">
                 <div class="col-md-12">
                     <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
                 </div>
