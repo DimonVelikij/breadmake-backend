@@ -16,7 +16,7 @@ class HomePageController extends BaseController
     public function indexAction(Request $request)
     {
         return $this->render('@BreadContent/HomePage/home_page.html.twig', [
-
+            'page'  =>  $this->getPage()
         ]);
     }
 }

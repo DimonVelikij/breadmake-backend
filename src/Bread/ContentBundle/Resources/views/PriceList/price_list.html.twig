@@ -1,5 +1,7 @@
 {% extends '@BreadContent/layout.html.twig' %}
 
+{% block title %}{{ page.title }}{% endblock %}
+
 {% block content %}
     <section ng-controller="PriceListCtrl" ng-cloak>
         <div class="load" ng-show="load"></div>

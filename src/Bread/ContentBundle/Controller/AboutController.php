@@ -16,7 +16,7 @@ class AboutController extends BaseController
     public function indexAction(Request $request)
     {
         return $this->render('@BreadContent/About/about.html.twig', [
-
+            'page'  =>  $this->getPage()
         ]);
     }
 }
