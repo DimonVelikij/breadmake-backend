@@ -13,7 +13,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 new-item__img-block">
-                        <img ng-if="new.getCountImages()" ng-src="[[ new.getImages()[0].getCropPath() ]]" alt="" class="new-item__img">
+                        <img
+                            ng-if="new.getCountImages()"
+                            data-src="[[ new.getImages()[0].getCropPath() ]]"
+                            alt="[[ new.getTitle() ]]"
+                            title="[[ new.getTitle() ]]"
+                            class="new-item__img"
+                            ng-class="{'new-item__load': imageLoad}"
+                            image-loader
+                        >
                         {#нужна заглушка#}
                     </div>
                 </div>

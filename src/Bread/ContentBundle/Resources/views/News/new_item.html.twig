@@ -28,7 +28,14 @@
                     <div class="new-gallery clearfix">
                         <div class="col-md-3 col-sm-3 col-xs-6" ng-repeat="image in newItem.getImages()">
                             <a ng-href="[[ image.getPath() ]]" data-fancybox="new-img">
-                                <img ng-src="[[ image.getCropPath() ]]" alt="" class="new__img">
+                                <img
+                                    data-src="[[ image.getCropPath() ]]"
+                                    alt=""
+                                    title=""
+                                    class="new__img"
+                                    ng-class="{'new__img_load': imageLoad}"
+                                    image-loader
+                                >
                             </a>
                         </div>
                     </div>

@@ -6,7 +6,14 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="product">
             <a ng-href="[[ product.getImage().getPath() ]]" data-fancybox data-caption="[[ product.getTitle() ]]">
-                <img class="product__img" image-loader ng-class="{'product__load': imageLoad}" data-src="[[ product.getImage().getCropPath() ]]" alt="[[ product.getTitle() ]]">
+                <img
+                    data-src="[[ product.getImage().getCropPath() ]]"
+                    alt="[[ product.getTitle() ]]"
+                    title="[[ product.getTitle() ]]"
+                    class="product__img"
+                    ng-class="{'product__load': imageLoad}"
+                    image-loader
+                >
             </a>
             <p class="product__title">[[ product.getTitle() ]]</p>
             <div class="product__info">

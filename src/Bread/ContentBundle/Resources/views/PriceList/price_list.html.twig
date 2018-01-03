@@ -43,7 +43,7 @@
                         <p>Прайс-лист пуст</p>
                     </div>
                 </div>
-                <div ng-if="dataLoadError">
+                <div ng-if="!load && dataLoadError">
                     <div class="col-md-12">
                         <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
                     </div>

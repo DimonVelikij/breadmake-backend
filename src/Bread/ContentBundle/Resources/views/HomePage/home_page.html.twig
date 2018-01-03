@@ -23,7 +23,7 @@
                     <product ng-repeat="product in products"></product>
                 </div>
             </div>
-            <div class="container" ng-if="dataLoadError">
+            <div class="container" ng-if="!load && dataLoadError">
                 <div class="row">
                     <div class="col-md-12">
                         <p class="load-error load-error_14px">Во время загрузки данных возникли ошибки</p>
