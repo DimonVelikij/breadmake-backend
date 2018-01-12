@@ -7,18 +7,37 @@
 
     ProductController.$inject = [
         '$scope',
-        'ProductResource'
+        'ProductResource',
+        'FilterBuilder',
+        'ProductFilterConfiguration'
     ];
 
     function ProductController (
         $scope,
-        ProductResource
+        ProductResource,
+        FilterBuilder,
+        ProductFilterConfiguration
     ) {
         $scope.load = true;
-        
+
+        /**
+         * натсройка фильтра
+         */
+        $scope.filterStorage = FilterBuilder
+            .setFilterConfiguration(ProductFilterConfiguration)
+            .setDefaultFilterData({
+                category: 'all',
+                unit: 'all',
+                flour: 'all'
+            })
+            .setWatchVariable('filterValue')
+            .init($scope);
+
         ProductResource.query()
             .then(function (products) {
-                $scope.products = products;
+                $scope.filterStorage
+                    .setData(products)
+                    .preFilter();
             }, function () {
                 $scope.dataLoadError = true;
             })

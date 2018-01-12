@@ -7,18 +7,28 @@
 
     config.$inject = [
         '$interpolateProvider',
-        '$resourceProvider'
+        '$resourceProvider',
+        '$locationProvider'
     ];
 
     function config(
         $interpolateProvider,
-        $resourceProvider
+        $resourceProvider,
+        $locationProvider
     ) {
         $interpolateProvider
             .startSymbol('[[')
             .endSymbol(']]');
 
         $resourceProvider.defaults.stripTrailingSlashes = false;
+
+        $locationProvider
+            .html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+
+        $locationProvider.hashPrefix('!');
     }
 
 })(angular);

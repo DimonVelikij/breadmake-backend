@@ -92,6 +92,18 @@
             return this.Image;
         };
 
+        Product.prototype.filterByCategory = function (value) {
+            return this.getCategory().getId() == value;
+        };
+
+        Product.prototype.filterByUnit = function (value) {
+            return this.getUnit().getId() == value;
+        };
+
+        Product.prototype.filterByFlour = function (value) {
+            return this.getFlour().getId() == value;
+        };
+
         Product.build = function (data) {
             return Entity.build(Product, data);
         };

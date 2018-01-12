@@ -205,6 +205,7 @@ assetic:
             inputs:
                 - 'bundles/breadcontent/js/product/product.module.js'
                 - 'bundles/breadcontent/js/product/controllers/*.js'
+                - 'bundles/breadcontent/js/product/services/*.js'
 
         price_list_module:
             inputs:
