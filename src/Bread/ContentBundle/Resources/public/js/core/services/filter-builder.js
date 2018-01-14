@@ -62,6 +62,8 @@
             this.scope.priceSliderOptions = {
                 floor: this.filterConfiguration['minPrice'].filteringFn(this.data),
                 ceil: this.filterConfiguration['maxPrice'].filteringFn(this.data),
+                minRange: 1,
+                noSwitching: true,
                 translate: function (value) {
                     return value + '<i class="fa fa-rouble brown-dark"></i>';
                 }
@@ -167,16 +169,19 @@
             scope.$on("slideEnded", function(data) {
                 scope.technicalLoad = true;
 
-                self.currentFilterData.minPrice = data.targetScope.rzSliderModel;
-                self.currentFilterData.maxPrice = data.targetScope.rzSliderHigh;
+                var minPrice = data.targetScope.rzSliderModel,
+                    maxPrice = data.targetScope.rzSliderHigh;
 
-                self.scope.priceSliderOptions.minLimit = data.targetScope.rzSliderModel;
-                self.scope.priceSliderOptions.maxLimit = data.targetScope.rzSliderHigh;
+                self.currentFilterData.minPrice = minPrice;
+                self.currentFilterData.maxPrice = maxPrice;
 
                 self.filter({
-                    minPrice: data.targetScope.rzSliderModel,
-                    maxPrice: data.targetScope.rzSliderHigh
-                }).then(function () {}).finally(function () {
+                    minPrice: minPrice,
+                    maxPrice: maxPrice
+                }).then(function () {
+                    self.scope.priceSliderOptions.minLimit = self.filterData.minPrice;
+                    self.scope.priceSliderOptions.maxLimit = self.filterData.maxPrice;
+                }).finally(function () {
                     scope.technicalLoad = false;
                 });
             });
