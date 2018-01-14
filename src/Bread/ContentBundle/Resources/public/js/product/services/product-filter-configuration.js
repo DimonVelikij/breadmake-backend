@@ -54,7 +54,8 @@
             },
             'minPrice': {
                 filteringFn: function (collection) {
-                    var minPrice = collection[0].getPrice();
+                    var minPrice = collection[0].getPrice(),
+                        locationParams = $location.search();
 
                     _.forEach(collection, function (product) {
                         if (product.getPrice() < minPrice) {
@@ -64,14 +65,17 @@
 
                     minPrice = Math.floor(minPrice);
 
-                    $location.search('minPrice', minPrice)
+                    if (!locationParams['minPrice']) {
+                        $location.search('minPrice', minPrice);
+                    }
 
                     return minPrice;
                 }
             },
             'maxPrice': {
                 filteringFn: function (collection) {
-                    var maxPrice = collection[0].getPrice();
+                    var maxPrice = collection[0].getPrice(),
+                        locationParams = $location.search();
 
                     _.forEach(collection, function (product) {
                         if (product.getPrice() > maxPrice) {
@@ -81,7 +85,9 @@
 
                     maxPrice = Math.ceil(maxPrice);
 
-                    $location.search('maxPrice', maxPrice);
+                    if (!locationParams['minPrice']) {
+                        $location.search('maxPrice', maxPrice);
+                    }
 
                     return maxPrice;
                 }
