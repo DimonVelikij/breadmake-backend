@@ -28,7 +28,9 @@
             .setDefaultFilterData({
                 category: 'all',
                 unit: 'all',
-                flour: 'all'
+                flour: 'all',
+                minPrice: true,
+                maxPrice: true
             })
             .setWatchVariable('filterValue')
             .init($scope);
@@ -37,6 +39,7 @@
             .then(function (products) {
                 $scope.filterStorage
                     .setData(products)
+                    .initPriceSliderOptions()
                     .preFilter();
             }, function () {
                 $scope.dataLoadError = true;

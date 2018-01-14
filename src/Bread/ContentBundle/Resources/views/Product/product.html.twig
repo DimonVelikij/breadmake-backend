@@ -30,6 +30,12 @@
                         <option ng-repeat="item in filterStorage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
                     </select>
                 </div>
+                <rzslider
+                        class="custom-slider"
+                        rz-slider-model="filterStorage.filterData.minPrice"
+                        rz-slider-high="filterStorage.filterData.maxPrice"
+                        rz-slider-options="priceSliderOptions"
+                ></rzslider>
             </div>
             <div class="row" ng-show="filterStorage.filteredData.length">
                 <product ng-repeat="product in filterStorage.filteredData" source="product"></product>

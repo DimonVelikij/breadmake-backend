@@ -5,10 +5,12 @@
         .module('content.core')
         .factory('ProductFilterConfiguration', ProductFilterConfiguration);
 
-    ProductFilterConfiguration.$inject = [];
+    ProductFilterConfiguration.$inject = [
+        '$location'
+    ];
 
     function ProductFilterConfiguration (
-
+        $location
     ) {
         return {
             'category': {
@@ -48,6 +50,40 @@
                     flours.unshift({Id: 'all', Title: 'Все сорта муки'});
 
                     return flours;
+                }
+            },
+            'minPrice': {
+                filteringFn: function (collection) {
+                    var minPrice = collection[0].getPrice();
+
+                    _.forEach(collection, function (product) {
+                        if (product.getPrice() < minPrice) {
+                            minPrice = product.getPrice();
+                        }
+                    });
+
+                    minPrice = Math.floor(minPrice);
+
+                    $location.search('minPrice', minPrice)
+
+                    return minPrice;
+                }
+            },
+            'maxPrice': {
+                filteringFn: function (collection) {
+                    var maxPrice = collection[0].getPrice();
+
+                    _.forEach(collection, function (product) {
+                        if (product.getPrice() > maxPrice) {
+                            maxPrice = product.getPrice();
+                        }
+                    });
+
+                    maxPrice = Math.ceil(maxPrice);
+
+                    $location.search('maxPrice', maxPrice);
+
+                    return maxPrice;
                 }
             }
         }

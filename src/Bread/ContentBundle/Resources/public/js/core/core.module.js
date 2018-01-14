@@ -6,7 +6,8 @@
         'ngSanitize',
         'ngMessages',
         'ui.mask',
-        'duScroll'
+        'duScroll',
+        'rzModule'
     ]);
 
 })(angular);

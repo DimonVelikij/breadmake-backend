@@ -31,6 +31,7 @@
             this.currentFilterData = null;//текущие данные фильтра
             this.previewFilterData = null;//предыдущие данные фильтра
             this.watchVariable = null;//название переменной, изменения которой нужно отслеживать
+            this.scope = null;//scope контроллера
         }
 
         /**
@@ -45,6 +46,26 @@
 
             this.data = data;
             this.isReady = true;//после установки данных фильтр готов к работе
+
+            return this;
+        };
+
+        /**
+         * инициализация опций слайдера цены (вызывается сразу после присвоения данных)
+         * @returns {FilterBuilder}
+         */
+        FilterBuilder.prototype.initPriceSliderOptions = function () {
+            if (!this.isInit) {
+                throw new Error('Фильтр неинициализирован');
+            }
+
+            this.scope.priceSliderOptions = {
+                floor: this.filterConfiguration['minPrice'].filteringFn(this.data),
+                ceil: this.filterConfiguration['maxPrice'].filteringFn(this.data),
+                translate: function (value) {
+                    return value + '<i class="fa fa-rouble brown-dark"></i>';
+                }
+            };
 
             return this;
         };
@@ -113,6 +134,8 @@
                 throw new Error('Не установлена переменная отслеживания фильтра');
             }
 
+            this.scope = scope;
+
             scope[this.watchVariable] = this.defaultFilterData;
             this.currentFilterData = scope[this.watchVariable];
 
@@ -136,6 +159,26 @@
                     .finally(function () {
                         scope.technicalLoad = false;
                     });
+            });
+
+            /**
+             * ловим событие изменения цены
+             */
+            scope.$on("slideEnded", function(data) {
+                scope.technicalLoad = true;
+
+                self.currentFilterData.minPrice = data.targetScope.rzSliderModel;
+                self.currentFilterData.maxPrice = data.targetScope.rzSliderHigh;
+
+                self.scope.priceSliderOptions.minLimit = data.targetScope.rzSliderModel;
+                self.scope.priceSliderOptions.maxLimit = data.targetScope.rzSliderHigh;
+
+                self.filter({
+                    minPrice: data.targetScope.rzSliderModel,
+                    maxPrice: data.targetScope.rzSliderHigh
+                }).then(function () {}).finally(function () {
+                    scope.technicalLoad = false;
+                });
             });
 
             this.isInit = true;

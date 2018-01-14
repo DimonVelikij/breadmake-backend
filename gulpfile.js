@@ -44,6 +44,7 @@ gulp.task('scripts', function () {
             'src/Bread/ContentBundle/Resources/public/vendor/angular-messages/angular-messages.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/angular-ui-mask/dist/mask.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/angular-scroll/angular-scroll.min.js',
+            'src/Bread/ContentBundle/Resources/public/vendor/angularjs-slider/dist/rzslider.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/lodash/dist/lodash.min.js',
             'src/Bread/ContentBundle/Resources/public/vendor/owl.carousel/dist/owl.carousel.min.js'
         ])

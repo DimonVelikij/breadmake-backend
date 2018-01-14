@@ -104,6 +104,22 @@
             return this.getFlour().getId() == value;
         };
 
+        Product.prototype.filterByMinPrice = function (value) {
+            if (value === true) {
+                return true;
+            }
+
+            return this.getPrice() >= value;
+        };
+
+        Product.prototype.filterByMaxPrice = function (value) {
+            if (value === true) {
+                return true;
+            }
+
+            return this.getPrice() <= value;
+        };
+
         Product.build = function (data) {
             return Entity.build(Product, data);
         };
