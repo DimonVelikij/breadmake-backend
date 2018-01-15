@@ -85,7 +85,7 @@
 
                     maxPrice = Math.ceil(maxPrice);
 
-                    if (!locationParams['minPrice']) {
+                    if (!locationParams['maxPrice']) {
                         $location.search('maxPrice', maxPrice);
                     }
 
