@@ -15,19 +15,19 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="products-filter">
-                        <select name="" id="" ng-model="filterValue.category">
-                            <option ng-repeat="item in filterStorage.filterData.category" value="[[item.Id]]">[[item.Title]]</option>
+                        <select name="" id="" ng-model="storage.filter.category">
+                            <option ng-repeat="item in storage.filterData.category" value="[[item.Id]]">[[item.Title]]</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <select name="" id="" ng-model="filterValue.unit">
-                        <option ng-repeat="item in filterStorage.filterData.unit" value="[[item.Id]]">[[item.Title]]</option>
+                    <select name="" id="" ng-model="storage.filter.unit">
+                        <option ng-repeat="item in storage.filterData.unit" value="[[item.Id]]">[[item.Title]]</option>
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select name="" id="" ng-model="filterValue.flour">
-                        <option ng-repeat="item in filterStorage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
+                    <select name="" id="" ng-model="storage.filter.flour">
+                        <option ng-repeat="item in storage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
                     </select>
                 </div>
             </div>
@@ -35,16 +35,16 @@
                 <div class="col-md-6">
                     <rzslider
                             class="custom-slider"
-                            rz-slider-model="filterStorage.filterData.minPrice"
-                            rz-slider-high="filterStorage.filterData.maxPrice"
-                            rz-slider-options="priceSliderOptions"
+                            rz-slider-model="storage.filter.minPrice"
+                            rz-slider-high="storage.filter.maxPrice"
+                            rz-slider-options="storage.priceSliderOptions"
                     ></rzslider>
                 </div>
             </div>
-            <div class="row" ng-show="filterStorage.filteredData.length">
-                <product ng-repeat="product in filterStorage.filteredData" source="product"></product>
+            <div class="row" ng-show="storage.filteredData.length">
+                <product ng-repeat="product in storage.filteredData" source="product"></product>
             </div>
-            <div class="row" ng-if="!load && !filterStorage.filteredData.length && !dataLoadError">
+            <div class="row" ng-if="!load && !storage.filteredData.length && !dataLoadError">
                 <div class="col-md-12">
                     <p>Список продукции пуст</p>
                 </div>

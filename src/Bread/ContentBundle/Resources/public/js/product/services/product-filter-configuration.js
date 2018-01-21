@@ -6,14 +6,15 @@
         .factory('ProductFilterConfiguration', ProductFilterConfiguration);
 
     ProductFilterConfiguration.$inject = [
-        '$location'
+
     ];
 
     function ProductFilterConfiguration (
-        $location
+
     ) {
         return {
             'category': {
+                defaultValue: 'all',
                 allValue: 'all',
                 filteringFn: function (collection) {
                     var categories = _.values(_.reduce(collection, function (acc, product) {
@@ -27,6 +28,7 @@
                 }
             },
             'unit': {
+                defaultValue: 'all',
                 allValue: 'all',
                 filteringFn: function (collection) {
                     var units = _.values(_.reduce(collection, function (acc, product) {
@@ -40,6 +42,7 @@
                 }
             },
             'flour': {
+                defaultValue: 'all',
                 allValue: 'all',
                 filteringFn: function (collection) {
                     var flours = _.values(_.reduce(collection, function (acc, product) {
@@ -53,9 +56,9 @@
                 }
             },
             'minPrice': {
+                defaultValue: 0,
                 filteringFn: function (collection) {
-                    var minPrice = collection[0].getPrice(),
-                        locationParams = $location.search();
+                    var minPrice = collection[0].getPrice();
 
                     _.forEach(collection, function (product) {
                         if (product.getPrice() < minPrice) {
@@ -63,19 +66,13 @@
                         }
                     });
 
-                    minPrice = Math.floor(minPrice);
-
-                    if (!locationParams['minPrice']) {
-                        $location.search('minPrice', minPrice);
-                    }
-
-                    return minPrice;
+                    return Math.floor(minPrice);
                 }
             },
             'maxPrice': {
+                defaultValue: 0,
                 filteringFn: function (collection) {
-                    var maxPrice = collection[0].getPrice(),
-                        locationParams = $location.search();
+                    var maxPrice = collection[0].getPrice();
 
                     _.forEach(collection, function (product) {
                         if (product.getPrice() > maxPrice) {
@@ -83,13 +80,7 @@
                         }
                     });
 
-                    maxPrice = Math.ceil(maxPrice);
-
-                    if (!locationParams['maxPrice']) {
-                        $location.search('maxPrice', maxPrice);
-                    }
-
-                    return maxPrice;
+                    return Math.ceil(maxPrice);
                 }
             }
         }

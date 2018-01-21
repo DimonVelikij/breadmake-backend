@@ -9,38 +9,41 @@
         '$scope',
         'ProductResource',
         'FilterBuilder',
-        'ProductFilterConfiguration'
+        'ProductFilterConfiguration',
+        'ProductFilterExtension'
     ];
 
     function ProductController (
         $scope,
         ProductResource,
         FilterBuilder,
-        ProductFilterConfiguration
+        ProductFilterConfiguration,
+        ProductFilterExtension
     ) {
         $scope.load = true;
 
-        /**
-         * натсройка фильтра
-         */
-        $scope.filterStorage = FilterBuilder
+        var filterBuilder = FilterBuilder
+            .create()
             .setFilterConfiguration(ProductFilterConfiguration)
-            .setDefaultFilterData({
-                category: 'all',
-                unit: 'all',
-                flour: 'all',
-                minPrice: true,
-                maxPrice: true
+            .extend({
+                filter: ProductFilterExtension
             })
-            .setWatchVariable('filterValue')
-            .init($scope);
+            .addFilterFields(['category', 'unit', 'flour', 'minPrice', 'maxPrice']);
+
+        $scope.storage = filterBuilder.createStorage();
+
+        $scope.$on("slideEnded", function(data) {
+            var minPrice = data.targetScope.rzSliderModel,
+                maxPrice = data.targetScope.rzSliderHigh;
+
+            $scope.storage.filter.minPrice = minPrice;
+            $scope.storage.filter.maxPrice = maxPrice;
+            $scope.storage.filter.filter().then(function (response) {});
+        });
 
         ProductResource.query()
             .then(function (products) {
-                $scope.filterStorage
-                    .setData(products)
-                    .initPriceSliderOptions()
-                    .preFilter();
+                $scope.storage.setData(products);
             }, function () {
                 $scope.dataLoadError = true;
             })

@@ -196,6 +196,7 @@ assetic:
                 - 'bundles/breadcontent/js/core/models/*.js'
                 - 'bundles/breadcontent/js/core/directives/*.js'
                 - 'bundles/breadcontent/js/core/filters/*.js'
+                - 'bundles/breadcontent/js/core/filter/*.js'
         homepage_module:
             inputs:
                 - 'bundles/breadcontent/js/homepage/homepage.module.js'
