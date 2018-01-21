@@ -90,7 +90,7 @@
         };
 
         Filter.prototype.preFilter = function () {
-            var locationParams = $location.search(),
+            var locationParams = _.clone($location.search()),
                 self = this;
 
             _.forEach(locationParams, function (paramValue, paramName) {
