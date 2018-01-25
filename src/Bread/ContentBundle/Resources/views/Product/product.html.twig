@@ -30,6 +30,9 @@
                         <option ng-repeat="item in storage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
                     </select>
                 </div>
+                <div class="col-md-4">
+                    <input type="checkbox" ng-model="storage.sort.price" ng-true-value="'asc'" ng-false-value="'desc'"> сортировка
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
