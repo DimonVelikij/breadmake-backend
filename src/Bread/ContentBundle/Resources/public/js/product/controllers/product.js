@@ -9,26 +9,33 @@
         '$scope',
         'ProductResource',
         'FilterBuilder',
+        'ProductFilterExtension',
+        'ProductSortExtension',
         'ProductFilterConfiguration',
-        'ProductFilterExtension'
+        'ProductSortConfiguration'
     ];
 
     function ProductController (
         $scope,
         ProductResource,
         FilterBuilder,
+        ProductFilterExtension,
+        ProductSortExtension,
         ProductFilterConfiguration,
-        ProductFilterExtension
+        ProductSortConfiguration
     ) {
         $scope.load = true;
 
         var filterBuilder = FilterBuilder
             .create()
-            .setFilterConfiguration(ProductFilterConfiguration)
             .extend({
-                filter: ProductFilterExtension
+                filter: ProductFilterExtension,
+                sort: ProductSortExtension
             })
-            .addFilterFields(['category', 'unit', 'flour', 'minPrice', 'maxPrice']);
+            .setFilterConfiguration(ProductFilterConfiguration)
+            .addFilterFields(['category', 'unit', 'flour', 'minPrice', 'maxPrice'])
+            .setSortConfiguration(ProductSortConfiguration)
+            .addSortFields(['price']);
 
         $scope.storage = filterBuilder.createStorage();
 

@@ -10,17 +10,20 @@
 
     FilterBuilderFactory.$inject = [
         'Filter',
-        'FilterStorage'
+        'FilterStorage',
+        'Sort'
     ];
 
     function FilterBuilderFactory(
         Filter,
-        FilterStorage
+        FilterStorage,
+        Sort
     ) {
         function FilterBuilder() {
             this.filterConfiguration = {};//конфигурация фильтра
             this.sortConfiguration = {};//конфигурация сортировки
             this.filterFields = [];//фильтруемые поля
+            this.sortFields = [];//сортируемые поля
         }
 
         FilterBuilder.prototype.setFilterConfiguration = function (filterConfiguration) {
@@ -41,9 +44,19 @@
             return this;
         };
 
+        FilterBuilder.prototype.addSortFields = function (sortFields) {
+            this.sortFields = sortFields;
+
+            return this;
+        };
+
         FilterBuilder.prototype.extend = function (extensions) {
             if (extensions.filter) {
                 extensions.filter.extend(Filter);
+            }
+
+            if (extensions.sort) {
+                extensions.sort.extend(Sort);
             }
 
             return this;
@@ -51,12 +64,28 @@
 
         FilterBuilder.prototype.createStorage = function () {
             var storage = new FilterStorage();
-            storage.filter = Filter
-                .create()
-                .setStorage(storage)
-                .addFields(this.filterFields)
-                .setConfiguration(this.filterConfiguration)
-                .init();
+
+            if (this.filterFields && this.filterConfiguration) {
+                storage.filter = Filter
+                    .create()
+                    .setStorage(storage)
+                    .addFields(this.filterFields)
+                    .setConfiguration(this.filterConfiguration)
+                    .init();
+            }
+
+            if (this.sortFields && this.sortConfiguration) {
+                storage.sort = Sort
+                    .create()
+                    .setStorage(storage)
+                    .addFields(this.sortFields)
+                    .setConfiguration(this.sortConfiguration)
+                    .init();
+            }
+
+            if (!storage.filter && !storage.sort) {
+                throw new Error('Не настроен ни фильтр, ни сортировка');
+            }
 
             return storage;
         };

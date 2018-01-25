@@ -94,7 +94,7 @@
                 self = this;
 
             _.forEach(locationParams, function (paramValue, paramName) {
-                if (!paramName in self) {
+                if (!self.configuration[paramName]) {
                     return;
                 }
                 self[paramName] = paramValue;
@@ -125,6 +125,10 @@
                     }
                 });
             });
+
+            if (this.storage.sort) {
+                this.storage.sort.preSort();
+            }
 
             defer.resolve(true);
 
