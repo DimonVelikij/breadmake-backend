@@ -14,24 +14,26 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="products-filter">
-                        <select name="" id="" ng-model="storage.filter.category">
-                            <option ng-repeat="item in storage.filterData.category" value="[[item.Id]]">[[item.Title]]</option>
+                    <div class="select-block">
+                        <i class="fa "></i>
+                        <select class="select" name="" id="" ng-model="storage.filter.category">
+                            <option class="select-option" ng-class="{'select-option_active': storage.filter.category == item.Id}" ng-repeat="item in storage.filterData.category" value="[[item.Id]]">[[item.Title]]</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <select name="" id="" ng-model="storage.filter.unit">
-                        <option ng-repeat="item in storage.filterData.unit" value="[[item.Id]]">[[item.Title]]</option>
-                    </select>
+                    <div class="products-filter">
+                        <select class="select" name="" id="" ng-model="storage.filter.unit">
+                            <option class="select-option" ng-repeat="item in storage.filterData.unit" value="[[item.Id]]">[[item.Title]]</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <select name="" id="" ng-model="storage.filter.flour">
-                        <option ng-repeat="item in storage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <input type="checkbox" ng-model="storage.sort.price" ng-true-value="'asc'" ng-false-value="'desc'"> сортировка
+                    <div class="products-filter">
+                        <select class="select" name="" id="" ng-model="storage.filter.flour">
+                            <option class="select-option" ng-repeat="item in storage.filterData.flour" value="[[item.Id]]">[[item.Title]]</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -42,6 +44,9 @@
                             rz-slider-high="storage.filter.maxPrice"
                             rz-slider-options="storage.priceSliderOptions"
                     ></rzslider>
+                </div>
+                <div class="col-md-4">
+                    <input type="checkbox" ng-model="storage.sort.price" ng-true-value="'asc'" ng-false-value="'desc'">
                 </div>
             </div>
             <div class="row" ng-show="storage.filteredData.length">

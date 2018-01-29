@@ -7,8 +7,7 @@
         'ngMessages',
         'ui.mask',
         'duScroll',
-        'rzModule',
-        'ngMaterial'
+        'rzModule'
     ]);
 
 })(angular);
