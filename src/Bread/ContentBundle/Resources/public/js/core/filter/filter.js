@@ -84,7 +84,7 @@
                         return;
                     }
 
-                    this.filter();
+                    this.filter().then(function (response) {});
                 }
             });
         };

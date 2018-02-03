@@ -61,7 +61,7 @@
         function clickToUiSelect (e) {
             if (!$element.has(e.target).length) {
                 $scope.toggleUiSelectOptions = false;
-                $scope.$digest();
+                $scope.$apply();
             }
         }
 

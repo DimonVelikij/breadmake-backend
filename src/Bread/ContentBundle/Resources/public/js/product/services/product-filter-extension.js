@@ -52,6 +52,9 @@
                 var minPrice = this.configuration['minPrice'].filteringFn(this.storage.data),
                     maxPrice = this.configuration['maxPrice'].filteringFn(this.storage.data);
 
+                this.configuration['minPrice'].allValue = minPrice;
+                this.configuration['maxPrice'].allValue = maxPrice;
+
                 if (!this['minPrice']) {
                     this['minPrice'] = minPrice;
                 }
@@ -72,7 +75,7 @@
                     }
                 };
 
-                this.filter();
+                this.filter().then(function (response) {});
             };
         }
     }
