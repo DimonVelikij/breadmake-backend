@@ -1,0 +1,20 @@
+{% extends '@BreadContent/AngularTemplates/base.html.twig' %}
+
+{% block templateId %}ui-select-directive.html{% endblock %}
+
+{% block templateContent %}
+    <div class="ui-select-match" ng-class="{'ui-select-match_active': toggleUiSelectOptions}" ng-click="toggleUiSelectOptions = !toggleUiSelectOptions">
+        <p class="ui-select-match-text">[[selectedItem[showBy] ]]</p>
+        <p class="ui-select-arrow"
+           ng-class="{'ui-select-arrow__down': toggleUiSelectOptions, 'ui-select-arrow__left': !toggleUiSelectOptionss}"
+        >
+            <i class="fa" ng-class="{'fa-angle-down': toggleUiSelectOptions, 'fa-angle-left': !toggleUiSelectOptions}"></i>
+        </p>
+        <div class="ui-select-options" ng-show="toggleUiSelectOptions">
+            <div class="ui-select-option" ng-repeat="item in items" ng-click="selectItem(item)">
+                <p class="ui-select-option__text">[[ item[showBy] ]]</p>
+                <p ng-show="selectedItem[showBy] == item[showBy]" class="ui-select-option__check"><i class="fa fa-check-circle"></i></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

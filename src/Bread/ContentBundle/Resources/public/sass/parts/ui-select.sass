@@ -1,0 +1,53 @@
+@import "../base-variables"
+
+.ui-select-match
+  position: relative
+  height: 40px
+  border-radius: $border-radius
+  border: 2px solid $orange
+  line-height: 35px
+  //z-index: 10000
+  &:hover
+    cursor: pointer
+  &_active
+    z-index: 10000
+
+.ui-select-match-text
+  padding-left: 10px
+  color: $brown-dark
+  font-size: 16px
+
+.ui-select-arrow
+  position: absolute
+  top: 0
+  font-size: 25px
+  font-weight: bold
+  &__left
+    right: 15px
+  &__down
+    right: 10px
+
+.ui-select-options
+  height: auto
+  margin: 5px 0 0 0
+  background-color: $white
+  border: 1px solid $brown-dark
+
+.ui-select-option
+  position: relative
+  height: 30px
+  line-height: 28px
+  &:hover
+    cursor: pointer
+    color: $orange
+
+.ui-select-option__text
+  padding-left: 10px
+  color: $brown-dark
+  &:hover
+    color: $orange
+
+.ui-select-option__check
+  position: absolute
+  top: 0
+  right: 10px
