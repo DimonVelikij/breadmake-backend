@@ -33,7 +33,7 @@
                 sort: ProductSortExtension
             })
             .setFilterConfiguration(ProductFilterConfiguration)
-            .addFilterFields(['category', 'unit', 'flour', 'minPrice', 'maxPrice'])
+            .addFilterFields(['category', 'unit', 'flour', 'minPrice', 'maxPrice', 'isNew', 'isPopulation'])
             .setSortConfiguration(ProductSortConfiguration)
             .addSortFields(['price']);
 

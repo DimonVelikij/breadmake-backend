@@ -36,7 +36,7 @@
                         return acc;
                     }, {}));
 
-                    units.unshift({Id: 'all', Title: 'Все измерения'});
+                    units.unshift({Id: 'all', Title: 'Все единицы измерения'});
 
                     return units;
                 }
@@ -81,6 +81,20 @@
                     });
 
                     return Math.ceil(maxPrice);
+                }
+            },
+            'isNew': {
+                defaultValue: false,
+                allValue: false,
+                filteringFn: function (collection) {
+                    return collection;
+                }
+            },
+            'isPopulation': {
+                defaultValue: false,
+                allValue: false,
+                filteringFn: function (collection) {
+                    return collection;
                 }
             }
         }

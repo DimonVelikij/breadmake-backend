@@ -55,7 +55,31 @@
                         ></rzslider>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="field-bottom-10">
+                        <input
+                            type="checkbox"
+                            id="filter-new"
+                            title="новинки"
+                            checkbox
+                            ng-model="storage.filter.isNew"
+                            ng-disabled="storage.filter.isPopulation"
+                        />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="field-bottom-10">
+                        <input
+                            type="checkbox"
+                            id="filter-population"
+                            title="популярные"
+                            checkbox
+                            ng-model="storage.filter.isPopulation"
+                            ng-disabled="storage.filter.isNew"
+                        />
+                    </div>
+                </div>
+                {#<div class="col-md-4">
                     <input
                         type="checkbox"
                         id="sort-price"
@@ -64,7 +88,7 @@
                         ng-model="storage.sort.price"
                         ng-true-value="'asc'" ng-false-value="'desc'"
                     />
-                </div>
+                </div>#}{#сортировка#}
             </div>
 
             <div class="row" ng-show="storage.filteredData.length">

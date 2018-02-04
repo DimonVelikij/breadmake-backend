@@ -120,6 +120,14 @@
             return this.getPrice() <= value;
         };
 
+        Product.prototype.filterByIsNew = function (value) {
+            return this.getIsNew() === value;
+        };
+
+        Product.prototype.filterByIsPopulation = function (value) {
+            return this.getIsPopulation() === value;
+        };
+
         Product.build = function (data) {
             return Entity.build(Product, data);
         };
