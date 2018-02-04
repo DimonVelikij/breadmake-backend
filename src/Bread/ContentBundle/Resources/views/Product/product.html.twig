@@ -55,9 +55,16 @@
                         ></rzslider>
                     </div>
                 </div>
-                {#<div class="col-md-4">
-                    <input type="checkbox" ng-model="storage.sort.price" ng-true-value="'asc'" ng-false-value="'desc'">
-                </div>#}
+                <div class="col-md-4">
+                    <input
+                        type="checkbox"
+                        id="sort-price"
+                        title="цена"
+                        checkbox
+                        ng-model="storage.sort.price"
+                        ng-true-value="'asc'" ng-false-value="'desc'"
+                    />
+                </div>
             </div>
 
             <div class="row" ng-show="storage.filteredData.length">

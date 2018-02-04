@@ -1,0 +1,68 @@
+@import "../base-variables"
+
+.checkbox-wrapper
+  display: inline-block
+
+.checkbox-wrapper:hover input[type="checkbox"][checkbox] + label
+  border: 2px solid $orange
+
+.checkbox-wrapper input[type="checkbox"][checkbox]
+  position: absolute
+  opacity: 0
+
+.checkbox-wrapper input[type="checkbox"][checkbox] + label
+  box-sizing: border-box
+  background-color: $white
+  cursor: pointer
+  display: inline-block
+  width: 25px
+  height: 25px
+  font-size: 25px
+  border: 2px solid $orange
+  transition: border 0.5s ease-out
+
+.checkbox-wrapper input[type="checkbox"][checkbox] + label:hover
+  border: 2px solid $brown-dark
+
+.checkbox-wrapper input[type="checkbox"][checkbox] + label.checkbox-label
+  position: relative
+  top: 2px
+
+.checkbox-wrapper input[type="checkbox"][checkbox]:focus + label
+  border: 2px solid $brown-dark
+
+.checkbox-wrapper input[type="checkbox"][checkbox]:checked + label::before
+  content: "\f00c"
+  display: inline-block
+  position: absolute
+  right: -2px
+  bottom: -2px
+  color: white
+  background-color: $brown-dark
+
+.checkbox-wrapper input[type="checkbox"][checkbox][disabled] + label
+  cursor: auto
+  border: 2px solid $gray
+
+.checkbox-wrapper input[type="checkbox"][checkbox][disabled] + label::before
+  background-color: $gray
+
+.checkbox-wrapper input[type="checkbox"][checkbox] + label + .checkbox-label
+  cursor: pointer
+  -webkit-user-select: none
+  /* Chrome all / Safari all */
+  -moz-user-select: none
+  /* Firefox all */
+  -ms-user-select: none
+  /* IE 10+ */
+  user-select: none
+  /* Likely future */
+  font-family: sans-serif
+  font-size: 20px
+  margin-left: 8px
+  display: inline-block
+  color: $brown-dark
+
+.checkbox-wrapper input[type="checkbox"][checkbox][disabled] + label + .checkbox-label
+  cursor: default
+  color: $gray
