@@ -41,6 +41,22 @@
             return this;
         };
 
+        FilterStorage.prototype.reset = function () {
+            var self = this;
+
+            if (this.filter.stateData) {
+                _.forEach(this.filter.stateData, function (value, field) {
+                    self.filter[field] = value;
+                });
+            }
+
+            if (this.sort.stateData) {
+                _.forEach(this.sort.stateData, function (value, field) {
+                    self.sort[field] = value;
+                });
+            }
+        };
+
         return FilterStorage;
     }
 

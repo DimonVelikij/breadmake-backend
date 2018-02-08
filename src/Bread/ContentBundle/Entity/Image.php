@@ -26,7 +26,7 @@ class Image
      * @JMS\Expose
      * @JMS\Type("integer")
      * @JMS\SerializedName("Id")
-     * @JMS\Groups({"api"})s
+     * @JMS\Groups({"api"})
      */
     private $id;
 

@@ -29,6 +29,7 @@
                         self.addFilter(field);
                     }
                     self[field] = self.configuration[field].defaultValue;
+                    self.stateData[field] = self.configuration[field].defaultValue;
                 });
 
                 return this;
@@ -54,6 +55,9 @@
 
                 this.configuration['minPrice'].allValue = minPrice;
                 this.configuration['maxPrice'].allValue = maxPrice;
+
+                this.stateData.minPrice = minPrice;
+                this.stateData.maxPrice = maxPrice;
 
                 if (!this['minPrice']) {
                     this['minPrice'] = minPrice;

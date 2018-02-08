@@ -23,6 +23,7 @@
             this.storage = null;
             this.fields = [];
             this.configuration = {};
+            this.stateData = {};
         }
 
         Filter.prototype.setStorage = function (storage) {
@@ -66,6 +67,7 @@
             _.forEach(this.fields, function (field) {
                 self.addFilter(field);
                 self[field] = self.configuration[field].defaultValue;
+                this.stateData[field] = self.configuration[field].defaultValue;
             });
 
             return this;

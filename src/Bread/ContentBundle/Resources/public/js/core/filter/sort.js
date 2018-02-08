@@ -21,6 +21,7 @@
             this.storage = null;
             this.fields = [];
             this.configuration = {};
+            this.stateData = {};
         }
 
         Sort.prototype.setStorage = function (storage) {
@@ -64,6 +65,7 @@
             _.forEach(this.fields, function (field) {
                 self.addSort(field);
                 self[field] = self.configuration[field].defaultValue;
+                self.stateData[field] = self.configuration[field].defaultValue;
 
                 if (self.configuration[field].defaultValue) {
                     $location.search(field, self.configuration[field].defaultValue);
