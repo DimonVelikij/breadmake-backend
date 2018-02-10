@@ -12,9 +12,9 @@
                     <h1>{{ page.title }}</h1>
                 </div>
             </div>
-            {#фильтр#}
+            {% include '@BreadContent/Product/filter.html.twig' %}
             <div class="row">
-                <div class="col-md-12" ng-show="products.length">
+                <div class="col-md-12" ng-show="storage.filteredData.length">
                     <div class="price-list">
                         <div class="order-item">
                             <div class="row">
@@ -22,14 +22,13 @@
                                     <a href="#" class="text excel">Скачать Excel-файл</a>
                                     <br>
                                     <a href="#" class="text pdf">Открыть PDF-файл</a>
-                                    <p>Фильтр по категории продукта и сортировка по цене</p>
                                     <table class="order-item__table">
                                         <tr class="order-item__table-caption order-item__table-caption_bold">
                                             <th>Товар</th>
                                             <th>Категория</th>
                                             <th>Цена, <i class="fa fa-rouble"></i></th>
                                         </tr>
-                                        <tr class="order-item__table-text" ng-repeat="product in products">
+                                        <tr class="order-item__table-text" ng-repeat="product in storage.filteredData">
                                             <td>[[ product.getTitle() ]]</td>
                                             <td>[[ product.getCategory().getTitle() ]]</td>
                                             <td>[[ product.getPrice() | price ]]</td>
@@ -40,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="!load && !products.length && !dataLoadError">
+                <div ng-if="!load && !storage.filteredData.length && !dataLoadError">
                     <div class="col-md-12">
                         <p>Прайс-лист пуст</p>
                     </div>

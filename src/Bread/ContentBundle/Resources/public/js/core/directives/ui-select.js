@@ -53,6 +53,15 @@
             isInitDirective = true;
         });
 
+        $scope.$watch('ngModel', function (newVal) {
+            _.forEach($scope.items, function (item) {
+                if (item[$scope.trackBy] == newVal) {
+                    $scope.selectedItem = item;
+                    return;
+                }
+            });
+        });
+
         $scope.selectItem = function (item) {
             $scope.ngModel = item[$scope.trackBy];
             $scope.selectedItem = item;
