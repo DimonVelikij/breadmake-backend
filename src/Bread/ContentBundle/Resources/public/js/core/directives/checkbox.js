@@ -13,15 +13,25 @@
             require: 'ngModel',
             link: function (scope, element, attrs) {
                 var checkBoxId = attrs.id,
-                    title = attrs.title;
+                    title = attrs.title,
+                    checkboxLabelClass = attrs.checkboxLabelClass,
+                    labelClass = attrs.labelClass,
+                    labelWrapElement = attrs.labelWrapElement,
+                    labelWrapClass = attrs.labelWrapClass;
+
                 if (checkBoxId === undefined || checkBoxId === "") {
                     throw new Error('custom-checkbox directive need id!');
                 }
 
+                var labelWrapStartElement = labelWrapElement && labelWrapClass ?
+                    '<' + labelWrapElement + ' class="' + labelWrapClass + '">' :
+                    '',
+                    labelWrapEndElement = labelWrapElement ? '</' + labelWrapElement + '>' : '';
+
                 element.wrap('<div class="checkbox-wrapper"></div>');
 
-                element.after('<label for="' + checkBoxId + '" class="fa checkbox-label"></label>' +
-                    '<label class="checkbox-label" for="' + checkBoxId + '">' + title + '</label>');
+                element.after('<label for="' + checkBoxId + '" class="fa checkbox-label ' + checkboxLabelClass + '"></label>' +
+                    labelWrapStartElement + '<label class="checkbox-label ' + labelClass + '" for="' + checkBoxId + '">' + title + '</label>' + labelWrapEndElement);
             }
         };
     }

@@ -167,12 +167,15 @@
                                     name="Agree"
                                     ng-model="userData.Agree"
                                     type="checkbox"
+                                    checkbox-label-class="agree-checkbox"
+                                    label-class="agree"
+                                    label-wrap-class="agree-checkbox-label"
+                                    label-wrap-element="span"
+                                    title="Даю согласие на обработку персональных данных"
                                     required
+                                    checkbox
                                     backend
                                 >
-                            </div>
-                            <div class="agree-checkbox-label">
-                                <label for="agree" class="agree">Даю согласие на обработку персональных данных</label>
                             </div>
                             <div ng-if="feedback.Agree.$invalid && feedback.Agree.$dirty" ng-messages="feedback.Agree.$error">
                                 <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
