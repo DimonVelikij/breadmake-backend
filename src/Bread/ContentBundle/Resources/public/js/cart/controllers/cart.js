@@ -5,12 +5,21 @@
         .module('content.cart')
         .controller('CartCtrl', CartController);
 
-    CartController.$inject = [];
+    CartController.$inject = [
+        '$scope'
+    ];
 
     function CartController(
-
+        $scope
     ) {
-        console.log(1);
+        $scope.load = true;
+
+        $scope.$on('$cartContent', function (event, args) {
+            $scope.cartList = args.Cart;
+            $scope.cartSum = args.CartSum;
+
+            $scope.load = false;
+        });
     }
 
 })(angular);

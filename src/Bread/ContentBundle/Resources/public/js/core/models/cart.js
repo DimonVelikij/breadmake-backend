@@ -23,6 +23,7 @@
             this.ProductId = data.ProductId;
             this.Price = data.Price;
             this.Count = data.Count;
+            this.Product = null;
         }
 
         Cart.prototype.getProductId = function () {

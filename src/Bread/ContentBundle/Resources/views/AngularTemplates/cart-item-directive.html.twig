@@ -1,0 +1,54 @@
+{% extends '@BreadContent/AngularTemplates/base.html.twig' %}
+
+{% block templateId %}cart-item-directive.html{% endblock %}
+
+{% block templateContent %}
+    <div class="cart-table-row clearfix">
+        <div class="row">
+            <div class="col-md-12 hidden-lg hidden-md hidden-sm">
+                <p class="table-cell__del-button-adaptive">
+                    <a href="" ng-click="removeItemCart(cartItem.Product)">
+                        <i class="fa fa-times-circle brown-dark table-cell__del-button"></i>
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="table-cell">
+                    <img
+                        data-src="[[ cartItem.Product.getImage().getCropPath() ]]"
+                        alt="[[ cartItem.Product.getTitle() ]]"
+                        title="[[ cartItem.Product.getTitle() ]]"
+                        class="cart-img"
+                        ng-class="{'product__load': imageLoad}"
+                        image-loader
+                    >
+                    <p class="text table-cell__content table-cell__title">[[ cartItem.Product.getTitle() ]]</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4 table-cell">
+                <div class="table-cell__content table-cell__content_center">
+                    <p class="table-cell__adaptive">ЦЕНА</p>
+                    <p class="text table-cell__price">[[ cartItem.Product.getPrice() | price ]] <span class="table-cell__adaptive"><i class="fa fa-rouble orange"></i></span></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-4 table-cell">
+                <div class=" table-cell__content table-cell__content_center">
+                    <button class="button hint-cart__button table-cell__plus-button" ng-click="incrementCount(cartItem)">+</button>
+                    <input type="text" class="field-text hint-cart__text" ng-model="cartItem.Count">
+                    <button class="button hint-cart__button table-cell__minus-button" ng-click="decrementCount(cartItem)">-</button>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4 table-cell">
+                <div class="table-cell__content table-cell__content_center">
+                    <p class="table-cell__adaptive">СТОИМОСТЬ</p>
+                    <p class="text table-cell__price">[[ (cartItem.Product.getPrice() * cartItem.Count) | price ]] <span class="table-cell__adaptive"><i class="fa fa-rouble orange"></i></span></p>
+                </div>
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-0 table-cell hidden-xs">
+                <a href="" ng-click="removeItemCart(cartItem.Product)" class="table-cell__content table-cell__content_center">
+                    <i class="fa fa-times-circle brown-dark table-cell__del-button"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

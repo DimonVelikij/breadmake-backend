@@ -7,7 +7,10 @@
 
     CoreController.$inject = [
         '$scope',
+        '$rootScope',
+        '$q',
         'CartResource',
+        'ProductResource',
         '_',
         'FormHelper',
         'Initializer',
@@ -17,7 +20,10 @@
     
     function CoreController(
         $scope,
+        $rootScope,
+        $q,
         CartResource,
+        ProductResource,
         _,
         FormHelper,
         Initializer,
@@ -63,10 +69,26 @@
             });
 
             $scope.cartSum = $scope.cartSum.toFixed(2);
+
+            $rootScope.$broadcast('$cartContent', {
+                Cart: $scope.cart,
+                CartSum: $scope.cartSum
+            });
         }
 
-        CartResource.query()
-            .then(function (cart) {
+        $q.all([CartResource.query(), ProductResource.query()])
+            .then(function (response) {
+                var cart = response[0],
+                    products = {};
+
+                _.forEach(response[1], function (product) {
+                    products[product.getId()] = product;
+                });
+
+                _.forEach(cart, function (cartItem) {
+                    cartItem.Product = products[cartItem.ProductId];
+                });
+
                 calcCart(cart);
             }, function () {
                 $scope.cart = [];
