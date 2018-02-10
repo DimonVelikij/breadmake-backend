@@ -6,10 +6,10 @@
                         <span class="auth-button" ng-click="toggleUserMenu()">
                             <i class="fa fa-user"></i>
                         </span>
-                        <span class="cart-button" ng-show="!cartLoad">
+                        {#<span class="cart-button" ng-show="!cartLoad">
                             <a href="#"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>
                             <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>-->
-                        </span>
+                        </span>#}
                     <div class="user-links">
                         <ul>
                             <li><a class="user-link user-link_active" href="{{ path('cabinet-login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="cart-caption">
                             <p class="text_center">
-                                <a class="text text-cart" href="#"><i class="fa fa-shopping-cart"></i> Корзина</a>
+                                <a class="text text-cart" href="{{ path('cart') }}"><i class="fa fa-shopping-cart"></i> Корзина</a>
                                 <span class="text text_orange header-cart__count-product"> ([[ cart.length ]])</span>
                             </p>
                         </div>

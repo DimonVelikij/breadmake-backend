@@ -228,6 +228,11 @@ assetic:
                 - 'bundles/breadcontent/js/about/about.module.js'
                 - 'bundles/breadcontent/js/about/controllers/*.js'
 
+        cart_module:
+            inputs:
+                - 'bundles/breadcontent/js/cart/cart.module.js'
+                - 'bundles/breadcontent/js/cart/controllers/*.js'
+
         layer_module:
             inputs:
                 - 'bundles/breadcontent/js/layer/layer.module.js'
@@ -242,6 +247,7 @@ assetic:
                 - '@declaration_module'
                 - '@news_module'
                 - '@about_module'
+                - '@cart_module'
                 - '@layer_module'
                 - 'bundles/breadcontent/js/app.js'
 

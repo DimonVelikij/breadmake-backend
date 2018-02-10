@@ -9,6 +9,7 @@
         'content.declaration',
         'content.news',
         'content.about',
+        'content.cart',
         'content.layer'
     ]);
 
