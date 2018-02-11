@@ -8,13 +8,13 @@
         <div class="load-space-block" ng-hide="!load"></div>
         <section>
             <div class="container">
-                <div class="row">
+                <div class="row" ng-show="!load">
                     <div class="col-md-12">
                         <h1>Корзина</h1>
                     </div>
                 </div>
 
-                <div class="row" ng-if="!cartList.length">
+                <div class="row" ng-if="!load && !cartList.length">
                     <div class="col-md-12 field-bottom-20">
                         <p class="text text_orange">Корзина пуста</p>
                         <a href="{{ path('product') }}" class="text brown-dark">выбрать товары</a>
@@ -53,17 +53,133 @@
             <div class="container">
                 <div class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
                     <div class="row">
-                        <form action="#" method="post" class="form-cart">
-                            <label for="cart-name" class="required">ФИО/Название компании</label>
-                            <input id="cart-name" name="cart-name" type="text" class="field-text field-bottom-10">
-                            <label for="cart-phone" class="required">Телефон</label>
-                            <input id="cart-phone" name="cart-phone" type="text" class="field-text field-bottom-10">
-                            <label for="cart-email">Email</label>
-                            <input id="cart-email" name="cart-email" type="text" class="field-text field-bottom-10">
-                            <label for="cart-date">Предпочитаемая дата получения заказа</label>
-                            <input id="cart-date" name="cart-date" type="text" class="field-text field-bottom-20">
-                            <!--тип доставки-->
-                            <button type="submit" class="button">Оформить заказ</button>
+                        <form
+                            name="order"
+                            novalidate
+                            class="form-cart"
+                        >
+                            <label for="Name" class="required">ФИО</label>
+                            <input
+                                id="Name"
+                                name="Name"
+                                ng-model="userData.Name"
+                                type="text"
+                                class="field-text field-bottom-10"
+                                required
+                                backend
+                            >
+                            <div ng-if="order.Name.$invalid && order.Name.$dirty" ng-messages="order.Name.$error">
+                                <p class="alert-error" ng-message="required">Введите ФИО</p>
+                                <p class="alert-error" ng-message="backend">[[ order.Name.errorMessages.backend ]]</p>
+                            </div>
+
+                            <label
+                                for="Phone"
+                                class="required"
+                            >Телефон</label>
+                            <input
+                                id="Phone"
+                                name="Phone"
+                                ng-model="userData.Phone"
+                                type="text"
+                                class="field-text field-bottom-10"
+                                required
+                                backend
+                                ui-mask="+7 999 999 99 99"
+                            >
+                            <div ng-if="order.Phone.$invalid && order.Phone.$dirty" ng-messages="order.Phone.$error">
+                                <p class="alert-error" ng-message="required">Введите Телефон</p>
+                                <p class="alert-error" ng-message="backend">[[ order.Phone.errorMessages.backend ]]</p>
+                            </div>
+
+                            <label
+                                for="Email"
+                                class="required"
+                            >E-mail</label>
+                            <input
+                                id="Email"
+                                name="Email"
+                                ng-model="userData.Email"
+                                type="email"
+                                class="field-text field-bottom-10"
+                                required
+                                backend
+                            >
+                            <div ng-if="order.Email.$invalid && order.Email.$dirty" ng-messages="order.Email.$error">
+                                <p class="alert-error" ng-message="required">Введите E-mail</p>
+                                <p class="alert-error" ng-message="email">E-mail введен неверно</p>
+                                <p class="alert-error" ng-message="backend">[[ order.Email.errorMessages.backend ]]</p>
+                            </div>
+
+                            <label
+                                for="Date"
+                                class="required"
+                            >Предпочитаемая дата получения заказа</label>
+                            <input
+                                id="Date"
+                                name="Date"
+                                ng-model="userData.Date"
+                                type="text"
+                                class="field-text field-bottom-20"
+                                required
+                                backend
+                                ui-mask="99.99.9999"
+                                ng-pattern="/^([0-2]\d|3[01])\.(0\d|1[012])\.(20)(1[8-9]|2\d)$/"
+                            >
+                            <div ng-if="order.Date.$invalid && order.Date.$dirty" ng-messages="order.Date.$error">
+                                <p class="alert-error" ng-message="required">Введите предпочитаемую дату заказа</p>
+                                <p class="alert-error" ng-message="pattern">Неверно введена дата</p>
+                                <p class="alert-error" ng-message="backend">[[ order.Date.errorMessages.backend ]]</p>
+                            </div>
+
+                            <input
+                                id="Delivery"
+                                name="Delivery"
+                                ng-model="userData.Delivery"
+                                type="checkbox"
+                                checkbox-label-class="agree-checkbox"
+                                label-wrap-class="agree-checkbox-label"
+                                label-wrap-element="span"
+                                title="Нужна доставка"
+                                checkbox
+                            ><br>
+
+                            <input
+                                id="Agree"
+                                name="Agree"
+                                ng-model="userData.Agree"
+                                type="checkbox"
+                                checkbox-label-class="agree-checkbox"
+                                label-wrap-class="agree-checkbox-label"
+                                label-wrap-element="span"
+                                title="Даю согласие на обработку персональных данных"
+                                required
+                                checkbox
+                                backend
+                            >
+                            <div ng-if="order.Agree.$invalid && order.Agree.$dirty" ng-messages="order.Agree.$error">
+                                <p class="alert-error" ng-message="required">Необходимо согласиться с условиями</p>
+                                <p class="alert-error" ng-message="backend">[[ order.Agree.errorMessages.backend ]]</p>
+                            </div>
+
+                            <input
+                                id="CartContent"
+                                name="CartContent"
+                                ng-model="cartList.length"
+                                type="hidden"
+                                required
+                                backend
+                            >
+                            <div ng-if="order.CartContent.$invalid && order.CartContent.$dirty" ng-messages="order.CartContent.$error">
+                                <p class="alert-error" ng-message="required">Нужно выбрать товары</p>
+                                <p class="alert-error" ng-message="backend">[[ order.CartContent.errorMessages.backend ]]</p>
+                            </div>
+
+                            <div>
+                                <p class="text text_size-20 field-top-20">Итоговая сумма заказа: <span class="text_orange">[[ cartSum ]] <i class="fa fa-rouble"></i></span></p>
+                            </div>
+
+                            <button type="submit" class="button field-top-10" ng-click="submitOrder($event, order)">Оформить заказ</button>
                         </form>
                     </div>
                 </div>
