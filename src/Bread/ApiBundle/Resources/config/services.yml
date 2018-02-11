@@ -35,7 +35,12 @@ services:
             - "@security.csrf.token_manager"
             - "@bread_api.form_builder"
 
+    bread_api.base_form:
+        class: Bread\ApiBundle\Form\BaseFormType
+        parent: bread_api.form_service
+        public: false
+
     bread_api.feedback_type:
         class: Bread\ApiBundle\Form\FeedbackType
-        parent: bread_api.form_service
+        parent: bread_api.base_form
         public: true
