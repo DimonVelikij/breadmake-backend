@@ -49,7 +49,7 @@
                 </div>
             </div>
         </section>
-        <section ng-if="cartList.length">
+        <section ng-if="cartList.length && !cartRequestSendError">
             <div class="container">
                 <div class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
                     <div class="row">
@@ -197,6 +197,16 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section ng-if="cartRequestSendError">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="field-bottom-10">
+                            <p class="alert-error">При отправке данных возникли ошибки. Попробуйте обновить страницу и повторите отправку</p>
+                        </div>
+                    </div>
+                </div>
         </section>
     </div>
 {% endblock %}

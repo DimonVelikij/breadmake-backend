@@ -7,16 +7,22 @@
 
     CartController.$inject = [
         '$scope',
+        '$rootScope',
         'FormHelper',
         'Initializer',
-        'Request'
+        'Request',
+        'Layer',
+        '_'
     ];
 
     function CartController(
         $scope,
+        $rootScope,
         FormHelper,
         Initializer,
-        Request
+        Request,
+        Layer,
+        _
     ) {
         $scope.load = true;
 
@@ -79,10 +85,24 @@
 
             Request.save(formData)
                 .then(function (response) {
-                    console.log(response);
-                    //чистка корзины
-                }, function (error) {
+                    if (response.success) {
+                        Layer.open(Initializer.Path.LayerThanks, $scope);
 
+                        $rootScope.$broadcast("$clearCart", {});
+                    } else {
+                        if (!response.errors) {
+                            $scope.cartRequestSendError = true;
+                        }
+                        _.forEach(response.errors, function (message, fieldName) {
+                            form[fieldName].errorMessages = {
+                                backend: message
+                            };
+                            form[fieldName].$setValidity('backend', false);
+                        });
+                    }
+
+                }, function (error) {
+                    $scope.cartRequestSendError = true;
                 })
                 .finally(function () {
                     $scope.load = false;

@@ -125,6 +125,10 @@
                 });
         });
 
+        $scope.$on('$clearCart', function (event, args) {
+            calcCart([]);
+        });
+
         $scope.loadFooterMap = function (url) {
             Layer.open(url, $scope);
         };
@@ -163,10 +167,10 @@
                             $scope.feedbackRequestSendError = true;
                         }
                         _.forEach(response.errors, function (message, fieldName) {
-                            $scope.feedback[fieldName].errorMessages = {
+                            form[fieldName].errorMessages = {
                                 backend: message
                             };
-                            $scope.feedback[fieldName].$setValidity('backend', false);
+                            form[fieldName].$setValidity('backend', false);
                         });
                     }
                 })

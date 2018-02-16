@@ -53,10 +53,10 @@
                             $scope.Layer.cancel(true);
                         } else {
                             _.forEach(response.errors, function (message, fieldName) {
-                                $scope.feedback[fieldName].errorMessages = {
+                                form[fieldName].errorMessages = {
                                     backend: message
                                 };
-                                $scope.feedback[fieldName].$setValidity('backend', false);
+                                form[fieldName].$setValidity('backend', false);
                             });
                         }
                     }
