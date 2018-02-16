@@ -11,6 +11,11 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class OrderAdmin extends AbstractAdmin
 {
+    protected $datagridValues = [
+        '_sort_order'   => 'DESC',
+        '_sort_by'      => 'createdAt'
+    ];
+
     /**
      * @param RouteCollection $collection
      */
