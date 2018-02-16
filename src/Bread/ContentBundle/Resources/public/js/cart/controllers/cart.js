@@ -8,13 +8,15 @@
     CartController.$inject = [
         '$scope',
         'FormHelper',
-        'Initializer'
+        'Initializer',
+        'Request'
     ];
 
     function CartController(
         $scope,
         FormHelper,
-        Initializer
+        Initializer,
+        Request
     ) {
         $scope.load = true;
 
@@ -29,10 +31,11 @@
             Name: null,
             Phone: null,
             Email: null,
-            Date: null,
-            Delivery: false,
             Agree: null,
             Data: {
+                Delivery: false,
+                Address: null,
+                PreferenceDate: null,
                 CartContent: []
             }
         };
@@ -40,14 +43,33 @@
         $scope.submitOrder = function ($event, form) {
             $event.preventDefault();
 
+            if ($scope.load) {
+                return;
+            }
+
             FormHelper.forceDirty(form);
 
             if (form.$invalid) {
                 return;
             }
 
-            var formData = $scope.userData;
-            formData['Type'] = 'order';
+            $scope.load = true;
+
+            var formData = {
+                Type: 'order',
+                Token: Initializer.Config.FormToken,
+                Name: $scope.userData.Name,
+                Phone: $scope.userData.Phone,
+                Email: $scope.userData.Email,
+                Agree: $scope.userData.Agree,
+                Data: {
+                    Delivery: $scope.userData.Data.Delivery,
+                    Address: $scope.userData.Data.Delivery ? $scope.userData.Data.Address : null,
+                    PreferenceDate: prepareDate($scope.userData.Data.PreferenceDate),
+                    CartContent: []
+                }
+            };
+
             _.forEach($scope.cartList, function (cartItem) {
                 formData.Data.CartContent.push({
                     ProductId: cartItem.Product.getId(),
@@ -55,10 +77,25 @@
                 });
             });
 
-            //отправка данных
+            Request.save(formData)
+                .then(function (response) {
+                    console.log(response);
+                    //чистка корзины
+                }, function (error) {
 
-            //чистка корзины
+                })
+                .finally(function () {
+                    $scope.load = false;
+                });
         };
+
+        function prepareDate (date) {
+            if (!date) {
+                return null;
+            }
+
+            return date.substr(0, 2) + '.' + date.substr(2, 2) + '.' + date.substr(4, 4);
+        }
     }
 
 })(angular);

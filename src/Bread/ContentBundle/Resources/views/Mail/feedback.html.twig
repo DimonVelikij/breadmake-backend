@@ -3,12 +3,12 @@
 {% block caption %}Заявка "Обратная связь"{% endblock %}
 
 {% block content %}
-    {% if object.data.Comment %}
+    {% if request.data.Comment %}
         <p style="font-weight: bold;">Пользователь оставил комментарий:</p>
-        <p>{{ object.data.Comment }}</p>
+        <p>{{ request.data.Comment }}</p>
     {% endif %}
 {% endblock %}
 
-{% block name %}{{ object.client.name }}{% endblock %}
-{% block phone %}{{ object.client.phone }}{% endblock %}
-{% block email %}{{ object.client.email }}{% endblock %}
+{% block name %}{{ request.client.name }}{% endblock %}
+{% block phone %}{{ request.client.phone }}{% endblock %}
+{% block email %}{{ request.client.email }}{% endblock %}

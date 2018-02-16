@@ -50,9 +50,7 @@ class MailHandler
             ->setCharset('UTF8')
             ->setFrom([$this->options['from'] => $this->options['user_title']])
             ->setTo($to)
-            ->setBody($this->templating->render('@BreadContent/Mail/' . $templateName . '.html.twig', [
-                'object'    =>  $object
-            ]), 'text/html');
+            ->setBody($this->templating->render('@BreadContent/Mail/' . $templateName . '.html.twig', $object), 'text/html');
 
         return $this->mailer->send($message);
     }

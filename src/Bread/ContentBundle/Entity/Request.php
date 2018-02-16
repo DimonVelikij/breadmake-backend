@@ -79,6 +79,16 @@ class Request
     }
 
     /**
+     * @param $name
+     * @param null $default
+     * @return null
+     */
+    public function getAdditional($name, $default = null)
+    {
+        return $this->data[$name] ?? $default;
+    }
+
+    /**
      * Set type
      *
      * @param \Bread\ContentBundle\Entity\RequestType $type

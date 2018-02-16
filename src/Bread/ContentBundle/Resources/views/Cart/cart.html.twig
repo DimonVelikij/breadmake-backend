@@ -112,13 +112,13 @@
                             </div>
 
                             <label
-                                for="Date"
+                                for="PreferenceDate"
                                 class="required"
                             >Предпочитаемая дата получения заказа</label>
                             <input
-                                id="Date"
-                                name="Date"
-                                ng-model="userData.Date"
+                                id="PreferenceDate"
+                                name="PreferenceDate"
+                                ng-model="userData.Data.PreferenceDate"
                                 type="text"
                                 class="field-text field-bottom-20"
                                 required
@@ -126,16 +126,16 @@
                                 ui-mask="99.99.9999"
                                 ng-pattern="/^([0-2]\d|3[01])\.(0\d|1[012])\.(20)(1[8-9]|2\d)$/"
                             >
-                            <div ng-if="order.Date.$invalid && order.Date.$dirty" ng-messages="order.Date.$error">
+                            <div ng-if="order.PreferenceDate.$invalid && order.PreferenceDate.$dirty" ng-messages="order.PreferenceDate.$error">
                                 <p class="alert-error" ng-message="required">Введите предпочитаемую дату заказа</p>
                                 <p class="alert-error" ng-message="pattern">Неверно введена дата</p>
-                                <p class="alert-error" ng-message="backend">[[ order.Date.errorMessages.backend ]]</p>
+                                <p class="alert-error" ng-message="backend">[[ order.PreferenceDate.errorMessages.backend ]]</p>
                             </div>
 
                             <input
                                 id="Delivery"
                                 name="Delivery"
-                                ng-model="userData.Delivery"
+                                ng-model="userData.Data.Delivery"
                                 type="checkbox"
                                 checkbox-label-class="agree-checkbox"
                                 label-wrap-class="agree-checkbox-label"
@@ -143,6 +143,19 @@
                                 title="Нужна доставка"
                                 checkbox
                             ><br>
+    
+                            <label
+                                for="Address"
+                                ng-if="userData.Data.Delivery"
+                            >Адрес доставки</label>
+                            <input
+                                id="Address"
+                                name="Address"
+                                ng-model="userData.Data.Address"
+                                type="text"
+                                class="field-text field-bottom-20"
+                                ng-if="userData.Data.Delivery"
+                            >
 
                             <input
                                 id="Agree"
