@@ -44,6 +44,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'BreadContentBundle:Form:custom_fields.html.twig'
+    exception_controller: 'BreadContentBundle:CustomException:showException'
 
 # Doctrine Configuration
 doctrine:

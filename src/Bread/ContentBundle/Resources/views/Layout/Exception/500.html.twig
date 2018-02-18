@@ -1,0 +1,21 @@
+{% extends '@BreadContent/layout.html.twig' %}
+
+{% block title %}Ошибка{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <section>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="server-error">
+                            <img src="{{ asset('bundles/breadcontent/images/500.png') }}" alt="" class="server-error-img">
+                            <p class="text orange server-error-500">500</p>
+                            <p class="text orange server-error-500__text">Ошибка сервера</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
