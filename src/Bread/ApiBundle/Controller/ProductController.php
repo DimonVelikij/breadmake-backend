@@ -32,14 +32,15 @@ class ProductController extends FOSRestController
     {
         $cart = $this->getSession()->get('cart');
 
-        //нужен алгоритм поиска популярной продукции
         /** @var EntityRepository $productRepo */
         $productRepo = $this->getDoctrine()->getRepository('BreadContentBundle:Product');
 
         /** @var QueryBuilder $qb */
         $qb = $productRepo->createQueryBuilder('p')
             ->where('p.public = :public')
-            ->setParameters(['public' => true]);
+            ->setParameters(['public' => true])
+            ->setMaxResults(9)
+            ->orderBy('p.id', 'DESC');
 
         if ($cart) {
             $populationProducts = $qb->getQuery()->getResult();
