@@ -42,6 +42,8 @@ class AppKernel extends Kernel
             new Bread\ApiBundle\BreadApiBundle(),
             //pdf
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            //excel
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

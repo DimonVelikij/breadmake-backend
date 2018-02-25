@@ -60,7 +60,7 @@
                 $scope.load = false;
             });
 
-        $scope.loadPdf = function ($event) {
+        $scope.loadPriceList = function ($event) {
             if ($scope.storage.data.length == $scope.storage.filteredData.length) {
                 return;
             }
@@ -69,6 +69,7 @@
             _.forEach($scope.storage.filteredData, function (product) {
                 productIds.push(product.getId());
             });
+
             $event.target.setAttribute('href', $event.target.getAttribute('href') + '?product_ids=' + productIds.join(','));
         };
     }
