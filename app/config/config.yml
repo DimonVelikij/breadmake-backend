@@ -266,3 +266,11 @@ fos_rest:
         view_response_listener: 'force'
         formats:
             json: true
+
+#knp_snappy
+knp_snappy:
+    temporary_folder: "%kernel.cache_dir%/snappy"
+    pdf:
+        enabled:    true
+        binary:     '/usr/bin/xvfb-run /usr/bin/wkhtmltopdf'
+        options:    []

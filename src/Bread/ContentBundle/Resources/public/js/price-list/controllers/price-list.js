@@ -12,7 +12,8 @@
         'ProductFilterExtension',
         'ProductSortExtension',
         'ProductFilterConfiguration',
-        'ProductSortConfiguration'
+        'ProductSortConfiguration',
+        '_'
     ];
 
     function PriceListController (
@@ -22,7 +23,8 @@
         ProductFilterExtension,
         ProductSortExtension,
         ProductFilterConfiguration,
-        ProductSortConfiguration
+        ProductSortConfiguration,
+        _
     ) {
         $scope.load = true;
 
@@ -57,6 +59,18 @@
             .finally(function () {
                 $scope.load = false;
             });
+
+        $scope.loadPdf = function ($event) {
+            if ($scope.storage.data.length == $scope.storage.filteredData.length) {
+                return;
+            }
+
+            var productIds = [];
+            _.forEach($scope.storage.filteredData, function (product) {
+                productIds.push(product.getId());
+            });
+            $event.target.setAttribute('href', $event.target.getAttribute('href') + '?product_ids=' + productIds.join(','));
+        };
     }
 
 })(angular);

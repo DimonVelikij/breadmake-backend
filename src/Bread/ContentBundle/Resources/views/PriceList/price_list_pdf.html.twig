@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <style type="text/css">
+        .price-list__table {
+            width: 100%;
+        }
+        .price-list__head {
+            font-size: 25px;
+        }
+        .price-list__title {
+            text-align: left;
+        }
+        .price-list__category,
+        .price-list__price {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Прайс-лист</h1>
+<div>
+    <table class="price-list__table">
+        <tr>
+            <th class="price-list__head">Товар</th>
+            <th class="price-list__head">Категория</th>
+            <th class="price-list__head">Цена, руб</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td class="price-list__title">{{ product.title }}</td>
+                <td class="price-list__category">{{ product.category.title }}</td>
+                <td class="price-list__price">{{ product.price | number_format(2, '.') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

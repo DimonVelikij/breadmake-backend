@@ -21,7 +21,7 @@
                                 <div class="col-md-12">
                                     <a href="#" class="text excel">Скачать Excel-файл</a>
                                     <br>
-                                    <a href="#" class="text pdf">Открыть PDF-файл</a>
+                                    <a id="price-list-pdf" href="{{ path('price-list-pdf') }}"  ng-click="loadPdf($event)" class="text pdf">Скачать PDF-файл</a>
                                     <table class="order-item__table">
                                         <tr class="order-item__table-caption order-item__table-caption_bold">
                                             <th>Товар</th>

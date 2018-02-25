@@ -39,7 +39,9 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             //my bundles
             new Bread\ContentBundle\BreadContentBundle(),
-            new Bread\ApiBundle\BreadApiBundle()
+            new Bread\ApiBundle\BreadApiBundle(),
+            //pdf
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
