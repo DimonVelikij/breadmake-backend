@@ -15,12 +15,20 @@
             <div class="col-md-4 col-sm-5 col-xs-12">
                 <div class="table-cell">
                     <img
+                        ng-if="cartItem.Product.getImage()"
                         data-src="[[ cartItem.Product.getImage().getCropPath() ]]"
                         alt="[[ cartItem.Product.getTitle() ]]"
                         title="[[ cartItem.Product.getTitle() ]]"
                         class="cart-img"
                         ng-class="{'product__load': imageLoad}"
                         image-loader
+                    >
+                    <img
+                        ng-if="!cartItem.Product.getImage()"
+                        src="{{ asset('bundles/breadcontent/images/bread_stub.png') }}"
+                        alt="[[ cartItem.Product.getTitle() ]]"
+                        title="[[ cartItem.Product.getTitle() ]]"
+                        class="cart-img"
                     >
                     <p class="text table-cell__content table-cell__title">[[ cartItem.Product.getTitle() ]]</p>
                 </div>
