@@ -36,7 +36,6 @@ class NewsController extends FOSRestController
 
         return $qb
             ->where('n.public = :is_public')
-            ->join('n.images', 'i')
             ->setParameters(['is_public' => true])
             ->getQuery()
             ->getResult();
@@ -65,7 +64,6 @@ class NewsController extends FOSRestController
         return $qb
             ->where('n.public = :is_public')
             ->andWhere('n.id = :id')
-            ->join('n.images', 'i')
             ->setParameters(['is_public' => true, 'id' => $id])
             ->getQuery()
             ->getOneOrNullResult();

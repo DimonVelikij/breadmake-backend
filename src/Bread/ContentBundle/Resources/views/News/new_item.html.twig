@@ -17,7 +17,7 @@
             </div>
             <div class="new">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" ng-class="{'new__description': !newItem.getCountImages()}">
                         <p class="text new-text" ng-if="newItem.getDescription()" ng-bind-html="newItem.getDescription()"></p>
                     </div>
                 </div>

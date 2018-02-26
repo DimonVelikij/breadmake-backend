@@ -22,7 +22,13 @@
                             ng-class="{'new-item__load': imageLoad}"
                             image-loader
                         >
-                        {#нужна заглушка#}
+                        <img
+                            ng-if="!new.getCountImages()"
+                            src="{{ asset('bundles/breadcontent/images/new_stub.png') }}"
+                            alt="[[ new.getTitle() ]]"
+                            title="[[ new.getTitle() ]]"
+                            class="new-item__img"
+                        >
                     </div>
                 </div>
                 <div class="row">
@@ -32,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <p class="new-item__count-photo">
+                        <p class="new-item__count-photo" ng-show="new.getCountImages()">
                             <i class="fa fa-photo"></i> [[ new.getCountImages() ]]
                         </p>
                     </div>
