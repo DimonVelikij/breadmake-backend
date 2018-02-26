@@ -10,7 +10,9 @@
         RequestResource: path('api-request-save'),
         NewResource: path('api-news-resource'),
         LayerThanks: path('layer', {name: 'thanks'}),
-        LayerError: path('layer', {name: 'error'})
+        LayerError: path('layer', {name: 'error'}),
+        Search: path('search'),
+        SearchData: path('search-data'),
     } | json_encode | raw }}</script>
 
 <script type="text/ng-init" name="Config">{{ {

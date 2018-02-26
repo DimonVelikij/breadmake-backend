@@ -38,8 +38,8 @@
             <div class="col-md-5 col-sm-9 col-xs-12">
                 <div class="row">
                     <div class="search">
-                        <input type="text" class="field-text field-text_search" placeholder="поиск...">
-                        <button class="button button_search"><i class="fa fa-search"></i></button>
+                        <input type="text" class="field-text field-text_search" placeholder="поиск..." ng-model="searchString">
+                        <button class="button button_search" ng-click="search()"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
             </div>

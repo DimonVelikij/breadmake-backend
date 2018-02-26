@@ -9,6 +9,7 @@
         '$scope',
         '$rootScope',
         '$q',
+        '$window',
         'CartResource',
         'ProductResource',
         '_',
@@ -22,6 +23,7 @@
         $scope,
         $rootScope,
         $q,
+        $window,
         CartResource,
         ProductResource,
         _,
@@ -177,6 +179,22 @@
                 .finally(function () {
                     $scope.feedbackRequestSending = false;
                 });
+        };
+
+        $scope.searchString = Initializer.Search ? Initializer.Search.SearchString : undefined;
+
+        $scope.search = function () {
+            if (!$scope.searchString) {
+                return;
+            }
+
+            if ($window.location.pathname === Initializer.Path.Search) {
+                $rootScope.$broadcast('$search', {
+                    Search: $scope.searchString
+                });
+            } else {
+                $window.location.href = Initializer.Path.Search + '?search=' + $scope.searchString;
+            }
         };
     }
 

@@ -10,7 +10,8 @@
         'content.news',
         'content.about',
         'content.cart',
-        'content.layer'
+        'content.layer',
+        'content.search'
     ]);
 
 })(angular);

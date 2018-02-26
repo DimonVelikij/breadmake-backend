@@ -239,6 +239,11 @@ assetic:
                 - 'bundles/breadcontent/js/layer/layer.module.js'
                 - 'bundles/breadcontent/js/layer/controllers/*.js'
                 - 'bundles/breadcontent/js/layer/services/*.js'
+
+        search_module:
+            inputs:
+                - 'bundles/breadcontent/js/search/search.module.js'
+                - 'bundles/breadcontent/js/search/controllers/*.js'
         appjs:
             inputs:
                 - '@core_module'
@@ -250,6 +255,7 @@ assetic:
                 - '@about_module'
                 - '@cart_module'
                 - '@layer_module'
+                - '@search_module'
                 - 'bundles/breadcontent/js/app.js'
 
 #fos rest

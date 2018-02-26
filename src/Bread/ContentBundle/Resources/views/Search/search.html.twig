@@ -1,0 +1,38 @@
+{% extends '@BreadContent/layout.html.twig' %}
+
+{% block title %}Поиск{% endblock %}
+
+{% block content %}
+    <script type="text/ng-init" name="Search">{{ {
+            SearchString: search
+        } | json_encode | raw }}</script>
+    
+    <section ng-controller="SearchCtrl" ng-cloak>
+        <div class="load" ng-show="load"></div>
+        <div class="load-space-block" ng-hide="!load"></div>
+        <div class="container">
+            <div class="row">
+                <div class="clearfix" ng-show="!load">
+                    <div class="col-md-12 col-sm-12">
+                        <h1 class="">Результаты поиска</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="search-result clearfix">
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-if="isResult && !load">
+                        <div class="search-part" ng-repeat="searchPart in result">
+                            <h3>Раздел "[[searchPart.part]]"</h3>
+                            <div ng-repeat="searchItem in searchPart.result">
+                                <a class="search-link orange" ng-href="[[searchItem.link]]"><span ng-bind-html="searchItem.text"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-if="!isResult && !load">
+                        <p class="text brown-dark">По запросу "[[ searchString ]]" ничего не найдено</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
