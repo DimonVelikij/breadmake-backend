@@ -3,21 +3,21 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
-                        <span class="auth-button" ng-click="toggleUserMenu()">
+                        {#<span class="auth-button" ng-click="toggleUserMenu()">
                             <i class="fa fa-user"></i>
-                        </span>
+                        </span>#}
                         {#<span class="cart-button" ng-show="!cartLoad">
                             <a href="#"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>
                             <!--Активная корзина <a href="#" class="cart-button_active"><i class="fa fa-shopping-cart"> ([[ cart.length ]])</i></a>-->
                         </span>#}
-                    <div class="user-links">
+                    {#<div class="user-links">
                         <ul>
                             <li><a class="user-link user-link_active" href="{{ path('cabinet-login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
                             <li><a class="user-link" href="{{ path('cabinet-registration') }}"><i class="fa fa-user-plus"></i> Регистрация</a></li>
-                            {#<li><a class="user-link user-link_left" href="{{ path('cabinet-logout') }}"><i class="fa fa-sign-out"></i> Выход</a></li>#}
-                            {#<li><a class="user-link user-link_left" href="{{ path('cabinet') }}"><i class="fa fa-address-card"></i> Кабинет</a></li>#}
+                            #}{#<li><a class="user-link user-link_left" href="{{ path('cabinet-logout') }}"><i class="fa fa-sign-out"></i> Выход</a></li>#}{#
+                            #}{#<li><a class="user-link user-link_left" href="{{ path('cabinet') }}"><i class="fa fa-address-card"></i> Кабинет</a></li>#}{#
                         </ul>
-                    </div>
+                    </div>#}
                     <div class="header-phone">
                         <a href="tel:{{ company.phone }}"><i class="fa fa-phone-square"></i> {{ company.phone }}</a>
                     </div>
