@@ -109,7 +109,8 @@ class MenuAdmin extends AbstractAdmin
     private function isConfigType(string $pathName)
     {
         $configTypes = [
-            'homepage'
+//            'homepage'
+            //другие раздела
         ];
 
         return in_array($pathName, $configTypes);
@@ -123,7 +124,7 @@ class MenuAdmin extends AbstractAdmin
     private function getConfigType(string $pathName)
     {
         $configTypes = [
-            'homepage'  =>  MenuHomepageConfigsTypes::class,
+//            'homepage'  =>  MenuHomepageConfigsTypes::class,
             //доделать настройки для остальных роутов
         ];
 
