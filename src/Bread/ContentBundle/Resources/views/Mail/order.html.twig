@@ -30,15 +30,15 @@
         {% for productOrder in order.productsOrders %}
             <tr>
                 <td>{{ productOrder.product.title }}</td>
-                <td>{{ productOrder.product.price | number_format(2, '.') }}</td>
+                <td>{{ productOrder.product.price | number_format(2, '.', ' ') }}</td>
                 <td>{{ productOrder.count }} {{ productOrder.product.unit.title }}</td>
-                <td>{{ (productOrder.product.price * productOrder.count) | number_format(2, '.') }}</td>
+                <td>{{ (productOrder.product.price * productOrder.count) | number_format(2, '.', ' ') }}</td>
             </tr>
             {% set countProduct = countProduct + productOrder.count %}
             {% set totalPrice = totalPrice + (productOrder.product.price * productOrder.count) %}
         {% endfor %}
     </table>
-    <p>Итого: продуктов <b>{{ countProduct }}</b> на сумму <b>{{ totalPrice | number_format(2, '.') }}руб</b></p>
+    <p>Итого: продуктов <b>{{ countProduct }}</b> на сумму <b>{{ totalPrice | number_format(2, '.', ' ') }}руб</b></p>
 {% endblock %}
 
 {% block name %}{{ request.client.name }}{% endblock %}
